@@ -349,15 +349,16 @@ export async function getServerSideProps(req, res) {
       const options = {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key":
-            "8ccbc63729mshc51ef54ef0f2f29p188c45jsn963399d87f0b",
+          "X-RapidAPI-Key": process.env.VERCEL_RAPIDAPI_KEY,
           "X-RapidAPI-Host": "amazon-ecommerce-data-scrapper.p.rapidapi.com",
         },
       };
       const req = await fetch(
         `https://amazon-ecommerce-data-scrapper.p.rapidapi.com/search/${encodeURI(
           keyword
-        )}?api_key=${process.env.SCAPPERAPI_KEY || process.env.VERCEL_SCAPPERAPI_KEY}`,
+        )}?api_key=${
+          process.env.SCAPPERAPI_KEY || process.env.VERCEL_SCAPPERAPI_KEY
+        }`,
         options
       );
 

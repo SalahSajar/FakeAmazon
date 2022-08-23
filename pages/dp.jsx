@@ -973,8 +973,7 @@ export const getServerSideProps = async (req, res) => {
       const options = {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key":
-            "8ccbc63729mshc51ef54ef0f2f29p188c45jsn963399d87f0b",
+          "X-RapidAPI-Key": process.env.VERCEL_RAPIDAPI_KEY,
           "X-RapidAPI-Host": "amazon-product-search2.p.rapidapi.com",
         },
       };

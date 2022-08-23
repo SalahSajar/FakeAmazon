@@ -8,7 +8,7 @@ export const useProductSearchFetch = () => {
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
+                'X-RapidAPI-Key': process.env.NEXT_PUBLIC_VERCEL_RAPIDAPI_KEY,
                 'X-RapidAPI-Host': 'bth-amazon-data-scraper.p.rapidapi.com'
             }
         };
@@ -17,7 +17,7 @@ export const useProductSearchFetch = () => {
             error = false;
             loading = true;
 
-            const req = await fetch(`https://bth-amazon-data-scraper.p.rapidapi.com/search/${encodeURI(keyword)}?api_Key=${process.env.NEXT_PUBLIC_HOME_SCAPPERAPI_KEY}` , options)
+            const req = await fetch(`https://bth-amazon-data-scraper.p.rapidapi.com/search/${encodeURI(keyword)}?api_Key=${process.env.NEXT_PUBLIC_VERCEL_HOME_SCAPPERAPI_KEY || process.env.NEXT_PUBLIC_VERCEL_HOME_SCAPPERAPI_KEY}` , options)
             
             if(!req.ok){
                 throw Error("Something is not right ");
