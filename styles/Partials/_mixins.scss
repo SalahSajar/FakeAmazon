@@ -1,0 +1,55 @@
+@mixin flex_display($Xspacing, $Yspacing) {
+    display:flex;
+    align-items:$Xspacing;
+    justify-content:$Yspacing;
+}
+
+
+// Responsive Ui Breakpoints
+
+// @mixin for-size($size) {
+//   @if $size == phone-only {
+//     @media (max-width: 599px) { @content; }
+//   } @else if $size == tablet-portrait-up {
+//     @media (min-width: 600px) { @content; }
+//   } @else if $size == tablet-landscape-up {
+//     @media (min-width: 900px) { @content; }
+//   } @else if $size == desktop-up {
+//     @media (min-width: 1200px) { @content; }
+//   } @else if $size == big-desktop-up {
+//     @media (min-width: 1800px) { @content; }
+//   }
+// }
+
+@mixin for-size($size) {
+    @if $size == phone-only {
+        @media (max-width: 599px) {
+            @content;
+        }
+    }
+
+    @else if $size == tablet-down {
+        @media (max-width: 900px) {
+            @content;
+        }
+    }
+
+    @else if $size == desktop-down {
+        @media (max-width: 1200px) {
+            @content;
+        }
+    }
+
+    @else if $size == desktop-up {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+
+    @else if $size == big-desktop-up {
+        @media (min-width: 1440px) {
+            @content;
+        }
+    }
+}
+

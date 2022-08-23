@@ -1,0 +1,233 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.hmenu--BLOCK{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    transform:translateX(-100%);
+    width:100vw;
+    height:100vh;
+    z-index: 15;
+    transition:background .5s ease 0s,
+                transform .7s ease .8s;
+    
+    &.open_hmenu{
+        transform:translateX(0);
+        background-color: rgba(0,0,0,.8);
+        transition:background .5s ease .8s,
+                    transform .7s ease;
+    }
+
+    .hmenu_navigation--BLOCK{
+        position:relative;
+        @include flex_display(initial, initial);
+        flex-direction: column;
+        height:100%;
+        width:clamp(27rem, 22rem + 13vw, 45rem);
+        background-color:#fff;
+        box-shadow: 0 0 10rem 0.5rem rgb(0 0 0 / 50%);
+        
+        // Horizontal Menu Header Block
+        .hmenu_header--BLOCK{
+            position:relative;
+
+            .hmenu_customer_profile--LINK{
+                @include flex_display(center, center);
+                background-color: $secondary_dark_color;
+                height:5rem;
+                width:100%;
+    
+                .hmenu_customer_profile_content--CONTAINER{
+                    width:28rem;
+    
+                    .customer_profile--ICON{
+                        display: inline-block;
+                        height: 25px;
+                        width: 27px;
+                        background-image: url("/amazon-icons.png");
+                        background-position: -137px -340px;
+                    }
+    
+                    .customer_profile_name--EL{
+                        color:#fff;
+                        text-transform: capitalize;
+                        text-decoration: none;
+                        font-weight: 700;
+                        vertical-align: super;
+                        margin-left: 1rem;
+                    }
+                }
+            }
+
+            .close_hmenu--BTN {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: -3rem;
+                transform:translateY(-50%);
+                width: 2rem;
+                height: 2rem;
+                background-image: url("/amazon-icons.png");
+                background-position: -190px -288px;
+                cursor:pointer;
+            }
+        }
+        // ---------------------------------------
+
+
+        .hmenu_content--CONTAINER{
+            height:100%;
+            position:relative;
+            overflow: hidden;
+            
+            .hmenu_links_list--EL{
+                position:absolute;
+                top: 0;
+                left:0;
+                height:inherit;
+                width:100%;
+                padding-bottom:3rem;
+                overflow-y:scroll ;
+                transition:transform .5s ease;
+
+                &.hmenu_list_righted{
+                    transform:translateX(100%);
+                }
+                &.hmenu_list_centered{
+                    transform:translateX(0);
+                }
+                &.hmenu_list_lefted {
+                    transform: translateX(-100%);
+                }
+
+                .hmenu_list_title--EL{
+                    padding: 1.3rem 3.2rem;
+                    font-weight: 600;
+                    text-transform: capitalize;
+                }
+
+                .hmenu_break_line--EL{
+                    width:100%;
+                    height:1px;
+                    background-color: #d5dbdb;
+                    margin:1rem 0;
+                }
+                
+                .hmenu_item--EL{
+                    padding: 1.3rem 3.2rem;
+                    margin:1px 0;
+                    font-weight: 400;
+                    text-transform: capitalize;
+                    text-decoration: none;
+                    color:#000;
+                    width:100%;
+                    
+                    &:hover{
+                        background-color:#eaeded;
+                    }
+
+                    &:not(.hmenu_compressed_list--BTN , .hmenu_customer_config_item--LINK , .hmenu_return_to_mainMenu--EL, .hmenu_item--LINK){
+                        &:hover{
+                            .hmenu_item_content--CONTAINER .hmenu_item--ICON {
+                                background-position: -166px -288px;
+                            }
+                        }
+                        .hmenu_item_content--CONTAINER{
+                            @include flex_display(center, space-between);
+                            
+                            .hmenu_item--ICON{
+                                width: 10px;
+                                height: 14px;
+                                background-image: url("/amazon-icons.png");
+                                background-position: -137px -288px;
+                            }
+                        }
+                    }
+                    
+                    &.hmenu_compressed_list--BTN{
+                        .hmenu_item_content--CONTAINER {
+                            @include flex_display(center, initial);
+
+                            .hmenu_item--ICON {
+                                display: inline-block;
+                                margin-left: 10px;
+                                height: 8px;
+                                width: 13px;
+                                background-image: url("/amazon-icons.png");
+                                background-position: -184px -342px;
+                            }
+                        }
+                        &:hover .hmenu_item_content--CONTAINER .hmenu_item--ICON {
+                            background-position: -184px -361px;
+                        }
+
+                        &.compressed_list_revealed .hmenu_item_content--CONTAINER .hmenu_item--ICON{
+                            transform:rotateX(180deg);
+                        }
+
+                    }
+
+                    &.hmenu_customer_config_item--LINK{
+                        .hmenu_item_content--CONTAINER{
+
+                            i{
+                                margin-right:.5rem;
+                                background-image: url("/amazon-maps.png");
+
+                                &.hmenu_lang_config--ICON {
+                                    background-position: -77px -51px;
+                                    width: 1.5rem;
+                                    height: 1.5rem;
+                                }
+
+                                &.hmenu_country_config--ICON {
+                                    width: 1.8rem;
+                                    height: 1.2rem;
+                                    background-position: -54px -108px;
+                                }
+                            }
+                        }
+                    }
+
+                    &.hmenu_return_to_mainMenu--EL{
+                        .hmenu_item_content--CONTAINER{
+                            @include flex_display(center, initial);
+
+                            .return_to_mainMenu--ICON{
+                                width: 1.6rem;
+                                height: 1.6rem;
+                                background-image: url("/amazon-icons.png");
+                                margin-right: 1rem;
+                                background-position: -137px -310px;
+                                
+                            }
+                            
+                            .hmenu_item_title--EL {
+                                text-transform: uppercase;
+                                font-weight: 700;
+                            }
+                        }
+                        
+                        &:hover .hmenu_item_content--CONTAINER i{
+                            background-position: -166px -310px;
+                        }
+
+                    }
+                }
+                
+                .hmenu_compressed_list--EL{
+                    height:0;
+                    overflow: hidden;
+                    
+                    &.compressed_list_revealed{
+                        height:fit-content;
+                        overflow: visible;
+                    }
+                }
+            }
+        }
+    }
+}

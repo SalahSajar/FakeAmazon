@@ -1,0 +1,60 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.search_result--BLOCK{
+    width:100%;
+
+    .search_result_products--HEADER h4{
+        color:$main_text_dark_color;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+    .search_result_products--BLOCK{
+        padding: 1rem 0;
+
+        .search_result_products--CONTAINER{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+            gap:2rem;
+            
+            @include for-size(desktop-up){
+                grid-template-columns: repeat(4 , 1fr);
+            }
+
+            .search_result_error--BLOCK{
+                grid-column: 1 / -1;
+                height:45vh;
+                display:flex;
+
+                .search_result_error_content--WRAPPER{
+                    margin: auto;
+                    text-align: center;
+
+                    h4{
+                        text-transform: capitalize;
+                        font-weight: 600;
+                        letter-spacing: 0.4px;
+                        margin-bottom: 0.5rem;
+                        color:$main_text_dark_color;
+                    }
+
+                    .page_reload--BTN{
+                        padding: 0.7rem 1.5rem;
+                        color: $main_text_dark_color;
+                        letter-spacing: 0.3px;
+                        text-transform: capitalize;
+                        outline: none;
+                        border:1px solid $secondary_text_dark_color;
+                        background: none;
+                        border-radius: .5rem;
+                        cursor: pointer;
+
+                        &:hover{
+                            background-color:$main_light_color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

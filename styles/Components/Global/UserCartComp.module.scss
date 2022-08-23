@@ -1,0 +1,29 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.userCart--BLOCK{
+    flex:0 0 clamp(10rem, 5.5rem + 5vw, 17rem);
+    position: relative;
+    background-color:#fff;
+    border-left:.5px solid $secondary_text_dark_color;
+    
+    .userCart_blockContent--WRAPPER{
+        position: sticky;
+        top:0;
+        padding:1rem;
+
+        .userCart_totalPrice--BLOCK{
+            text-align: center;
+            
+            .userCart_totalPrice--TITLE{
+                display: block;
+                text-transform: capitalize;
+            }
+            .userCart_totalPrice--EL{
+                display: block;
+                font-weight: 700;
+                color:$dark_orange_color;
+            }
+        }
+    }
+}

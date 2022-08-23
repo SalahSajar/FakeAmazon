@@ -1,0 +1,358 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.page_footer--EL{
+    position: relative;
+    z-index: 1;
+    background-color:#232F3E;
+
+    .footer_content--CONTAINER{
+        .footer_btt--BTN{
+            display: block;
+            padding:1.8rem 0;
+            font-size:1.5rem;
+            font-weight:400;
+            text-align: center;
+            text-transform: capitalize;
+            text-decoration: none;
+            background-color: #37475A;
+            color:#fff;
+            
+            &:hover{
+                background-color: lighten($color: #37475A, $amount: 5);
+                
+            }
+        }
+
+        .footer_nav--EL{
+            
+            .footer_nav_content--CONTAINER{
+                @include flex_display(initial, space-between);
+                width: fit-content;
+                gap: 3rem;
+                padding:3rem 2rem;
+                margin:0 auto;
+
+                .footer_nav_link_column--BLOCK{
+
+                    .footer_nav_link_column_title--EL{
+                        padding-bottom:.5rem;
+                        color:#fff;
+                        font-weight: 600;
+                        letter-spacing: .5px;
+                    }
+
+                    .footer_nav_link--CONTAINER{
+                        list-style:none;
+
+                        li{
+                            padding:.3rem;
+                            padding-left:0;
+
+                            .footer_nav_link--EL{
+                                color:#ddd;
+                                text-decoration: none;
+                                
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            hr{
+                width:100%;
+                border:none;
+                border-top:1px solid #3a4553;
+            }
+
+            .footer_nav_config_line--EL{
+                padding: 3rem 0;
+                
+                .footer_nav_config_line_content--CONTAINER{
+                    @include flex_display(center, space-between);
+                    width: max-content;
+                    gap: 5rem;
+                    margin: auto;
+
+                    .footer_nav_logo--EL{
+                        position: relative;
+                        height:clamp(4rem, 2.3rem + 1.8vw, 6rem);
+                        aspect-ratio: 2;
+                    }
+
+                    .amazon_config_links--WRAPPER{
+                        @include flex_display(unset, initial);
+                        column-gap: .6rem;
+
+                        .footer_language_link--WRAPPER{
+                            display: inline-flex;
+                        }
+
+                        .amazon_config_link--EL{
+                            display: inline-flex;
+                            color: #ccc;
+                            padding:.7rem 1.3rem;
+                            border:1px solid #848688;
+                            border-radius: .3rem;
+                            text-decoration: none;
+
+                            .amazon_config_link_content--CONTAINER{
+                                @include flex_display(center, unset);
+                            }
+                            
+                            .amazon_config_link_icon--WRAPPER{
+                                @include for-size(big-desktop-up){
+                                    zoom:1.5;
+                                }
+
+                                &.amazon_config_language_icon{
+                                    background-image: url("/amazon-maps.png");
+                                    background-position: -76px -23px;
+                                    height:1.5rem;
+                                    width:1.5rem;
+                                }
+                                &.amazon_config_currency_icon{
+                                    color:#fff;
+                                }
+                                &.amazon_config_flag_icon{
+                                    background-image: url("/amazon-maps.png");
+                                    width:1.8rem;
+                                    height:1.2rem;
+                                }
+                            }
+                            
+                            .amazon_config_link_text--EL{
+                                color:#ccc;
+                                text-transform: capitalize;
+                                margin:0 1rem;
+                            }
+
+                            .amazon_config_dropdown_icon--EL {
+                                position:relative;
+                                background-image: url("/amazon-maps.png");
+                                background-position: -77px -80px;
+                                height: 1.2rem;
+                                width: 1.2rem;
+
+                                &::before{
+                                    content:"";
+                                    position:absolute;
+                                    top:-100%;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: .9rem solid transparent;
+                                    border-right: .9rem solid transparent;
+                                
+                                    border-top: 1rem solid transparent;
+                                }
+                                &::after{
+                                    content:"";
+                                    position:absolute;
+                                    top:calc(-100% - 1rem);
+                                    width: 0;
+                                    height: 0;
+                                    border-left: .9rem solid transparent;
+                                    border-right: .9rem solid transparent;
+                                
+                                    border-top: 1rem solid transparent;
+                                }
+
+                                
+                            }
+                        }
+
+
+                        
+                        //--------- Footer Amazon Language Configuration Dropdown  
+
+                        .footer_language_link--WRAPPER{
+                            position:relative;
+
+                            &:hover{
+                                .amazon_config_dropdown_icon--EL::before{
+                                    border-top-color: #fff;
+                                }
+
+                                .amazon_config_dropdown_icon--EL::after {
+                                    border-left-color:#fff;
+                                    border-right-color:#fff;
+                                    border-top-color:#fff;
+                                }
+                                .footer_amazon_language_config_dropdown--CONTAINER{
+                                    visibility: visible;
+                                }
+                            }
+                            
+                            .footer_amazon_language_config_dropdown--CONTAINER{
+                                width:max-content;
+                                position: absolute;
+                                bottom:100%;
+                                z-index: 2;
+                                background-color:#fff;
+                                border: 1px solid #eee;
+                                border-radius: .2rem;
+                                padding: 1.5rem 1rem;
+                                visibility: hidden;
+
+                                .lang_dropdown_content--CONTAINER {
+                                    h4 {
+                                        font-weight: 400;
+                                        color: $main_text_dark_color;
+                                        text-transform: capitalize;
+                            
+                                        .lang_dropdown_title--EL {
+                                            pointer-events: none;
+                                            margin-right: .5rem;
+                                        }
+                                    }
+                            
+                                    .lang_dropdown_secondary_link {
+                                        color: #16a2bb;
+                                        text-decoration: none;
+                            
+                                        &:visited {
+                                            color: #007185;
+                                        }
+                            
+                                        &:hover {
+                                            color: #C7511F;
+                                            text-decoration: underline;
+                                        }
+                                    }
+                            
+                                    hr {
+                                        margin: .75rem auto;
+                                        border: 0;
+                                        border-top: 1px solid rgb(235, 226, 226);
+                                    }
+                            
+                                    .languages_list--EL {
+                                        list-style: none;
+                            
+                                        hr {
+                                            width: 70%;
+                                        }
+                            
+                                        .lang_item--EL {
+                                            padding: .5rem 0;
+                            
+                                            &.active_lang_item {
+                                                a {
+                                                    pointer-events: none;
+                            
+                                                    .lang_checker--EL {
+                                                        background-position: calc(-74px - ((18px * 1) + (6px * 1))) -1px;
+                                                    }
+                                                }
+                                            }
+                            
+                                            &:not(.active_lang_item) {
+                                                &:hover {
+                                                    a {
+                                                        color: #e47911;
+                                                        text-decoration: underline;
+                            
+                                                        .lang_checker--EL {
+                                                            background-position: calc(-74px - ((18px * 2) + (6px * 2))) -1px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                            
+                                            a {
+                                                text-decoration: none;
+                                                text-transform: capitalize;
+                                                color: $main_text_dark_color;
+                                                // font-size: 1.4rem;
+                            
+                                                .lang_checker--EL {
+                                                    width: 1.8rem;
+                                                    aspect-ratio: 1/1;
+                                                    background-image: url("/amazon-maps.png");
+                                                    background-position: calc(-74px - ((18px * 0) + (6px * 0))) -1px;
+                                                    margin-right: .5rem;
+
+                                                    @include for-size(big-desktop-up){
+                                                        zoom: 1.6;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                            
+                                    .dropdown_currency--BLOCK {
+                                        .currency_change--EL {
+                                            @include flex_display(center, space-between);
+                            
+                                            .currency--El {
+                                                padding-top: 1rem;
+                                                font-size: 1.3rem;
+                                            }
+                                        }
+                                    }
+                            
+                                    .dropdown_footer_content--CONTAINER {
+                            
+                                        h4 {
+                                            padding-bottom: 1rem;
+                            
+                                            .dropdown_footer_flag--WRAPPER {
+                                                width: 1.7rem;
+                                                height: 1.3rem;
+                                                background-image: url("/amazon-maps.png");
+                                                background-position: 0 calc(-230px - (13px * 0));
+                                            }
+                                        }
+                            
+                                        a {
+                                            font-size: 1.5rem;
+                                            display: block;
+                                            text-align: center;
+                                        }
+                            
+                                    }
+                                }
+                            }
+                        }
+
+                        // ----------------------------------------------------
+                    }
+
+                }
+            }
+
+            .footer_amazon_coppyright_line--EL{
+                background-color: $main_dark_color;
+                padding: 1.8rem 0;
+
+                .footer_amazon_coppyright_line_content--CONTAINER{
+                    width:max-content;
+                    margin:0 auto;
+                    
+                    .footer_amazon_copyright_list--EL{
+                        @include flex_display(initial, space-between);
+                        list-style: none;
+                        color:#ddd;
+                        gap:3rem;
+                        
+                        
+                        .footer_amazon_copyright_link--EL{
+                            color:#ddd;
+                            text-decoration: none;
+
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,656 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.navbar--El{
+    position:relative;
+    z-index: 10;
+
+    .navbar_main--BLOCK{
+        background-color: $main_dark_color;
+    
+        .navbar_main_content--CONTAINER{
+            padding:.3rem 0;
+            height:auto;
+            min-height: 5rem;
+            @include flex_display(unset, space-between);
+    
+            .nav_dropdown--EL{
+                position: absolute;
+                top: 100%;
+                left: 0;
+                min-width: 22rem;
+                z-index: 2;
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: .5rem;
+                padding: 1.5rem 1rem;
+                visibility: hidden;
+                transition: visibility .1s linear;
+        
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: -.7rem;
+                    left: 38px;
+                    width: 0;
+                    height: 0;
+                    border-left: .7rem solid transparent;
+                    border-right: .7rem solid transparent;
+        
+                    border-bottom: .6rem solid #fff;
+                }
+            }
+    
+            .navbar_link--EL{
+                text-decoration: none;
+                text-transform: capitalize;
+    
+                &.navbar_logo--El {
+                    padding:.5rem 0;
+                    min-width: 7rem;
+                    width:clamp(7rem, 7rem + 3.5vw, 20rem);
+                    aspect-ratio: 16/9;
+                    
+                    .navbar_logo--CONTAINER{
+                        position:relative;
+                        width:100%;
+                        height:100%;
+                    }
+                }
+    
+                .nav_link_eyebrow--EL {
+                    display: block;
+                    color: #fff;
+                    font-weight: 400;
+                }
+                
+                .nav_link_main--EL{
+                    display: block;
+                    color: #fff;
+                    font-weight: 600;
+                    letter-spacing: .1rem;
+                }
+    
+    
+                &.navbar_deliving_location_link--El {
+                    @include flex_display(center, initial);
+
+                    @include for-size(tablet-down){
+                        display:none;
+                    }
+                
+                    .deliving_location_eyebrow--EL{
+                        color:#ccc;
+                    }
+
+                    .deliving_location--ICON{
+                        width: 2rem;
+                        margin-bottom:.1rem;
+                        background-image: url("/icons/location_white.png");
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        aspect-ratio: 0.9;
+
+
+                        @include for-size(big-desktop-up){
+                            zoom:1.6;
+                        }
+                    }
+                }
+            }
+            
+            .nav_search--CONTAINER{
+                @include flex_display(initial, initial);
+                height: 4.5rem;
+                flex:.2 1 45rem;
+                align-self:center;
+                border-radius:.5rem;
+                overflow: hidden;
+                
+                @include for-size(big-desktop-up){
+                    height: clamp(4.5rem, 4.5rem + 0.25vw, 5.3rem);
+
+                }
+                
+                .nav_search_dropdown--CONTAINER{
+                    position:relative;
+                    z-index: 1;
+    
+                    .nav_search_dropdown_frontend--EL{
+                        @include flex_display(center, space-between);
+                        column-gap: 1.5rem;
+    
+                        height:100%;
+                        background-color: #f3f3f3;
+                        cursor: pointer;
+                        text-transform: capitalize;
+                        padding:0 1rem;
+        
+                        &:hover{
+                            background-color: #dadada;
+                        }
+    
+                        .nav_search_dropdown_icon{
+                            position:relative;
+                            width:1.5rem;
+                            height:100%;
+    
+                            img{
+                                position:absolute;
+                                top:50%;
+                                left:0;
+                                transform:translateY(-50%);
+                                display: block;
+                                width:100%;
+                            }
+                        }
+                        
+                    }
+    
+                    select{
+                        height:100%;
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        z-index: 0;
+                        text-transform: capitalize;
+                        cursor: pointer;
+                        border:none;
+                        outline:none;
+                        appearance: none;
+                        opacity: 0;
+        
+                        option{
+                            background: #fff;
+                            padding:.3rem 0;
+                            margin:.3rem 0;
+                        }
+                    }
+                }
+                
+                .nav_search_input--CONTAINER{
+                    width:100%;
+                    .nav_search_form--EL{
+                        @include flex_display(center, center);
+                        height: 100%;
+                        position:relative;
+                        z-index: 1;
+                        
+                        
+                        .nav_search_input{
+                            height:100%;
+                            flex:1 1 100%;
+                            padding:0 1rem;
+                            border: none;
+                            outline: none;
+                            z-index:2;
+                        }
+                        
+                        .nav_search_btn{
+                            @include flex_display(center, initial);
+
+                            background-color: #febd69;
+                            width:5rem;
+                            height:100%;
+                            padding:0 1rem;
+                            border: none;
+                            outline: none;
+                            cursor: pointer;
+                            
+                            &:hover{
+                                background-color: #f3a847;
+                            }
+        
+                            img{
+                                width:3.2rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .nav_link--WRAPPER{
+                position:relative;
+
+                &.nav_languages--BLOCK {
+            
+                    @include for-size(tablet-down) {
+                        display: none;
+                    }
+            
+                    .navbar_link--EL {
+                        height: 100%;
+            
+                        &>div {
+                            margin: auto;
+                        }
+                    }
+            
+                    .nav_languages_link--EL {
+                        padding-top: .7rem;
+                        padding-bottom: .7rem;
+                        @include flex_display(flex-end, center);
+            
+                        .nav_languages_link_frontend--EL {
+                            @include flex_display(flex-end, space-between);
+            
+                            .nav_lang_flag--CONTAINER {
+                                background-image: url("/amazon-maps.png");
+                                background-position: 0px calc(-130px - ((17px * 0) + calc(1px * 0)));
+                                width: 2.4rem;
+                                height: 1.7rem;
+
+                                @include for-size(big-desktop-up) {
+                                    zoom:1.6;
+                                }
+                            }
+                        }
+                    }
+            
+                    &:hover {
+                        .nav_lang_dropdown--EL {
+                            visibility: visible;
+                        }
+                    }
+            
+                    .nav_lang_dropdown--EL {
+            
+                        h4 {
+                            font-weight: 400;
+                            color: $main_text_dark_color;
+                            text-transform: capitalize;
+                            white-space: nowrap;
+            
+                            .nav_lang_dropdown_title--EL {
+                                pointer-events: none;
+                                margin-right: .5rem;
+                            }
+                        }
+            
+                        .nav_lang_dropdown_secondary_link {
+                            color: #16a2bb;
+                            text-decoration: none;
+            
+                            &:visited {
+                                color: #007185;
+                            }
+            
+                            &:hover {
+                                color: #C7511F;
+                                text-decoration: underline;
+                            }
+                        }
+            
+                        hr {
+                            margin: .75rem auto;
+                            border: 0;
+                            border-top: 1px solid rgb(235, 226, 226);
+                        }
+            
+                        .languages_list--EL {
+                            list-style: none;
+            
+                            hr {
+                                width: 70%;
+                            }
+            
+                            .lang_item--EL {
+                                padding: .5rem 0;
+            
+                                &.active_lang_item {
+                                    a {
+                                        pointer-events: none;
+            
+                                        .lang_checker--EL {
+                                            background-position: calc(-74px - ((18px * 1) + (6px * 1))) -1px;
+                                        }
+                                    }
+                                }
+            
+                                &:not(.active_lang_item) {
+                                    &:hover {
+                                        a {
+                                            color: #e47911;
+                                            text-decoration: underline;
+            
+                                            .lang_checker--EL {
+                                                background-position: calc(-74px - ((18px * 2) + (6px * 2))) -1px;
+                                            }
+                                        }
+                                    }
+                                }
+            
+                                a {
+                                    text-decoration: none;
+                                    text-transform: capitalize;
+                                    color: $main_text_dark_color;
+            
+                                    .lang_checker--EL {
+                                        width: 1.8rem;
+                                        aspect-ratio: 1/1;
+                                        background-image: url("/amazon-maps.png");
+                                        background-position: calc(-74px - ((18px * 0) + (6px * 0))) -1px;
+                                        margin-right: .5rem;
+
+                                        @include for-size(big-desktop-up){
+                                            zoom:1.6;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+            
+                        .nav_dropdown_currency--BLOCK {
+                            .currency_change--EL {
+                                @include flex_display(center, space-between);
+            
+                                .currency--El {
+                                    padding-top: 1rem;
+                                    font-size: 1.3rem;
+                                }
+                            }
+                        }
+            
+                        .nav_dropdown_footer_content--CONTAINER {
+            
+                            h4 {
+                                padding-bottom: 1rem;
+            
+                                .nav_dropdown_footer_flag--WRAPPER {
+                                    width: 1.7rem;
+                                    height: 1.3rem;
+                                    background-image: url("/amazon-maps.png");
+                                    background-position: 0 calc(-230px - (13px * 0));
+                                }
+                            }
+            
+                            a {
+                                font-size: 1.5rem;
+                                display: block;
+                                text-align: center;
+                            }
+            
+                        }
+                    }
+                }
+
+                &.nav_account--BLOCK {
+                    &:hover {
+                        .nav_account_dropdown--EL {
+                            visibility: visible;
+                        }
+                    }
+                
+                    .nav_account_link--EL {
+                        @include flex_display(center, space-between);
+                        height: 100%;
+                    }
+                
+                    .nav_account_dropdown_icon {
+                        align-self: flex-end;
+                    }
+                
+                    .nav_account_dropdown--EL {
+                        right: 0;
+                        left: initial;
+                        padding: 1.5rem 2rem;
+                
+                        &::before {
+                            right: calc(((1px + 8px) + 15px/2) - 7px);
+                            left: initial;
+                        }
+                
+                        .nav_account_dropdown_content--CONTAINER {
+                            
+                            .nav_signup_ctas--BLOCK{
+
+                                .nav_signup_ctas_content--WRAPPER{
+                                    text-align: center;
+
+                                    .signin_link--EL{
+                                        width:50%;
+                                        padding:.8rem 2rem;
+                                        font-weight: 600;
+                                        color:$main_text_dark_color;
+                                        text-transform: capitalize;
+                                        text-decoration: none;
+                                        letter-spacing:.3px;
+                                        border:1px solid $secondary_text_dark_color;
+                                        border-radius: .4rem;
+
+                                        background: linear-gradient(to bottom, rgba(255 255 255 /20%) -35%, #72cd28);
+
+                                        &:hover {
+                                            background: linear-gradient(to bottom, rgba(255 255 255 /20%) -40%, #68bb24);
+                                    
+                                        }
+                                    }
+                                    
+                                    .register_link--EL{
+                                        display: block;
+                                        margin-top: .7rem;
+                                        text-transform: capitalize;
+
+                                        .register--LINK{
+                                            text-decoration: none;
+                                            
+                                            &:hover{
+                                                text-decoration:underline;
+                                                color:$mid_orange_color;
+                                            }
+                                        }
+                                    }
+
+                                }
+
+                                hr{
+                                    margin:1rem 0;
+                                    border: none;
+                                    border-top:1px solid $secondary_light_color;
+                                }
+                            }
+                            
+                            .nav_account_dropdown_links--BLOCK{
+                                @include flex_display(initial, space-between);
+                                column-gap: 5rem;
+
+                                .nav_account_dropdown_account--BLOCK {
+                                    padding-left: 2rem;
+                                    border-left: 1px solid rgb(235, 226, 226);
+                                }
+                    
+                                .nav_account_dropdown_title--EL {
+                                    text-transform: capitalize;
+                                    font-weight: 700;
+                                    color: $main_text_dark_color;
+                                    white-space: nowrap;
+                                }
+                    
+                                .nav_account_dropdown_linksList--EL {
+                                    list-style: none;
+                                    padding-top: 1rem;
+                    
+                                    li {
+                                        padding: .3rem 0;
+                    
+                                        a {
+                                            text-transform: capitalize;
+                                            text-decoration: none;
+                                            color: #000;
+                                            white-space: nowrap;
+                    
+                                            &:hover {
+                                                color: #f3a847;
+                                                text-decoration: underline;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+            
+    
+            
+    
+            .nav_returnsANDorders_link--EL{
+                @include flex_display(center , initial);
+            }
+    
+            .nav_cart_link--EL{
+                @include flex_display(center, initial);
+    
+                .nav_returnsANDorders_link_frontend--EL{
+                    @include flex_display(flex-end, initial);
+                    height:80%;
+    
+                    .cart_items_length--BLOCK{
+                        position:relative;
+
+                        @include for-size(big-desktop-up){
+                            zoom:1.3;
+                        }
+    
+                        .cart_icon--EL{
+                            width: 38px;
+                            height: 26px;
+                            background-image: url("/amazon-icons.png");
+                            background-position:-10px -340px;
+    
+                            img{
+                                height:100%;
+                            }
+                        }
+    
+                        .cart_items_length{
+                            position:absolute;
+                            top: -10px;
+                            left: 57%;
+                            transform: translateX(-50%);
+                            color: $dark_orange_color;
+                            font-weight: 700;
+
+                            .cart_loading_icon--WRAPPER{
+                                filter: invert(35%) sepia(52%) saturate(1705%) hue-rotate(349deg) brightness(92%) contrast(89%);
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    .navbar_belt--BLOCK{
+        padding:.7rem 0;
+        background-color: $secondary_dark_color;
+    
+        .navbar_belt_content--CONTAINER{
+            @include flex_display(center , space-between);
+    
+            .browsingHistory--EL{
+                position:relative;
+    
+                &:hover .browsingHistory_dropdown--EL{
+                    visibility: visible;
+                }
+                
+                .browsingHistory_dropdown--EL{
+                    position:absolute;
+                    top:100%;
+                    left:0;
+                    width:auto;
+                    min-width:45rem;
+                    z-index: 2;
+                    padding:1rem 2rem;
+                    background-color: #fff;
+                    visibility: hidden;
+                    border: 1px solid #eee;
+                    border-radius: .5rem;
+                    transition: visibility .1s linear;
+    
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: -.6rem;
+                        left: 0;
+                        width: 0;
+                        height: 0;
+                        border-left: .7rem solid transparent;
+                        border-right: .7rem solid transparent;
+                
+                        border-bottom: .6rem solid #fff;
+                    }
+    
+                    .browsingHistory_dropdown_content--EL{
+                        .browsingHistory_dropdown_header--EL{
+                            line-height: 1;
+                            // font-size:1.6rem;
+                            font-weight:600;
+                            color:$main_text_dark_color;
+    
+                            a{
+                                color:#16a2bb;
+                                // font-size:1.4rem;
+                                font-weight:400;
+    
+                                &:hover{
+                                    color: #e47911;
+                                    text-decoration: underline;
+                                }
+                            }
+    
+                        }
+    
+                        .browsingHistory_dropdown_main--EL{
+                            text-align: center;
+                            padding: 2rem;
+    
+                            .empty_browsingHistory_title{
+                                text-transform:capitalize;
+                                // font-size:2.3rem;
+                                font-weight:600;
+                                letter-spacing: .1rem;
+                                color:#444444;
+                            }
+    
+                            span{
+                                color:#767676;
+                                // font-size:1.3rem;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            a{
+                text-transform: capitalize;
+                text-decoration: none;
+                color: #fff;
+                padding: .5rem .7rem;
+    
+                .nav_menu_icon{
+                    width: 19px;
+                    height: 15px;
+                    background-image: url("/amazon-icons.png");
+                    background-position: -171px -255px;
+                    margin-right:.5rem;
+                }
+    
+                .browsingHistory_link_frontend--EL{
+                    @include flex_display(center, initial);
+                }
+            }
+    
+            .nav_links_list--EL{
+                @include flex_display(center , initial);
+                column-gap: .3rem;
+                list-style: none;
+    
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+@import  "../../Partials/mixins";
+
+.products_exploration--BLOCK {
+    width:100%;
+    padding:2rem 0;
+    position: relative;
+    z-index: 1;
+
+    .products_exploration_content--CONTAINER {
+        display: grid;
+        row-gap: 2rem;
+
+        .products_carts--CONTAINER {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(28rem , 1fr));
+            gap:2rem;
+            
+            // @include for-size(big-desktop-up){
+            //     grid-template-columns: repeat(auto-fit, minmax(clamp(60rem, 60rem + 9vw, 60rem), 1fr));
+
+            // }
+
+        }
+    }
+}

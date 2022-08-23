@@ -1,0 +1,230 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.userCart_product--CARD {
+    padding: 1.5rem 0;
+
+    &:not(:last-of-type) {
+        border-bottom: 1px solid $secondary_light_color;
+    }
+
+    .userCart_product_cardContent--WRAPPER {
+        .userCart_product_link--WRAPPER{
+            position: relative;
+
+            &:hover .userCart_product_sideLink--BLOCK{
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .userCart_product--LINK {
+                opacity: .8;
+                width: 100%;
+                text-decoration: none;
+    
+                &:hover {
+                    opacity: 1;
+                }
+    
+                .userCart_product_img--WRAPPER {
+                    display: block;
+                    position: relative;
+                    width: 100%;
+                    aspect-ratio: 1;
+                }
+    
+                .userCart_product_price--EL {
+                    display: block;
+                    color: $main_text_dark_color;
+                    text-align: center;
+                    font-weight: 600;
+                }
+            }
+
+            .userCart_product_sideLink--BLOCK {
+                position: absolute;
+                top: 50%;
+                right: 100%;
+                transform: translateY(-50%);
+                background-color: #fff;
+                padding: 1.2rem 2rem;
+                border: 1px solid $secondary_light_color;
+                border-radius: .5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: all .5s ease;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: -1.5rem;
+                    transform: translateY(-50%);
+                    width: 1.5rem;
+                    aspect-ratio: 1;
+                    clip-path: polygon(55% 50%, 0 0, 0 100%);
+                    background-color: $secondary_light_color;
+                }
+
+                .userCart_product--SIDE-LINK {
+                    white-space: nowrap;
+                    text-decoration: none;
+                    text-transform: capitalize;
+                    color: $secondary_text_dark_color;
+
+                    &:hover {
+                        color: $mid_orange_color;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .userCart_product_loading--BLOCK{
+            .userCart_product_loading_icon--WRAPPER{
+                position: relative;
+                width: 2rem;
+                aspect-ratio: 1;
+                margin: auto;
+            }
+        }
+
+        .userCart_product_lengthUpdate--BLOCK {
+            margin-top: 1rem;
+
+            .userCart_product_lengthUpdate_blockContent--CONTAINER {
+                @include flex_display(flex-start, space-between);
+                column-gap: 0.5rem;
+
+                .userCart_product_lengthUpdate_dropdown--BLOCK {
+                    position: relative;
+                    flex: 0 1 60%;
+
+                    .userCart_product_customLength--FORM{
+                        width:100%;
+
+                        &.hide_userCart_product_customLength_form{
+                            display: none;
+                        }
+
+                        .userCart_product_customLength--INPUT{
+                            width:100%;
+                            outline: none;
+                            border: .5px solid $secondary_light_color;
+                            border-radius: .5rem;
+                            padding: .2rem 0.5rem;
+                            background-color: #fff;
+                            box-shadow: 0 0.1rem 1.1rem -0.4rem rgb(0 0 0 / 30%);
+                            
+                            &:focus{
+                                box-shadow: 0 0.1rem 1.1rem -0.4rem rgb(0 0 0 / 50%);
+                            }
+                            
+                            &::-webkit-outer-spin-button,
+                            &::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                -moz-appearance: textfield;
+                                margin: 0;
+                            }
+                        }
+                        
+                        .userCart_product_customLength_form--BTN{
+                            color:$main_text_dark_color;
+                            width: 100%;
+                            margin-top:.5rem;
+                            outline: none;
+                            border: none;
+                            border-radius: .8rem;
+                            padding: .4rem 0;
+                            background-color: #81df34;
+                            cursor: pointer;
+                            
+                            &:hover{
+                                background-color: #77cd30;
+
+                            }
+
+                        }
+                    }
+
+
+                    .userCart_product_lengthUpdate_dropdown--EL {
+                        position: absolute;
+                        top: 100%;
+                        right: 0;
+                        z-index: 5;
+                        background-color: #fff;
+                        padding: .7rem 0;
+                        border-radius: .5rem;
+                        border: .5px solid $secondary_light_color;
+                        box-shadow: 0 0.1rem 1.1rem -0.4rem rgb(0 0 0 / 30%);
+
+                        .product_lengths_options--LIST {
+                            li .product_length_option {
+                                display: block;
+                                color: $main_text_dark_color;
+                                white-space: nowrap;
+                                text-decoration: none;
+                                text-transform: capitalize;
+                                padding: 0.5rem 2rem;
+                                border: .5px solid transparent;
+
+                                &:hover {
+                                    background-color: $main_light_color;
+                                    border-color: $secondary_light_color;
+                                }
+
+                                &.product_tenPlus_option {
+                                    border-top-color: $secondary_light_color
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .userCart_product_lengthUpdate--BTN {
+                border-radius: .7rem;
+                border: .5px solid $secondary_light_color;
+                padding: .2rem 0.3rem;
+                cursor: pointer;
+                background-color: #fff;
+                box-shadow: 0 0.1rem 1.1rem -0.4rem rgb(0 0 0 / 30%);
+
+                &.userCart_product_delete--BTN {
+                    flex: 0.2 1 fit-content;
+                    padding: 0.2rem 0.4rem;
+
+                    .dpfc_icon--WRAPPER {
+                        @include flex_display(center, center);
+                    }
+                }
+
+                &.userCart_product_lengthUpdate_dropdown--BTN {
+                    width: 100%;
+
+                    &.hide_userCart_product_lengthUpdate_dropdown_block{
+                        display:none;
+                    }
+
+                    .userCart_product_lengthUpdate_dropdown_btnContent--WRAPPER {
+                        @include flex_display(center, space-around);
+
+                        .userCart_product_lengthUpdate_dropdown--ICON {
+                            width: 1.3rem;
+                            aspect-ratio: 1.1;
+                            background-image: url("/icons/arrow_down.png");
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            background-position: center;
+                        }
+                    }
+                }
+
+                &:hover {
+                    background-color: $main_light_color;
+                }
+            }
+        }
+    }
+}

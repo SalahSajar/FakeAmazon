@@ -1,0 +1,95 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.home--CONTAINER{
+    position:relative;
+    background-color:$main_light_color;
+    width:100%;
+    z-index:0;
+    overflow-x: hidden;
+    
+    .homePage_slider--BLOCK{
+        position:relative;
+        z-index: 1;
+        height:45vmin;
+
+        .homePage_slider_controls--CONTAINER{
+            height: inherit;
+            @include flex_display(initial, space-between);
+            
+
+            .homePage_slider_btn{
+                @include flex_display(center, center);
+                width:17vmin;
+                border:none;
+                outline:none;
+                background: none;
+                cursor: pointer;
+                border:.2rem solid transparent;
+                border-radius:.5rem;
+                outline: 1px solid transparent;
+                
+                &:active , &:focus{
+                    border-color:rgb(142, 141, 141);
+                    outline: 1px solid #fff;
+                }
+
+                .homePage_slider--ICON{
+                    display: inline-block;
+                    width:60%;
+                    aspect-ratio: 1;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    
+                    &.left_arrow--ICON{
+                        background-image: url("/icons/arrow-left.png");
+                    }
+                    &.right_arrow--ICON{
+                        background-image: url("/icons/arrow-right.png");
+                    }
+                }
+            }
+
+            .slider_item_link{
+                flex-grow: 1;
+            }
+        }
+
+        .slider_bgs--BLOCK{
+            height: 100%;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:-1;
+
+            .slider_bgs--CONTAINER{
+                @include flex_display(initial, initial);
+                list-style: none;
+                transition:transform .3s linear;
+    
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left:0;
+                    width:100vw;
+                    z-index: 1;
+                    height:100%;
+                    background: linear-gradient(transparent 45%, $main_light_color);
+                }
+    
+                li{
+                    position: relative;
+                    flex:0 0 100vw;
+                    aspect-ratio:16/7;
+                }
+                
+                
+            }
+        }
+
+    }
+
+}
+

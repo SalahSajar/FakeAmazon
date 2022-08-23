@@ -1,0 +1,118 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.products--SLIDER{
+    background-color:#fff;
+    overflow: hidden;
+    
+    .products_content--CONTAINER{
+        padding:2rem;
+
+        .proucts_slider_title--EL{
+            padding-bottom:1rem;
+            text-transform: capitalize;
+            font-size: clamp(2rem, 2rem + 0.4vw, 8rem);
+            font-weight: 600;
+            color: $main_text_dark_color;
+        }
+
+        .products_slider--EL{
+            overflow: hidden;
+            overflow-x: scroll;
+            
+            &::-webkit-scrollbar {
+                height:.9rem;
+            }
+        
+            &::-webkit-scrollbar-track {
+                border-radius:10rem;
+                background-color: $main_light_color;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+                border-radius:10rem;
+                background-color: rgb(158 142 142);
+            }
+            
+            .products_slider_list--CONTAINER {
+                @include flex_display(initial, space-between);
+                column-gap: 1.5rem;
+                list-style: none;
+                height: 18rem;
+
+                @include for-size(big-desktop-up){
+                    height: clamp(18rem, 18rem + 5vw , 28rem);
+                }
+
+                .products_error--BLOCK{
+                    margin: auto;
+                    text-transform: capitalize;
+                    text-align: center;
+
+                    .error_icon--CONTAINER{
+                        @include for-size(big-desktop-up){
+                            zoom:1.6;
+                        }
+                    }
+
+                    .card_reload--BTN {
+                        display: block;
+                        margin: 1rem auto 0;
+                        text-transform: uppercase;
+                        padding: .4rem 1.2rem;
+                        border-radius: .6rem;
+                        color: $main_text_dark_color;
+                        border: 1px solid $secondary_light_color;
+                        background: none;
+                        cursor: pointer;
+                        box-shadow: 0 0 0.7rem -0.1rem $main_light_color;
+                        transition: background .2s linear;
+                
+                        &:hover {
+                            background: $main_light_color;
+                            box-shadow: 0 0 1rem -0.1rem $secondary_light_color;
+                
+                        }
+                    }
+                }
+
+                .loading_gif--CONTAINER {
+                    height: fit-content;
+                    margin: auto;
+
+                    .loading_img--EL {
+                        @include for-size(big-desktop-up){
+                            zoom:1.6;
+                        }
+                    }
+                }
+
+                li {
+                    padding: 1.5rem;
+
+                    a {
+                        height: 100%;
+
+
+                        span {
+                            position: relative !important;
+                            height: 100% !important;
+                            width: fit-content !important;
+
+                            img {
+                                position: relative !important;
+                                height: 100% !important;
+                                width: auto !important;
+                                min-width: initial !important;
+                                max-width: initial !important; 
+                                min-height: initial !important; 
+                                max-height: initial !important;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

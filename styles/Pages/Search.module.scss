@@ -1,0 +1,163 @@
+@import "/styles/Partials";
+@import '/styles/Partials/mixins';
+
+.keyword_search_results_eyebrow--BLOCK{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 10px #ddd;
+
+    .keyword_search_results_eyebrow_content--CONTAINER{
+        padding:.7rem 0;
+        @include flex_display(center , space-between);
+
+        .keyword_search_results_length--EL{
+            font-weight: 400;
+            color:#000;
+
+            .search_results_keyword--EL{
+                color:$mid_orange_color;
+            }
+        }
+
+        .sortBy_search_results--CONTAINER{
+            position:relative;
+
+            .sortBy_search_results--BTN{
+                cursor: pointer;
+                text-transform: capitalize;
+                padding:.2rem 1rem;
+                outline: none;
+                border: 1px solid #D5D9D9;
+                border-radius: 5px;
+                background-color: #F0F2F2;
+                box-shadow: 0 2px 5px rgb(15 17 17 / 15%);
+                
+                &:hover{
+                    background-color: #E3E6E6;
+                    
+                }
+                
+                .sortBy_btn_content--CONTAINER{
+                    @include flex_display(center, initial);
+
+                    .selected_sortBy_method{
+                        margin:0 .7rem; 
+                    }
+                    .dropdown_icon{
+                        width: 1rem;
+                        height: 0.8rem;
+                        background-image: url(/amazon-products-icons.png);
+                        background-position: -7px -103px;
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
+            .sortBy_methods--BLOCK{
+                position: absolute;
+                top: 100%;
+                right: 0;
+                padding:.5rem 0;
+                background-color: #fff;
+                border: 1px solid #D5D9D9;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgb(15 17 17 / 15%);
+                z-index:2;
+
+                ul{
+                    list-style: none;
+                    
+                    .sortBy_method--EL{
+                        position: relative;
+                        background-color: transparent;
+                        border: 2px solid transparent;
+                        text-decoration: none;
+                        text-transform: capitalize;
+                        color: #0f1111;
+                        padding: 0.5rem 1rem;
+                        display: block;
+                        white-space: nowrap;
+
+                        &:hover{
+                            background-color: #F0F2F2;
+                            border-color:#D5D9D9;
+                        }
+
+                        &.selected_sorting_method{
+                            background-color: #F0F2F2;
+                            border-color: #D5D9D9;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                left: -2px;
+                                height: 80%;
+                                width: .3rem;
+                                background-color: rgba($color: $light_orange_color, $alpha: .6);
+                                border-radius: 0 3rem 3rem 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.keyword_search_results--BLOCK{
+    padding:1rem 0;
+    .keyword_search_results_content--WRAPPER{
+        @include flex_display(initial, initial);
+
+    }
+}
+
+.signin--BLOCK{
+    margin-bottom:3rem;
+    padding:2.5rem 0;
+    border-radius: .5rem;
+    border-top: 1px solid #3be2ff;
+    border-bottom: 1px solid #3be2ff;
+    
+    .signin_content--WRAPPER{
+        max-width:28rem;
+        margin:0 auto;
+        text-align: center;
+
+        span{
+            display: block;
+            text-transform: capitalize;
+            
+
+            &.signin--FOOTER{
+                a{
+                    color:$secondary_text_dark_color;
+                    text-decoration: none;
+
+                    &:hover{
+                        color:$dark_orange_color;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        button{
+            margin: 0.7rem 0;
+            padding: 0.4rem 0;
+            width: 100%;
+            background-color: #e4c634;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-radius: 6px;
+            border: 1px solid #9c882a;
+            cursor: pointer;
+            box-shadow:inset 0 0 1rem rgb(0 0 0 / 20%);
+            
+            &:hover{
+                background-color: #e7cc4b;
+            }
+        }
+    }
+}

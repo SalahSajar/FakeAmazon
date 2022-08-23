@@ -1,0 +1,240 @@
+@import "/styles/Partials";
+@import '/styles/Partials/mixins';
+
+.products--CARD{
+    padding:1.5rem;
+    background-color: #fff;
+
+    .card--HEADER{
+        
+        h2{
+            text-transform: capitalize;
+            font-size:clamp(2rem, 2rem + 0.4vw, 8rem);
+            font-weight: 600;
+            color:$main_text_dark_color;
+        }
+    }
+    
+    .card--BODY{
+        padding: 1rem 0;
+
+        .card_body_content--CONTAINER{
+            min-height:28.5rem;
+            display: flex;
+            
+            .loading_gif--CONTAINER {
+                margin:auto;
+                height:fit-content;
+            }
+
+            .products_error--BLOCK {
+                margin: auto;
+                text-transform: capitalize;
+                text-align: center;
+
+                .error_icon--CONTAINER{
+                    @include for-size(big-desktop-up){
+                        zoom:1.6;
+                    }
+                }
+
+
+                span{
+                    display: block;
+                }
+
+                .card_reload--BTN{
+                    display:inline-block;
+                    text-transform: uppercase;
+                    margin-top:1rem;
+                    padding: .4rem 1.2rem;
+                    border-radius: .6rem;
+                    color: $main_text_dark_color;
+                    border: 1px solid $secondary_light_color;
+                    background: none;
+                    cursor: pointer;
+                    box-shadow: 0 0 0.7rem -0.1rem $main_light_color;
+                    transition: background .2s linear;
+                
+                    &:hover {
+                        background: $main_light_color;
+                        box-shadow: 0 0 1rem -0.1rem $secondary_light_color;
+                
+                    }
+                }
+            }
+
+            .card_links--CONTAINER{
+                width: 100%;
+                display: grid;
+                gap: .5rem;
+                
+                
+                &.card_multi_links--CONTAINER{
+                    grid-template-columns: repeat(2, calc(50% - .5rem));
+                    justify-content: space-between;
+                }
+                &.card_sigle_link--CONTAINER{
+                    grid-template-columns: 1fr;
+                }
+
+                .card_main_link--EL{
+                    width:100%;
+                    text-decoration: none;
+
+                    .product_infos--CONTAINER{
+                        .product_img--WRAPPER{
+                            position: relative;
+                            width:100%;
+                            aspect-ratio: 1/1;
+                            padding:.5rem;
+                        
+                            // & > span{
+                            //     position: relative !important;
+                            //     width:100%;
+                            //     height:100%;
+                                
+                            //     img{
+                            //         position: relative !important;
+                            //         width:fit-content !important;
+                            //         height:fit-content !important;
+                            //     }
+                            // }
+                        }
+
+                        .product_title--EL{
+                            padding-top:1rem;
+                            display: block;
+                            width:100%;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow:ellipsis;
+                            color:$main_text_dark_color;
+                            font-size:1.3rem;
+                        }
+                    }
+
+                    .card_link_content--CONTAINER{
+                        background-color: rgba(0, 164, 180, .05);
+                        padding:1rem;
+                        height:100%;
+
+                        .category_img--CONTAINER{
+                            position:relative;
+                            display: block;
+                            aspect-ratio: 1.2;
+                        }
+
+                        .category_title--CONTAINER{
+                            padding-top:.4rem;
+                            display: block;
+                            text-align: center;
+                            text-transform: capitalize;
+                            color:$main_text_dark_color;
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+
+                &.top_products_card--CONTAINER{
+                    display: block;
+                    .top_products_content--EL {
+                        .selected_product_Link--EL {
+                            text-decoration: none;
+                            color:#000;
+                            width:100%;
+                            margin:1rem 0 2rem;
+    
+                            .selected_products_infos--CONTAINER {
+                                .selected_product_img--EL {
+                                    width: 100%;
+                                    aspect-ratio: 1.3;
+                                    position:relative;
+                                }
+                            }
+    
+                            .selected_product_title--EL{
+                                width: inherit;
+                                padding:1rem 0 0rem;
+                                font-weight:400;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
+                            }
+    
+                            .selected_product_price--EL{
+                                font-weight:600;
+    
+                            }
+                        }
+    
+                        .other_products--EL{
+                            .other_products_list--CONTAINER{
+                                @include flex_display(center, space-between);
+                                column-gap: .5rem;
+                                list-style: none;
+                                height:7rem;
+
+                                @include for-size(desktop-up){
+                                    height: clamp(7rem, 7rem + 0.6vw, 9rem);
+                                }
+                                
+                                li{
+                                    width:100%;
+                                    height:100%;
+                                    opacity: .7;
+                                    border: 1px solid transparent;
+                                    
+                                    &.active_product{
+                                        opacity: 1;
+                                        border: 1px solid #cf9494;
+                                    }
+
+                                    &:not(.active_product):hover{
+                                        opacity: 1;
+                                    }
+
+                                    button{
+                                        height:100%;
+                                        width: 100%;
+                                        padding:.3rem;
+                                        border: none;
+                                        background: none;
+                                        cursor: pointer;
+                                        
+                                        .other_product_img--WRAPPER{
+                                            position:relative;
+                                            width:inherit;
+                                            height:inherit;
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            & > .card_main_link--EL{
+                width:100%;
+                aspect-ratio: 1;
+                position: relative;
+            }
+        }
+    }
+
+    .card--FOOTER a{
+        text-transform: capitalize;
+        text-decoration: none;
+        color:#16a2bb;
+
+        &:hover{
+            color:#e47911;
+            text-decoration: underline;
+        }
+    }
+}

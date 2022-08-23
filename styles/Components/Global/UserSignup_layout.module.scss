@@ -1,0 +1,254 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.userSignupLayout--BLOCK{
+    .userSignupLayout_content--CONTAINER{
+        .userSignup--NAVBAR{
+            padding-top:1rem;
+
+            .userSignup_navbar_content--CONTAINER{
+                @include flex_display(center, center);
+
+                .userSignup_navbar_img--WRAPPER{
+                    position:relative;
+                    width: 10rem;
+                    aspect-ratio: 16/6.5;
+                }
+            }
+        }
+
+        .userSignup_form--BLOCK{
+            padding:3rem 0;
+
+            .userSignup_form_block--WRAPPER{
+                @include flex_display(center , center);
+
+                .userSignup_form--CONTAINER{
+                    width:35rem;
+                    padding:1.3rem 2rem;
+                    border-radius: .5rem;
+                    border: 1px solid $secondary_light_color;
+
+                    .userSignup--FORM {
+                        .userSignup_form_content--CONTAINER {
+                            .userSignup_form_title--EL {
+                                font-weight: 500;
+                                color: $main_dark_color;
+                            }
+
+                            .user_signup_state--BLOCK{
+                                text-align: center;
+                                padding:.7rem 0;
+                                border-radius: 1rem;
+                                margin-top:1rem;
+
+                                &.signup_error_state{
+                                    background-color: #e73434;
+                                    color: #fff;
+                                }
+                                &.signup_success_state{
+                                    background-color: #eded2e;
+                                    color:$main_text_dark_color;
+                                }
+
+                                .user_signup_state_message--EL{
+                                    text-transform: capitalize;
+                                    font-weight: 600;
+                                    letter-spacing: 0.5px;
+                                }
+                            }
+                
+                            .userSignup_formInputs--CONTAINER {
+                                margin: 1.5rem 0;
+                
+                                &>* {
+                                    &:not(:last-child) {
+                                        margin-bottom: 1.7rem;
+                                    }
+                                }
+                
+                                .userSignup_formInput--WRAPPER {
+                                    label {
+                                        display: block;
+                                        font-weight: 600;
+                                        text-transform: capitalize;
+                                        margin-bottom: .3rem;
+                                    }
+                
+                                    input {
+                                        width: 100%;
+                                        padding: 0.3rem .5rem;
+                                        border-radius: .3rem;
+                                        border: 1px solid $secondary_text_dark_color;
+                                        outline: none;
+                
+                                        &:focus {
+                                            box-shadow: 0 0 0.3rem 0.2rem #72cd28;
+                                        }
+                                    }
+
+                                    .userSignup_input_error--EL{
+                                        @include flex_display(initial , initial);
+                                        margin-top:.5rem;
+
+                                        .userSignup_input_error--ICON{
+                                            width: 1rem;
+                                            height: 1.5rem;
+                                            background:url("/amazon-products-icons2.png");
+                                            background-position: -138px -128px;
+                                            margin-right: 0.3rem;
+                                            
+                                        }
+                                        .userSignup_input_error--MESSAGE{
+                                            text-transform: capitalize;
+                                        }
+                                    }
+                                }
+                
+                                .userSignup_form_submit--BTN {
+                                    position: relative;
+                                    font-weight: 600;
+                                    width: 100%;
+                                    padding: .7rem 0;
+                                    text-transform: capitalize;
+                                    cursor: pointer;
+                                    background: none;
+                                    outline: none;
+                                    border-radius: .3rem;
+                                    border: 1px solid $secondary_text_dark_color;
+                                    background: linear-gradient(to bottom, rgba(255 255 255 /20%) -35%, #72cd28);
+                                    
+                                    &:hover {
+                                        background: linear-gradient(to bottom, rgba(255 255 255 /20%) -40%, #68bb24);
+                
+                                    }
+                                }
+                            }
+                
+                            .another_signup_method--BLOCK {
+                
+                                .another_signup_method_title--WRAPPER {
+                                    position: relative;
+                                    text-align: center;
+                
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        right: 0;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        width: 100%;
+                                        height: 1px;
+                                        background-color: $secondary_light_color;
+                                        z-index: -1;
+                                    }
+                
+                                    .another_signup_method--TITLE {
+                                        color: $secondary_text_dark_color;
+                                        text-transform:capitalize;
+                                        background-color: #fff;
+                                        padding: 0 1rem;
+                                    }
+                                }
+                
+                                .another_signup_method--LINK {
+                                    width: 100%;
+                                    margin-top: 1.5rem;
+                                    padding: .7rem 0;
+                                    outline: none;
+                                    border-radius: .3rem;
+                                    border: 1px solid #49aabb;
+                                    color: $main_text_dark_color;
+                                    font-weight: 600;
+                                    text-align: center;
+                                    text-transform: capitalize;
+                                    text-decoration: none;
+                                    background: linear-gradient(to bottom, rgba(255 255 255 / 10%) 20%, #f8ede8);
+                
+                                    &:hover {
+                                        background: linear-gradient(to bottom, rgba(255 255 255 / 10%) -10%, #f8ede8);
+                                    }
+                                }
+                            }
+                
+                        }
+                    }
+                }
+
+                .user_redirection--BLOCK{
+
+                    .user_redirection_content--CONTAINER{
+                        @include flex_display(center, unset);
+                        column-gap: 1rem;
+
+                        .user_redirection_icon--WRAPPER{
+                            .user_redirection--ICON{
+                                width: 5rem;
+                                aspect-ratio: 1;
+                                background-image: url("/icons/help.png");
+                                background-repeat: no-repeat;
+                                background-size: contain;
+                                background-position: center;
+                            }
+                        }
+
+                        .user_redirection_typos--WRAPPER{
+                            .user_redirection_message--TITLE{
+                                color:$light_orange_color;
+                                letter-spacing: .1px;
+                            }
+
+                            .user_redirection_message--FOOTER{
+                                margin-top: 1rem;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .line_break--EL{
+            height: 4rem;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, .14), rgba(0, 0, 0, .03) 3px, transparent);
+        
+            &::before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                display: block;
+                background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0), #fff);
+            }
+        }
+
+        .userSignup--FOOTER{
+            .userSignup_footer_content--CONTAINER{
+                width:fit-content;
+                margin: auto;
+                text-align: center;
+
+                .userSignup_footer_links--LIST{
+                    list-style: none;
+                    @include flex_display(center, space-between);
+                    column-gap: 3rem;
+
+                    .userSignup_footer--LINK{
+                        text-decoration: none;
+                        text-transform: capitalize;
+
+                        &:hover{
+                            text-decoration: underline;
+                            color:$mid_orange_color;
+                        }
+                    }
+                }
+
+                .amazon_copyright_line--EL{
+                    color:$main_text_dark_color;
+                    margin-top: 1.5rem;
+                }
+            }
+        }
+    }
+}

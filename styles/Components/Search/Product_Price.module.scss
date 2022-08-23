@@ -1,0 +1,30 @@
+@import "/styles/Partials";
+@import "/styles/Partials/mixins";
+
+.product_price--BLOCK {
+    @include flex_display(flex-end, initial);
+    column-gap: .5rem;
+    margin-bottom:.7rem;
+
+    .product_price--WRAPPER {
+        @include flex_display(flex-start, initial);
+        color: $main_text_dark_color;
+        font-size: clamp(2.8rem, 0.7rem + 2vw, 4.5rem);
+        font-weight: 400;
+        line-height: .75;
+
+        .secondary_price_detail--EL,
+        .product_price_currency--EL {
+            font-size: clamp(1.1rem, 0.1rem + 1vw, 2rem);
+        }
+
+        .main_price_detail--EL {
+            margin: 0 1px;
+        }
+    }
+
+    .product_previous_price--EL {
+        color: $secondary_text_dark_color;
+        text-decoration: line-through;
+    }
+}
