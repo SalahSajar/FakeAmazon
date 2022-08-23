@@ -357,7 +357,7 @@ export async function getServerSideProps(req, res) {
       const req = await fetch(
         `https://amazon-ecommerce-data-scrapper.p.rapidapi.com/search/${encodeURI(
           keyword
-        )}?api_key=${process.env.SCAPPERAPI_KEY}`,
+        )}?api_key=${process.env.SCAPPERAPI_KEY || process.env.VERCEL_SCAPPERAPI_KEY}`,
         options
       );
 
