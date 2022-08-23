@@ -1,8 +1,8 @@
 import { createContext ,useState, useMemo } from "react";
 
-import {auth , db} from "../lib/firebaseConfig";
+import {auth , db} from "../lib/FirebaseConfig";
 
-import { addDoc, setDoc , doc,getDoc , collection } from "firebase/firestore";
+import {setDoc , doc,getDoc} from "firebase/firestore";
 
 export const UserCartContext = createContext({
     userCart:[],

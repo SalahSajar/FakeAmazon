@@ -15,7 +15,7 @@ import Navbar from "../components/Global/Navbar";
 import ProductPrice from "../components/Search/Product_Price";
 import Footer from "../components/Global/Footer";
 
-import Main_layout from "../components/Layout/main_layout";
+import Main_layout from "../components/Layout/Main_layout";
 
 import classes from "../styles/Pages/Dp.module.scss";
 

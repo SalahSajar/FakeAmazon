@@ -15,12 +15,12 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 
 import { UserCartContext } from "../../customContexts/CartCtx";
 
-import Main_layout from "../Layout/main_layout";
+import Main_layout from "../Layout/Main_layout";
 
 import Hmenu from "./Hmenu";
 import MenuOverlay from "./MenuOverlay";
 
-import classes from "../../styles/components/Global/Navbar.module.scss";
+import classes from "../../styles/Components/Global/Navbar.module.scss";
 import { open_hmenu } from "../../styles/Components/Global/Hmenu.module.scss";
 
 const Navbar = () => {
@@ -128,7 +128,12 @@ const Navbar = () => {
                       All
                     </span>
                     <span className="nav_dropdown_icon">
-                      <img src="/icons/arrow_down.png" alt="arrow down" />
+                      <Image
+                        src="/icons/arrow_down.png"
+                        layout="fill"
+                        objectFit="contain"
+                        alt="arrow down"
+                      />
                     </span>
                   </div>
 
@@ -179,16 +184,11 @@ const Navbar = () => {
                         className={classes["nav_lang_flag--CONTAINER"]}
                       ></span>
                       <span className="nav_dropdown_icon">
-                        {/* <Image
+                        <Image
                           className="filter_img_toWhite"
                           src="/icons/arrow_down.png"
-                          width={15}
-                          height={15}
-                          alt="arrow down"
-                        /> */}
-                        <img
-                          className="filter_img_toWhite"
-                          src="/icons/arrow_down.png"
+                          layout="fill"
+                          objectFit="contain"
                           alt="arrow down"
                         />
                       </span>
@@ -390,9 +390,11 @@ const Navbar = () => {
                     <span
                       className={`nav_dropdown_icon ${classes["nav_account_dropdown_icon"]}`}
                     >
-                      <img
+                      <Image
                         className="filter_img_toWhite"
                         src="/icons/arrow_down.png"
+                        layout="fill"
+                        objectFit="contain"
                         alt="arrow down"
                       />
                     </span>
@@ -663,9 +665,11 @@ const Navbar = () => {
                         <span
                           className={`nav_dropdown_icon ${classes["browsingHistory_link_dropdown_icon"]}`}
                         >
-                          <img
+                          <Image
                             className="filter_img_toWhite"
                             src="/icons/arrow_down.png"
+                            layout="fill"
+                            objectFit="contain"
                             alt="arrow down"
                           />
                         </span>

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import Main_layout from "../Layout/main_layout";
+import Main_layout from "../Layout/Main_layout";
 
 import Home_products_card from "./Home_products_card";
 import Home_products_slider from "./Home_products_slider";

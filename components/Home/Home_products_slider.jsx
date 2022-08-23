@@ -17,7 +17,6 @@ const Home_products_slider = ({ title, keyword }) => {
   let fetchHandlerBlocker = useRef(false);
 
   const [randomProducts, setRandomProducts] = useState([]);
-  const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -74,7 +73,6 @@ const Home_products_slider = ({ title, keyword }) => {
       selectRandomTenItems__FUNC(productSearchResult);
     }
 
-    setProducts(productSearchResult);
     setLoading(productSearchLoading);
     setError(productSearchError);
   }, [keyword, productSearchFetch__HANDLER]);

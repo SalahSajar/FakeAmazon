@@ -208,20 +208,14 @@ ul, ol{
 .nav_dropdown_icon{
     position: relative;
     width: clamp(1.5rem, 1.5rem + .2vw, 5rem);
+    aspect-ratio: 1;
     margin-left:.5rem;
+    // filter: invert(1) !important;
     
     @include for-size(big-desktop-up){
         width: clamp(2rem, 2rem + .5vw, 3.5rem);
     }
 
-    img {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        display: block;
-        width: 100%;
-    }
 }
 
 
@@ -242,5 +236,5 @@ ul, ol{
 // --------------------------------------------------------------------------------
 
 .filter_img_toWhite{
-    filter: invert(1);
+    filter: invert(1) !important;
 }

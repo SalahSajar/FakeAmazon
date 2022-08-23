@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { auth } from "../lib/FirebaseConfig";
 
-import Main_layout from "../components/Layout/main_layout";
+import Main_layout from "../components/Layout/Main_layout";
 
 import Navbar from "../components/Global/Navbar";
 import Footer from "../components/Global/Footer";
