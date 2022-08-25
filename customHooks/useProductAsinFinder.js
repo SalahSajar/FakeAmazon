@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const useProductAsinFinder = () => {
 
     const findProductAsin__HANDLER = (productUrl) => {

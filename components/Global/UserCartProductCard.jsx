@@ -29,9 +29,6 @@ const UserCartProductCard = ({ productInfo }) => {
 
     const updatedProductAmount = +evt.target.productAmount.value;
 
-    console.log("------------- updatedProductAmount -------------");
-    console.log(updatedProductAmount);
-
     if (!!updatedProductAmount) {
       updateCartProductAmount__HANDLER(productInfo.asin, updatedProductAmount);
       setCustomCartProductLengthMode(false);

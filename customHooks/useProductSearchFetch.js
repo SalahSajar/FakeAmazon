@@ -28,8 +28,6 @@ export const useProductSearchFetch = () => {
         options
       );
 
-      console.log(process.env.NEXT_PUBLIC_HOME_SCAPPERAPI_KEY || process.env.NEXT_PUBLIC_VERCEL_HOME_SCAPPERAPI_KEY)
-
       if (!req.ok) {
         throw Error("Something is not right ");
       }

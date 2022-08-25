@@ -123,6 +123,10 @@ export const UserCartContextProvider = ({children}) => {
             }
             
             setUserCart(userCartArr);
+
+            console.log("////////---userCartArr---////////");
+            console.log(userCartArr);
+
             setUserCartLength(() => {
                 return userCartArr.reduce((acc, userCartArrItem) => {
                     acc+=userCartArrItem.amount;

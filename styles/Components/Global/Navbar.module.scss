@@ -3,7 +3,7 @@
 
 .navbar--El{
     position:relative;
-    z-index: 10;
+    z-index: 6;
 
     .navbar_main--BLOCK{
         background-color: $main_dark_color;
@@ -562,7 +562,7 @@
                     top:100%;
                     left:0;
                     width:auto;
-                    min-width:45rem;
+                    width:clamp(25rem, 18rem + 19vw, 55rem);
                     z-index: 2;
                     padding:1rem 2rem;
                     background-color: #fff;

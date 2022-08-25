@@ -59,15 +59,10 @@ const Signin = () => {
           setSigninLoading(false);
           setSigninSuccess(true);
 
-          console.log("---------- userCredential ----------");
-          console.log(userCredential);
           userCartFromDB__HANDLER(userCredential.user.uid);
         })
 
         .catch((err) => {
-          console.log("---------- ERROR ----------");
-          console.log(err);
-
           setSigninError(true);
           setSigninSuccess(false);
           setSigninLoading(false);

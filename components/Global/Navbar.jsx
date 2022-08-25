@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  useState,
-  useEffect,
-  useContext,
-  useRef,
-} from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -66,14 +60,11 @@ const Navbar = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user);
         userCartFromDB__HANDLER(user.uid);
       } else {
         userCartFromSS__HANDLER();
       }
     });
-
-    console.log("--------Load from Storage");
   }, [userCartFromDB__HANDLER, userCartFromSS__HANDLER]);
 
   return (

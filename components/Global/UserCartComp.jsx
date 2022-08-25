@@ -20,7 +20,7 @@ const UserCartComp = () => {
             $
             {userCart
               .reduce((acc, userCartItem) => {
-                acc = +userCartItem.price * userCartItem.amount;
+                acc += userCartItem.price * userCartItem.amount;
                 return acc;
               }, 0)
               .toFixed(2)}

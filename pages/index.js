@@ -1,10 +1,7 @@
-import { Fragment, useState , useEffect , useRef } from "react";
+import { Fragment, useState} from "react";
 import Link from "next/link";
 
 import Image from "next/image";
-
-import {auth } from "../lib/FirebaseConfig";
-import {onAuthStateChanged } from "firebase/auth";
 
 // Navbar Component
 import Navbar from "../components/Global/Navbar";
@@ -32,7 +29,6 @@ const slider_links = [
 ];
 
 export default function Home() {
-  const currentUser = useRef(auth.currentUser);
   const [sliderIndex,setSliderIndex] = useState(0);
 
   const changeSliderIndex = (direction) => {
@@ -45,14 +41,6 @@ export default function Home() {
       sliderIndex !== slider_links.length - 1 && setSliderIndex(prev => prev+=1);
     }
   }
-
-  useEffect(() => {
-    if(onAuthStateChanged){
-      onAuthStateChanged(auth, (user) => {
-        console.log(user);
-      })
-    }
-  }, [])
 
   return (
     <Fragment>
