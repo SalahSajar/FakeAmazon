@@ -86,9 +86,6 @@ const Dp = ({ product, error }) => {
     return productOptionLinkUrl;
   };
 
-  useEffect(() => {
-    console.log(product);
-  }, [product]);
   return (
     <Fragment>
       <Page_layout>
@@ -956,24 +953,11 @@ export const getServerSideProps = async (req, res) => {
 
   if (!!productASIN) {
     try {
-      // const options = {
-      //   method: "GET",
-      //   headers: {
-      //     "X-RapidAPI-Key":
-      //       "8ccbc63729mshc51ef54ef0f2f29p188c45jsn963399d87f0b",
-      //     "X-RapidAPI-Host": "wolf-amazon-data-scraper.p.rapidapi.com",
-      //   },
-      // };
-
-      // const req = await fetch(
-      //   `https://wolf-amazon-data-scraper.p.rapidapi.com/products/${productASIN}?api_key=${process.env.SCAPPERAPI_KEY}`,
-      //   options
-      // );
-
       const options = {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key": process.env.VERCEL_RAPIDAPI_KEY,
+          "X-RapidAPI-Key":
+            process.env.RAPIDAPI_KEY || process.env.VERCEL_RAPIDAPI_KEY,
           "X-RapidAPI-Host": "amazon-product-search2.p.rapidapi.com",
         },
       };
@@ -983,21 +967,14 @@ export const getServerSideProps = async (req, res) => {
         options
       );
 
-      console.log("------------------ REQUEST ------------------");
-      console.log(req);
-
       if (req.status !== 200) {
         throw Error("something is wrong!!");
       }
 
       const result = await req.json();
-      console.log("------------------ RESULT ------------------");
-      console.log(result);
 
       productDetails = result;
       error = false;
-
-      console.log(productDetails);
     } catch (err) {
       console.log(err);
       error = true;

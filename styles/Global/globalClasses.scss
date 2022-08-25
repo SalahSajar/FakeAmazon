@@ -210,7 +210,6 @@ ul, ol{
     width: clamp(1.5rem, 1.5rem + .2vw, 5rem);
     aspect-ratio: 1;
     margin-left:.5rem;
-    // filter: invert(1) !important;
     
     @include for-size(big-desktop-up){
         width: clamp(2rem, 2rem + .5vw, 3.5rem);

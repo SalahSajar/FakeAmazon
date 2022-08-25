@@ -13,8 +13,6 @@ export const UserCartContextProvider = ({children}) => {
 
     const [userCart , setUserCart] = useState([]);
     const [userCartLength , setUserCartLength] = useState(0);
-    const {userCartIsLoading, setUserCartIsLoading} = useState(false);
-    const {userCartError, setUserCartError} = useState(false);
 
     const updateUserDB__HANDLER = (cartArr) => {
         setDoc(doc(db, currentUser.uid , "cart"), {...cartArr}).then(() => {
@@ -44,9 +42,7 @@ export const UserCartContextProvider = ({children}) => {
                     updatedPrevClone.push(userCartItem);
                 }
                 
-                console.log("-------- updatedPrevClone -------- ");
-                console.log(updatedPrevClone);
-
+                
                 if(!!currentUser) updateUserDB__HANDLER(updatedPrevClone);
 
                 const cartLength = updatedPrevClone.reduce((acc, updatedPrevCloneItem) => {
@@ -55,8 +51,8 @@ export const UserCartContextProvider = ({children}) => {
                 }, 0);
 
                 setUserCartLength(cartLength);
-
-                sessionStorage.setItem("userCart" , JSON.stringify(updatedPrevClone));
+                
+                sessionStorage.setItem("userCart" , JSON.stringify([...updatedPrevClone]));
                 
                 return updatedPrevClone;
             })
@@ -65,9 +61,6 @@ export const UserCartContextProvider = ({children}) => {
     }
 
     const updateCartProductAmount__HANDLER = (asin , amount) => {
-        console.log("----------////// Update Cart Item //////----------")
-        console.log(`asin: ${asin}, amount: ${amount}`);
-
         setUserCart(prev => {
             const updatedUserCart = prev.map(userCartItem => {
                 if(userCartItem.asin === asin){
@@ -96,9 +89,6 @@ export const UserCartContextProvider = ({children}) => {
     }
     
     const deleteCartProduct__HANDLER = (asin) => {
-        console.log("----------////// Delete Cart Item //////----------")
-        console.log(`asin: ${asin}`);
-
         setUserCart(prev => {
             const updatedUserCart = prev.filter(userCartItem => userCartItem.asin !== asin);
             const cartLength = updatedUserCart.reduce((acc, updatedPrevCloneItem) => {
@@ -126,7 +116,6 @@ export const UserCartContextProvider = ({children}) => {
 
         const userCartData = req.data();
 
-        console.log(userCartData);
         if(!!userCartData){
             let userCartArr = [];
             for(const id in userCartData){
@@ -134,21 +123,23 @@ export const UserCartContextProvider = ({children}) => {
             }
             
             setUserCart(userCartArr);
-            sessionStorage.setItem("userCart" , JSON.stringify(userCartArr));
             setUserCartLength(() => {
                 return userCartArr.reduce((acc, userCartArrItem) => {
                     acc+=userCartArrItem.amount;
                     return acc;
                 }, 0)
             });
+
+            sessionStorage.setItem("userCart" , JSON.stringify(userCartArr));
         }
     }, []);
 
-    const userCartFromSS__HANDLER = () => {
+    const userCartFromSS__HANDLER = useMemo(() => () => {
         const userCart_from_SS = sessionStorage.getItem("userCart");
 
         if(!!userCart_from_SS){
             const _userCart = JSON.parse(userCart_from_SS);
+
             setUserCart(_userCart);
             setUserCartLength(() => {
                 return _userCart.reduce((acc, userCartArrItem) => {
@@ -157,7 +148,7 @@ export const UserCartContextProvider = ({children}) => {
                 }, 0)
             });
         }
-    }
+    }, []);
 
     return (
         <UserCartContext.Provider value={{
@@ -168,9 +159,7 @@ export const UserCartContextProvider = ({children}) => {
             userCartFromSS__HANDLER,
             cleanUserCartStorage__HANDLER,
             userCart,
-            userCartLength,
-            userCartIsLoading,
-            userCartError,
+            userCartLength
         }}>
             {children}
         </UserCartContext.Provider>

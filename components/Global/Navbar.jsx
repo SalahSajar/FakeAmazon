@@ -29,7 +29,6 @@ const Navbar = () => {
     userCartFromDB__HANDLER,
     userCartFromSS__HANDLER,
     userCartLength,
-    userCartIsLoading,
   } = useContext(UserCartContext);
   const { currentUser } = auth;
 
@@ -73,6 +72,8 @@ const Navbar = () => {
         userCartFromSS__HANDLER();
       }
     });
+
+    console.log("--------Load from Storage");
   }, [userCartFromDB__HANDLER, userCartFromSS__HANDLER]);
 
   return (
@@ -580,20 +581,7 @@ const Navbar = () => {
                       <span
                         className={`${classes["cart_items_length"]} md_lg_font`}
                       >
-                        {userCartIsLoading ? (
-                          <span
-                            className={classes["cart_loading_icon--WRAPPER"]}
-                          >
-                            <Image
-                              src="/icons/dark-loading-circle.gif"
-                              width="30"
-                              height="30"
-                              alt="loading state"
-                            />
-                          </span>
-                        ) : (
-                          userCartLength
-                        )}
+                        {userCartLength}
                       </span>
                     </div>
                     <span

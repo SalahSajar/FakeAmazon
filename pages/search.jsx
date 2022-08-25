@@ -349,7 +349,8 @@ export async function getServerSideProps(req, res) {
       const options = {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key": process.env.VERCEL_RAPIDAPI_KEY,
+          "X-RapidAPI-Key":
+            process.env.RAPIDAPI_KEY || process.env.VERCEL_RAPIDAPI_KEY,
           "X-RapidAPI-Host": "amazon-ecommerce-data-scrapper.p.rapidapi.com",
         },
       };
