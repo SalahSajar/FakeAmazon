@@ -18,10 +18,12 @@ const UserCartComp = () => {
           </span>
           <span className={`${classes["userCart_totalPrice--EL"]} md_font`}>
             $
-            {userCart.reduce((acc, userCartItem) => {
-              acc = +userCartItem.price * userCartItem.amount;
-              return acc;
-            }, 0)}
+            {userCart
+              .reduce((acc, userCartItem) => {
+                acc = +userCartItem.price * userCartItem.amount;
+                return acc;
+              }, 0)
+              .toFixed(2)}
           </span>
         </div>
 
