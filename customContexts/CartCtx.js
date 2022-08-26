@@ -108,6 +108,7 @@ export const UserCartContextProvider = ({children}) => {
     const cleanUserCartStorage__HANDLER = () => {
         localStorage.removeItem("userCart");
         setUserCart([]);
+        setUserCartLength(0);
     }
 
     const userCartFromDB__HANDLER = useMemo(() => async (uid) => {
