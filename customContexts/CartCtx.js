@@ -52,7 +52,7 @@ export const UserCartContextProvider = ({children}) => {
 
                 setUserCartLength(cartLength);
                 
-                sessionStorage.setItem("userCart" , JSON.stringify([...updatedPrevClone]));
+                localStorage.setItem("userCart" , JSON.stringify([...updatedPrevClone]));
                 
                 return updatedPrevClone;
             })
@@ -78,7 +78,7 @@ export const UserCartContextProvider = ({children}) => {
 
             setUserCartLength(cartLength);
 
-            sessionStorage.setItem("userCart" , JSON.stringify(updatedUserCart));
+            localStorage.setItem("userCart" , JSON.stringify(updatedUserCart));
 
             if(!!currentUser){
                 if(!!currentUser) updateUserDB__HANDLER(updatedUserCart);
@@ -97,7 +97,7 @@ export const UserCartContextProvider = ({children}) => {
             }, 0);
 
             setUserCartLength(cartLength);
-            sessionStorage.setItem("userCart" , JSON.stringify(updatedUserCart));
+            localStorage.setItem("userCart" , JSON.stringify(updatedUserCart));
 
             if(!!currentUser) updateUserDB__HANDLER(updatedUserCart);
 
@@ -106,7 +106,7 @@ export const UserCartContextProvider = ({children}) => {
     }
     
     const cleanUserCartStorage__HANDLER = () => {
-        sessionStorage.removeItem("userCart");
+        localStorage.removeItem("userCart");
         setUserCart([]);
     }
 
@@ -124,9 +124,6 @@ export const UserCartContextProvider = ({children}) => {
             
             setUserCart(userCartArr);
 
-            console.log("////////---userCartArr---////////");
-            console.log(userCartArr);
-
             setUserCartLength(() => {
                 return userCartArr.reduce((acc, userCartArrItem) => {
                     acc+=userCartArrItem.amount;
@@ -134,15 +131,15 @@ export const UserCartContextProvider = ({children}) => {
                 }, 0)
             });
 
-            sessionStorage.setItem("userCart" , JSON.stringify(userCartArr));
+            localStorage.setItem("userCart" , JSON.stringify(userCartArr));
         }
     }, []);
 
-    const userCartFromSS__HANDLER = useMemo(() => () => {
-        const userCart_from_SS = sessionStorage.getItem("userCart");
+    const userCartFromLS__HANDLER = useMemo(() => () => {
+        const userCart_from_LS = localStorage.getItem("userCart");
 
-        if(!!userCart_from_SS){
-            const _userCart = JSON.parse(userCart_from_SS);
+        if(!!userCart_from_LS){
+            const _userCart = JSON.parse(userCart_from_LS);
 
             setUserCart(_userCart);
             setUserCartLength(() => {
@@ -160,7 +157,7 @@ export const UserCartContextProvider = ({children}) => {
             updateCartProductAmount__HANDLER,
             deleteCartProduct__HANDLER,
             userCartFromDB__HANDLER,
-            userCartFromSS__HANDLER,
+            userCartFromLS__HANDLER,
             cleanUserCartStorage__HANDLER,
             userCart,
             userCartLength

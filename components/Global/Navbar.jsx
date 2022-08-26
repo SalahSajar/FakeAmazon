@@ -21,7 +21,7 @@ const Navbar = () => {
   const {
     cleanUserCartStorage__HANDLER,
     userCartFromDB__HANDLER,
-    userCartFromSS__HANDLER,
+    userCartFromLS__HANDLER,
     userCartLength,
   } = useContext(UserCartContext);
   const { currentUser } = auth;
@@ -62,10 +62,10 @@ const Navbar = () => {
       if (user) {
         userCartFromDB__HANDLER(user.uid);
       } else {
-        userCartFromSS__HANDLER();
+        userCartFromLS__HANDLER();
       }
     });
-  }, [userCartFromDB__HANDLER, userCartFromSS__HANDLER]);
+  }, [userCartFromDB__HANDLER, userCartFromLS__HANDLER]);
 
   return (
     <Fragment>
