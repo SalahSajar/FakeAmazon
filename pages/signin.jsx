@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -92,6 +93,10 @@ const Signin = () => {
 
   return (
     <Fragment>
+      <Head>
+        <title>Amazon Sign-In</title>
+      </Head>
+
       <UserSignup_layout>
         <form
           className={classes["userSignup--FORM"]}

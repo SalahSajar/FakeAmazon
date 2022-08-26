@@ -1,5 +1,6 @@
 import { Fragment, useState} from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 import Image from "next/image";
 
@@ -44,6 +45,11 @@ export default function Home() {
 
   return (
     <Fragment>
+
+      <Head>
+        <title>Amazon.com. Spend less. Smile more</title>
+      </Head>
+
       <Page_layout>
         <div className={classes["home--CONTAINER"]}>
           <Navbar />

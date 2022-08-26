@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -55,7 +56,7 @@ const Register = () => {
       setRegisterLoading(true);
       setRegisterSuccess(false);
       setRegisterError(false);
-      
+
       setDefaultState(false);
 
       createUserWithEmailAndPassword(
@@ -66,7 +67,7 @@ const Register = () => {
         .then((userCredential) => {
           setRegisterLoading(false);
           setRegisterSuccess(true);
-          
+
           return updateProfile(userCredential.user, {
             displayName: nameInputValue,
           }).catch((err) => console.log(err));
@@ -96,6 +97,10 @@ const Register = () => {
 
   return (
     <Fragment>
+      <Head>
+        <title>Amazon Registration</title>
+      </Head>
+
       <UserSignup_layout>
         <form
           className={classes["userSignup--FORM"]}
