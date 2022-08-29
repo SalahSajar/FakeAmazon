@@ -35,6 +35,7 @@ const Navbar = () => {
 
     const hmenu__EL = document.getElementById("hmenu--BLOCK");
     hmenu__EL.classList.add(open_hmenu);
+    document.body.style.overflow = "hidden";
   };
 
   const show_dropdown_overlay__FUNC = () => setOverlayIsVisible(true);
@@ -69,7 +70,9 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <nav className={classes["navbar--El"]}>
+      <nav
+        className={`${classes["navbar--El"]} ${classes["big_screens--NAVBAR"]}`}
+      >
         <div className={classes["navbar_main--BLOCK"]}>
           <Main_layout>
             <div className={classes["navbar_main_content--CONTAINER"]}>
@@ -89,7 +92,7 @@ const Navbar = () => {
                 </a>
               </Link>
 
-              <Link href="/">
+              <Link href="javascript:void(0)">
                 <a
                   className={`navbar_link_hover_border  ${classes["navbar_link--EL"]} ${classes["navbar_deliving_location_link--El"]}`}
                 >
@@ -203,7 +206,7 @@ const Navbar = () => {
                         >
                           Change language
                         </span>
-                        <Link href="/learnMore?ref=lang">
+                        <Link href="javascript:void(0)">
                           <a
                             className={`${classes["nav_lang_dropdown_secondary_link"]} xsm_font`}
                           >
@@ -305,7 +308,7 @@ const Navbar = () => {
                           >
                             Change currency
                           </span>
-                          <Link href="/learnMore?ref=currency">
+                          <Link href="javascript:void(0)">
                             <a
                               className={`${classes["nav_lang_dropdown_secondary_link"]} xsm_font`}
                             >
@@ -317,7 +320,7 @@ const Navbar = () => {
                           <span className={classes["currency--El"]}>
                             $ - USD - US Dollar
                           </span>
-                          <Link href="/customer-prefrence/edit?ref=currency">
+                          <Link href="javascript:void(0)">
                             <a
                               className={`${classes["nav_lang_dropdown_secondary_link"]} xsm_font`}
                             >
@@ -341,7 +344,7 @@ const Navbar = () => {
                             ></span>{" "}
                             You are shopping on Amazon.com
                           </h4>
-                          <Link href="/customer-prefrence/edit=country-region">
+                          <Link href="javascript:void(0)">
                             <a
                               className={`${classes["nav_lang_dropdown_secondary_link"]} xsm_font`}
                             >
@@ -447,15 +450,15 @@ const Navbar = () => {
                           className={`${classes["nav_account_dropdown_linksList--EL"]} md_font`}
                         >
                           <li>
-                            <Link href="/wishlist">Create a List</Link>
+                            <Link href="javascript:void(0)">Create a List</Link>
                           </li>
                           <li>
-                            <Link href="/registries">
+                            <Link href="javascript:void(0)">
                               find a list or registry
                             </Link>
                           </li>
                           <li>
-                            <Link href="/amazonSmile">
+                            <Link href="javascript:void(0)">
                               amazonSmile charity list
                             </Link>
                           </li>
@@ -475,47 +478,53 @@ const Navbar = () => {
                           className={`${classes["nav_account_dropdown_linksList--EL"]} md_font`}
                         >
                           <li>
-                            <Link href="/account">accounts</Link>
+                            <Link href="javascript:void(0)">accounts</Link>
                           </li>
                           <li>
-                            <Link href="/orders">order</Link>
+                            <Link href="javascript:void(0)">order</Link>
                           </li>
                           <li>
-                            <Link href="/Recommendations">Recommendations</Link>
+                            <Link href="javascript:void(0)">
+                              Recommendations
+                            </Link>
                           </li>
                           <li>
-                            <Link href="/browsingHistory">
+                            <Link href="javascript:void(0)">
                               Browsing History
                             </Link>
                           </li>
                           <li>
-                            <Link href="/video/watchlist">Watchlist</Link>
+                            <Link href="javascript:void(0)">Watchlist</Link>
                           </li>
                           <li>
-                            <Link href="/video/library">
+                            <Link href="javascript:void(0)">
                               Video Purchases & Rentals
                             </Link>
                           </li>
                           <li>
-                            <Link href="/kindle">Kindle Unlimited</Link>
+                            <Link href="javascript:void(0)">
+                              Kindle Unlimited
+                            </Link>
                           </li>
                           <li>
-                            <Link href="/mycd">Content & Devices</Link>
+                            <Link href="javascript:void(0)">
+                              Content & Devices
+                            </Link>
                           </li>
                           <li>
-                            <Link href="/subscribe-and-save">
+                            <Link href="javascript:void(0)">
                               Subscribe & Save Items
                             </Link>
                           </li>
                           <li>
-                            <Link href="/yourMenmbershipsAndSubscriptions">
+                            <Link href="javascript:void(0)">
                               Memberships & Subscriptions
                             </Link>
                           </li>
                           {currentUser && (
                             <Fragment>
                               <li>
-                                <Link href="/switchAccounts">
+                                <Link href="javascript:void(0)">
                                   Switch Accounts
                                 </Link>
                               </li>
@@ -535,7 +544,7 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <Link href="/orders">
+              <Link href="javascript:void(0)">
                 <a
                   className={`navbar_link_hover_border ${classes["navbar_link--EL"]} ${classes["nav_returnsANDorders_link--EL"]}`}
                 >
@@ -558,7 +567,7 @@ const Navbar = () => {
                 </a>
               </Link>
 
-              <Link href="/cart">
+              <Link href="javascript:void(0)">
                 <a
                   className={`navbar_link_hover_border ${classes["navbar_link--EL"]} ${classes["nav_cart_link--EL"]}`}
                 >
@@ -592,7 +601,7 @@ const Navbar = () => {
             <div className={classes["navbar_belt_content--CONTAINER"]}>
               <ul className={classes["nav_links_list--EL"]}>
                 <li>
-                  <Link href="/menu">
+                  <Link href="javascript:void(0)">
                     <a
                       className="navbar_link_hover_border md_font"
                       onClick={open_hmenu__FUNC}
@@ -603,14 +612,14 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/goldbox">
+                  <Link href="javascript:void(0)">
                     <a className="navbar_link_hover_border md_font">
                       Today{"'"}s Deals
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/buyagain">
+                  <Link href="javascript:void(0)">
                     <a className="navbar_link_hover_border md_font">
                       Buy Again
                     </a>
@@ -619,7 +628,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     className="navbar_link_hover_border md_font"
-                    href="/help/cumtomer"
+                    href="javascript:void(0)"
                   >
                     <a className="navbar_link_hover_border md_font">
                       Customer Service
@@ -631,7 +640,7 @@ const Navbar = () => {
                   onMouseEnter={show_dropdown_overlay__FUNC}
                   onMouseLeave={hide_dropdown_overlay__FUNC}
                 >
-                  <Link href="/history">
+                  <Link href="javascript:void(0)">
                     <a className="navbar_link_hover_border md_font">
                       <div
                         className={classes["browsingHistory_link_frontend--EL"]}
@@ -666,7 +675,7 @@ const Navbar = () => {
                         className={`${classes["browsingHistory_dropdown_header--EL"]} md_font`}
                       >
                         Your Browsing History{" "}
-                        <Link href="/">
+                        <Link href="javascript:void(0)">
                           <a className="sm_font">View and Edit</a>
                         </Link>
                       </span>
@@ -693,25 +702,25 @@ const Navbar = () => {
                   </div>
                 </li>
                 <li>
-                  <Link href="/gift-cards">
+                  <Link href="javascript:void(0)">
                     <a className="navbar_link_hover_border md_font">
                       Gift Cards
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/registries">
+                  <Link href="javascript:void(0)">
                     <a className="navbar_link_hover_border md_font">Registry</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sell">
+                  <Link href="javascript:void(0)">
                     <a className="navbar_link_hover_border md_font">Sell</a>
                   </Link>
                 </li>
               </ul>
 
-              <Link href="/">
+              <Link href="javascript:void(0)">
                 <a className="navbar_link_hover_border md_font">
                   {" "}
                   Shop Fathers Day Gifts
@@ -720,6 +729,194 @@ const Navbar = () => {
             </div>
           </Main_layout>
         </div>
+      </nav>
+
+      <nav
+        className={`${classes["navbar--El"]} ${classes["mobile_screens--NAVBAR"]}`}
+      >
+        <Main_layout>
+          <div className={classes["navbar_eyebrow--BLOCK"]}>
+            <div
+              className={classes["navbar_eyebrow_leftSide_content--WRAPPER"]}
+            >
+              <Link href="javascript:void(0)">
+                <a
+                  className="navbar_link_hover_border"
+                  onClick={open_hmenu__FUNC}
+                >
+                  <i className={classes["nav_menu_icon"]}></i>
+                </a>
+              </Link>
+
+              <Link href="/">
+                <a
+                  className={`${classes["navbar_link--EL"]} ${classes["navbar_logo--EL"]}`}
+                >
+                  <span className={classes["navbar_logo--CONTAINER"]}>
+                    <Image
+                      src="/logos/amazon-[F]name.png"
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
+                      alt="amazon"
+                    />
+                  </span>
+                </a>
+              </Link>
+            </div>
+
+            <div
+              className={classes["navbar_eyebrow_rightSide_content--WRAPPER"]}
+            >
+              <Link href="javascript:void(0)">
+                <a className={`navbar_account--LINK`}>
+                  <div
+                    className={classes["navbar_account_linkContent--WRAPPER"]}
+                  >
+                    <span
+                      className={`${classes["navbar_account--TYPOS"]} xlg_font`}
+                    >
+                      Sign-In <i className={classes["right_arror--ICON"]}></i>
+                    </span>
+                    <i className={classes["user_account--ICON"]}></i>
+                  </div>
+                </a>
+              </Link>
+
+              <Link href="javascript:void(0)">
+                <a
+                  className={`navbar_link_hover_border ${classes["navbar_link--EL"]} ${classes["nav_cart_link--EL"]}`}
+                >
+                  <div className={classes["cart_items_length--BLOCK"]}>
+                    <i className={classes["cart--ICON"]}></i>
+                    <span className={`${classes["cart_items_length"]} lg_font`}>
+                      {userCartLength}
+                    </span>
+                  </div>
+                </a>
+              </Link>
+            </div>
+          </div>
+          <div className={classes["navbar_search_form--WRAPPER"]}>
+            <form
+              onSubmit={submitProductsSearchKeyword__HANDLER}
+              className={classes["nav_search_form--EL"]}
+            >
+              <input
+                type="text"
+                id="keyword"
+                name="keyword"
+                placeholder={router.query.k ? router.query.k : "Search Amazon"}
+                className={`${classes["nav_search_input"]} xlg_font`}
+              />
+              <button type="submit" className={classes["nav_search_btn"]}>
+                <Image
+                  src="/icons/search.png"
+                  width={32}
+                  height={32}
+                  alt="search"
+                />
+              </button>
+            </form>
+          </div>
+
+          <div className={classes["navbar_nose--BLOCK"]}>
+            <div className={classes["navbar_categories_list--WRAPPER"]}>
+              <ul className={classes["navbar_categories--LIST"]}>
+                <li>
+                  <Link href={`/search?k=${encodeURI("pc")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      pc
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("health and household")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      health and household
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("pets")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      pets
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("pharmacy")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      pharmacy
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("home decos")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      home decos
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("books")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      books
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("toys & games")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      toys & games
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("fitness")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      fitness
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("automotive")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      automotive
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/search?k=${encodeURI("headphones")}`}>
+                    <a
+                      className={`${classes["navbar_category--LINK"]} lg_font`}
+                    >
+                      headphones
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </Main_layout>
       </nav>
 
       {/* Floating Components */}

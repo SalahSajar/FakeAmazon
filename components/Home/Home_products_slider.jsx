@@ -88,7 +88,9 @@ const Home_products_slider = ({ title, keyword }) => {
     <Fragment>
       <div className={classes["products--SLIDER"]}>
         <div className={classes["products_content--CONTAINER"]}>
-          <span className={classes["proucts_slider_title--EL"]}>{title}</span>
+          <h2 className={`${classes["proucts_slider_title--EL"]} lg_font`}>
+            {title}
+          </h2>
 
           <div className={classes["products_slider--EL"]}>
             <ul className={classes["products_slider_list--CONTAINER"]}>

@@ -59,7 +59,7 @@ export default function Home() {
               <button onClick={() => changeSliderIndex("-")} className={classes["homePage_slider_btn"]} type="button">
                 <i className={`${classes["homePage_slider--ICON"]} ${classes["left_arrow--ICON"]}`}></i>
               </button>
-              <Link href="/something">
+              <Link href="javascript:void(0)">
                 <a className={classes["slider_item_link"]}></a>
               </Link>
               <button onClick={() => changeSliderIndex("+")} className={classes["homePage_slider_btn"]} type="button">

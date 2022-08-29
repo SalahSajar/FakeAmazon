@@ -56,18 +56,13 @@ const Home_products_exploration = () => {
               <Home_products_card
                 title="Shop Father's Day Gifts"
                 purpose="redirection card"
-                link={`/`}
+                link={`/search?k=${encodeURI("father gift")}`}
               />
 
               <Home_products_card
                 title="Health & Personal Care"
                 purpose="redirection card"
                 link={`/search?k=${encodeURI("personal care")}`}
-              />
-              <Home_products_card
-                title="Deal of the Day"
-                purpose="redirection card"
-                link={`/`}
               />
               <Home_products_card
                 title="Computers & Accessories"
@@ -79,37 +74,10 @@ const Home_products_exploration = () => {
                 purpose="redirection card"
                 link={`/search?k=${encodeURI("home fitness accessories")}`}
               />
-            </div>
-
-            <Home_products_slider
-              title="most wished for baby travel gear"
-              keyword="baby travel gear"
-            />
-            <Home_products_slider
-              title="most wished for kids books"
-              keyword="kids book"
-            />
-
-            <div className={classes["products_carts--CONTAINER"]}>
               <Home_products_card
-                title="best sellers in pet supplies"
-                purpose="top products recommendation card"
-                keyword="pet supplies"
-              />
-              <Home_products_card
-                title="best sellers in movies & tv"
-                purpose="top products recommendation card"
-                keyword="movie"
-              />
-              <Home_products_card
-                title="best sellers in toys & games"
-                purpose="top products recommendation card"
-                keyword="toys and games"
-              />
-              <Home_products_card
-                title="best sellers in sport goods"
-                purpose="top products recommendation card"
-                keyword="sport goods"
+                title="Dresses"
+                purpose="redirection card"
+                link={`/search?k=${encodeURI("dress")}`}
               />
             </div>
 
@@ -117,69 +85,39 @@ const Home_products_exploration = () => {
               title=" most wished for car cares"
               keyword="car care"
             />
-            <Home_products_slider
-              title="most wished for cell phones"
-              keyword="cell phones"
-            />
 
             <div className={classes["products_carts--CONTAINER"]}>
+              <Home_products_card
+                title="Shop Pet supplies"
+                purpose="redirection card"
+                link={`/search?k=${encodeURI("pet supplies")}`}
+              />
+
+              <Home_products_card
+                title="best sellers in toys & games"
+                purpose="top products recommendation card"
+                keyword="toys and games"
+              />
               <Home_products_card
                 title="best sellers in beauty & personal care"
                 purpose="top products recommendation card"
                 keyword="personal care"
               />
               <Home_products_card
-                title="best sellers in gaming accessories"
-                purpose="top products recommendation card"
-                keyword="gaming accessories"
-              />
-              <Home_products_card
-                title="Shop Laptops & Tablets"
+                title="Shop backpacks"
                 purpose="redirection card"
-                link={`/search?k=${encodeURI("Laptops & Tablets")}`}
-              />
-              <Home_products_card
-                title="Create with strip lights"
-                purpose="redirection card"
-                link={`/search?k=${encodeURI("strip lights")}`}
+                link={`/search?k=${encodeURI("backpacks")}`}
               />
             </div>
+
+            <Home_products_slider
+              title="most wished for cell phones"
+              keyword="cell phones"
+            />
 
             <Home_products_slider
               title="most wished for jewelries"
               keyword="jewelry"
-            />
-            <Home_products_slider
-              title="most wished for home wall decors"
-              keyword="home wall decor"
-            />
-
-            <div className={classes["products_carts--CONTAINER"]}>
-              <Home_products_card
-                title="For your Fitness Needs"
-                purpose="redirection card"
-                link={`/search?k=${encodeURI("fitness")}`}
-              />
-              <Home_products_card
-                title="Shop activity trackers and smartwatches"
-                purpose="redirection card"
-                link={`/search?k=${encodeURI("smartwatches")}`}
-              />
-              <Home_products_card
-                title="Shop Pet supplies"
-                purpose="redirection card"
-                link={`/search?k=${encodeURI("pet supplies")}`}
-              />
-              <Home_products_card
-                title="best sellers in baby"
-                purpose="top products recommendation card"
-                keyword="baby"
-              />
-            </div>
-
-            <Home_products_slider
-              title="most wished for kitchen improvement"
-              keyword="kitchen improvements"
             />
           </div>
         </section>

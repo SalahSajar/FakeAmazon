@@ -29,19 +29,22 @@
         width:clamp(27rem, 22rem + 13vw, 45rem);
         background-color:#fff;
         box-shadow: 0 0 10rem 0.5rem rgb(0 0 0 / 50%);
+
+        @include for-size(phone-only){
+            width: 70%;
+        }
         
         // Horizontal Menu Header Block
         .hmenu_header--BLOCK{
             position:relative;
 
             .hmenu_customer_profile--LINK{
-                @include flex_display(center, center);
+                @include flex_display(center, unset);
                 background-color: $secondary_dark_color;
-                height:5rem;
+                padding:1.3rem 3.2rem;
                 width:100%;
     
                 .hmenu_customer_profile_content--CONTAINER{
-                    width:28rem;
     
                     .customer_profile--ICON{
                         display: inline-block;
@@ -58,6 +61,10 @@
                         font-weight: 700;
                         vertical-align: super;
                         margin-left: 1rem;
+
+                        @include for-size(phone-only){
+                            font-size:2.2rem;
+                        }
                     }
                 }
             }
@@ -107,6 +114,10 @@
                     padding: 1.3rem 3.2rem;
                     font-weight: 600;
                     text-transform: capitalize;
+
+                    @include for-size(phone-only){
+                        font-size:2.2rem;
+                    }
                 }
 
                 .hmenu_break_line--EL{
@@ -215,6 +226,12 @@
                             background-position: -166px -310px;
                         }
 
+                    }
+
+                    .hmenu_item_title--EL{
+                        @include for-size(phone-only) {
+                            font-size: 1.9rem;
+                        }
                     }
                 }
                 

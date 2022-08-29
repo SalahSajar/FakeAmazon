@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Fragment>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=0.4"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=0.7"></meta>
       </Head>
       
       <UserCartContextProvider>

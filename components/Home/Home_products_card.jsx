@@ -75,7 +75,7 @@ const Home_products_card = ({ title, purpose, categories, keyword, link }) => {
   return (
     <div className={classes["products--CARD"]}>
       <div className={`${classes["card--HEADER"]}`}>
-        <h2>{title}</h2>
+        <h2 className="lg_font">{title}</h2>
       </div>
       <div className={classes["card--BODY"]}>
         <div className={classes["card_body_content--CONTAINER"]}>

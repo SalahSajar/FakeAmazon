@@ -79,6 +79,7 @@ const Hmenu = () => {
     const hmenu__EL = document.querySelector(`.${classes["hmenu--BLOCK"]}`);
 
     hmenu__EL.classList.remove(classes["open_hmenu"]);
+    document.body.style.overflow = "scroll";
   };
 
   const navbarSignOutClick__EventHandler = () => {
@@ -172,7 +173,7 @@ const Hmenu = () => {
             if (item.type === "link") {
               const hmenu_list__A = document.createElement("a");
               hmenu_list__A.href = item.href;
-              hmenu_list__A.className = `${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]} md_lg_font`;
+              hmenu_list__A.className = `${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`;
               hmenu_list__A.onclick = (evt) => router.push(item.href);
 
               const hmenu_list__DIV = document.createElement("div");
@@ -181,7 +182,7 @@ const Hmenu = () => {
               );
 
               const hmenu_list__SPAN = document.createElement("span");
-              hmenu_list__SPAN.classList.add(classes["hmenu_item_title--EL"]);
+              hmenu_list__SPAN.className = `${classes["hmenu_item_title--EL"]} md_lg_font`;
 
               hmenu_list__SPAN.textContent = item.text;
 

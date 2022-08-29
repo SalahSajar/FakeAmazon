@@ -9,7 +9,6 @@
         
         h2{
             text-transform: capitalize;
-            font-size:clamp(2rem, 2rem + 0.4vw, 8rem);
             font-weight: 600;
             color:$main_text_dark_color;
         }
