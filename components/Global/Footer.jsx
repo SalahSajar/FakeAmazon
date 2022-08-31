@@ -261,7 +261,7 @@ const Footer = () => {
 
               <div className={classes["amazon_config_links--WRAPPER"]}>
                 <div className={classes["footer_language_link--WRAPPER"]}>
-                  <Link href="/">
+                  <Link href="javascript:void(0)">
                     <a
                       className={`${classes["amazon_config_link--EL"]} ${classes["amazon_language_link--EL"]}`}
                     >
@@ -408,7 +408,7 @@ const Footer = () => {
                     </div>
                   </div>
                 </div>
-                <Link href="/">
+                <Link href="javascript:void(0)">
                   <a
                     className={`${classes["amazon_config_link--EL"]} ${classes["amazon_language_link--EL"]}`}
                   >
@@ -430,7 +430,7 @@ const Footer = () => {
                     </div>
                   </a>
                 </Link>
-                <Link href="/">
+                <Link href="javascript:void(0)">
                   <a
                     className={`${classes["amazon_config_link--EL"]} ${classes["amazon_language_link--EL"]}`}
                   >

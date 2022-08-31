@@ -115,31 +115,31 @@ ul, ol{
 
 @include for-size(phone-only){
     .xxlg_font {
-        font-size: 2.3rem;
+        font-size: 3rem;
     }
 
     .xlg_font {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
     }
 
     .lg_font {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     .md_lg_font {
-        font-size: 1.4rem;
+        font-size: 1.7rem;
     }
 
     .md_font {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .sm_font {
-        font-size: .9rem;
+        font-size: 1.3rem;
     }
 
     .xsm_font {
-        font-size: .7rem;
+        font-size: 1.15rem;
     }
 } 
 

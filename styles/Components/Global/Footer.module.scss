@@ -33,6 +33,11 @@
                 padding:3rem 2rem;
                 margin:0 auto;
 
+                @include for-size(phone-only){
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                }
+
                 .footer_nav_link_column--BLOCK{
 
                     .footer_nav_link_column_title--EL{
@@ -77,6 +82,12 @@
                     width: max-content;
                     gap: 5rem;
                     margin: auto;
+                    
+                    @include for-size(phone-only){
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                    }
 
                     .footer_nav_logo--EL{
                         position: relative;
@@ -338,6 +349,11 @@
                         list-style: none;
                         color:#ddd;
                         gap:clamp(1rem, 0.05rem + 2.4vw, 4rem);
+
+                        @include for-size(phone-only){
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                        }
                         
                         
                         .footer_amazon_copyright_link--EL{

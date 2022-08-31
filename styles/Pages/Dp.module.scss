@@ -71,9 +71,10 @@
 
             @include for-size(phone-only){
                 display: grid;
-                grid-template-areas: "productImages productShipping"
-                                     "productDetails productDetails";
-                grid-template-columns: 1fr 1fr;
+                grid-template-areas: "productImages"
+                                     "productShipping"
+                                     "productDetails";
+                grid-template-columns: 1fr;
             }
 
             & > div{
@@ -85,12 +86,25 @@
 
                 .product_images_block_content--WRAPPER{
                     @include flex_display(flex-start, space-between);
+
+                    @include for-size(phone-only){
+                        flex-direction: column-reverse;
+                    }
                     
                     .product_images--CONTAINER{
                         @include flex_display(initial, initial);
                         flex-direction: column;
                         row-gap: .8rem;
                         flex-basis: 15%;
+
+                        @include for-size(phone-only) {
+                            flex-direction:row;
+                            width: 100%;
+                            flex-direction: row;
+                            column-gap: 2rem;
+                            margin-top: 2rem;
+                            justify-content: space-between;
+                        }
                         
                         .product_image--BTN{
                             display: inline-block;
@@ -110,7 +124,6 @@
                             &.selected_product_image{
                                 border-color:$secondary_dark_color;
                                 box-shadow: 0 0 0.4rem 0.2rem lighten($color: $mid_orange_color , $amount: 30);
-                                
                             }
                         }
                     }
@@ -119,6 +132,10 @@
                         width:100%;
                         aspect-ratio: 1;
                         padding: 1rem;
+
+                        @include for-size(phone-only) {
+                            aspect-ratio: 16/12;
+                        }
 
                         .product_image--CONTAINER{
                             position: relative;
@@ -410,6 +427,12 @@
                     padding: 1.5rem 1rem ;
                     border-radius: 1rem;
                     border: .1rem solid $secondary_light_color;
+
+                    .product_price--CONTAINER{
+                        @include for-size(phone-only){
+                            display: none;
+                        }
+                    }
 
                     .product_availability--BLOCK{
                         text-align: center;

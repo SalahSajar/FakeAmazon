@@ -86,10 +86,6 @@ const Dp = ({ product, error }) => {
     return productOptionLinkUrl;
   };
 
-  useEffect(() => {
-    console.log(product);
-  }, []);
-
   return (
     <Fragment>
       <Page_layout>
@@ -287,7 +283,9 @@ const Dp = ({ product, error }) => {
                         <hr />
 
                         {!!product.pricing && (
-                          <ProductPrice price={product.pricing} />
+                          <div className={classes["product_price--CONTAINER"]}>
+                            <ProductPrice price={product.pricing} />
+                          </div>
                         )}
 
                         {!!productStyles && Object.keys(productStyles).length
@@ -497,7 +495,9 @@ const Dp = ({ product, error }) => {
                         }
                       >
                         {!!product.pricing && (
-                          <ProductPrice price={product.pricing} />
+                          <div className={classes["product_price--CONTAINER"]}>
+                            <ProductPrice price={product.pricing} />
+                          </div>
                         )}
 
                         {!!product.availability_status &&
