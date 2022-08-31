@@ -701,32 +701,38 @@
             .navbar_eyebrow_rightSide_content--WRAPPER{
                 @include flex_display(center, unset);
 
-                .navbar_account_linkContent--WRAPPER{
-                    @include flex_display(center, unset);
-
-                    .navbar_account--TYPOS{
-                        color:#fff;
-
-                        .right_arror--ICON{
-                            width: 1.5rem;
+                .navbar_account--LINK{
+                    text-decoration: none;
+                    
+                    .navbar_account_linkContent--WRAPPER{
+                        @include flex_display(center, unset);
+    
+                        .navbar_account--TYPOS{
+                            color:#fff;
+    
+                            .right_arror--ICON{
+                                width: 1.5rem;
+                                aspect-ratio: 1;
+                                background-image: url("/icons/right-arrow-[WHITE].png");
+                                background-position: center;
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                            }
+                        }
+    
+                        .user_account--ICON{
+                            width:3.5rem;
                             aspect-ratio: 1;
-                            background-image: url("/icons/right-arrow-[WHITE].png");
+                            background-image: url("/icons/account-[WHITE].png");
                             background-position: center;
                             background-size: contain;
                             background-repeat: no-repeat;
+                            margin-left: .5rem;
                         }
                     }
-
-                    .user_account--ICON{
-                        width:3.5rem;
-                        aspect-ratio: 1;
-                        background-image: url("/icons/account-[WHITE].png");
-                        background-position: center;
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        margin-left: .5rem;
-                    }
                 }
+                
+
 
                 .nav_cart_link--EL{
                     .cart_items_length--BLOCK {

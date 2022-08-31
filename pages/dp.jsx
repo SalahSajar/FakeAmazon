@@ -1,4 +1,4 @@
-import { useState, useContext, Fragment } from "react";
+import { useState, useContext, useEffect, Fragment } from "react";
 
 import Head from "next/head";
 import Link from "next/link";
@@ -86,6 +86,10 @@ const Dp = ({ product, error }) => {
     return productOptionLinkUrl;
   };
 
+  useEffect(() => {
+    console.log(product);
+  }, []);
+
   return (
     <Fragment>
       <Page_layout>
@@ -172,7 +176,9 @@ const Dp = ({ product, error }) => {
                     </a>
                   </Link>
                 )}
-                <div className={classes["product_details--HEADER"]}>
+                <div
+                  className={`${classes["product_details--HEADER"]} ${classes["product_details--DESKTOP"]}`}
+                >
                   <div
                     className={
                       classes["product_details_header_blocks--CONTAINER"]
@@ -484,7 +490,7 @@ const Dp = ({ product, error }) => {
                       </div>
                     </div>
 
-                    <div className={classes["product_shopping--BLOCK"]}>
+                    <div className={classes["product_shipping--BLOCK"]}>
                       <div
                         className={
                           classes["product_shipping_details_content--WRAPPER"]
@@ -756,7 +762,9 @@ const Dp = ({ product, error }) => {
                                                 "date first available"
                                           )
                                           .map((productInfo) => {
-                                            return (
+                                            return product.product_information[
+                                              productInfo
+                                            ] ? (
                                               <tr key={productInfo}>
                                                 <td
                                                   className={`${classes["product_information_table_row--TITLE"]} md_font`}
@@ -813,6 +821,8 @@ const Dp = ({ product, error }) => {
                                                       )}
                                                 </td>
                                               </tr>
+                                            ) : (
+                                              ""
                                             );
                                           })}
                                   </tbody>
@@ -850,10 +860,11 @@ const Dp = ({ product, error }) => {
                                   {Object.keys(product.product_information)
                                     .filter(
                                       (productInfo) =>
-                                        productInfo.toLowerCase() === "asin" ||
-                                        productInfo.toLowerCase() ===
+                                        productInfo.trim().toLowerCase() ===
+                                          "asin" ||
+                                        productInfo.trim().toLowerCase() ===
                                           "best sellers rank" ||
-                                        productInfo.toLowerCase() ===
+                                        productInfo.trim().toLowerCase() ===
                                           "date first available"
                                     )
                                     .map((productInfo) => {

@@ -12,13 +12,13 @@
     height:100vh;
     z-index: 15;
     transition:background .5s ease 0s,
-                transform .7s ease .8s;
+                transform .5s ease .5s;
     
     &.open_hmenu{
         transform:translateX(0);
         background-color: rgba(0,0,0,.8);
-        transition:background .5s ease .8s,
-                    transform .7s ease;
+        transition:background .5s ease .5s,
+                    transform .5s ease;
     }
 
     .hmenu_navigation--BLOCK{

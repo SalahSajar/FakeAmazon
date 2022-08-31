@@ -768,20 +768,38 @@ const Navbar = () => {
             <div
               className={classes["navbar_eyebrow_rightSide_content--WRAPPER"]}
             >
-              <Link href="javascript:void(0)">
-                <a className={`navbar_account--LINK`}>
-                  <div
-                    className={classes["navbar_account_linkContent--WRAPPER"]}
-                  >
-                    <span
-                      className={`${classes["navbar_account--TYPOS"]} xlg_font`}
+              {currentUser ? (
+                <Link href="javascript:void(0)">
+                  <a className={`${classes["navbar_account--LINK"]}`}>
+                    <div
+                      className={classes["navbar_account_linkContent--WRAPPER"]}
                     >
-                      Sign-In <i className={classes["right_arror--ICON"]}></i>
-                    </span>
-                    <i className={classes["user_account--ICON"]}></i>
-                  </div>
-                </a>
-              </Link>
+                      <span
+                        className={`${classes["navbar_account--TYPOS"]} xlg_font`}
+                      >
+                        {currentUser.displayName}{" "}
+                        <i className={classes["right_arror--ICON"]}></i>
+                      </span>
+                      <i className={classes["user_account--ICON"]}></i>
+                    </div>
+                  </a>
+                </Link>
+              ) : (
+                <Link href="/signin">
+                  <a className={`${classes["navbar_account--LINK"]}`}>
+                    <div
+                      className={classes["navbar_account_linkContent--WRAPPER"]}
+                    >
+                      <span
+                        className={`${classes["navbar_account--TYPOS"]} xlg_font`}
+                      >
+                        Sign-In <i className={classes["right_arror--ICON"]}></i>
+                      </span>
+                      <i className={classes["user_account--ICON"]}></i>
+                    </div>
+                  </a>
+                </Link>
+              )}
 
               <Link href="javascript:void(0)">
                 <a

@@ -29,7 +29,7 @@
             .footer_nav_content--CONTAINER{
                 @include flex_display(initial, space-between);
                 width: fit-content;
-                gap: 3rem;
+                gap: clamp(1rem, 0.05rem + 2.4vw, 4rem);
                 padding:3rem 2rem;
                 margin:0 auto;
 
@@ -337,7 +337,7 @@
                         @include flex_display(initial, space-between);
                         list-style: none;
                         color:#ddd;
-                        gap:3rem;
+                        gap:clamp(1rem, 0.05rem + 2.4vw, 4rem);
                         
                         
                         .footer_amazon_copyright_link--EL{

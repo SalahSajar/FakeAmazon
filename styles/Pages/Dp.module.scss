@@ -69,10 +69,18 @@
             position:relative;
             @include flex_display(initial, space-between);
 
+            @include for-size(phone-only){
+                display: grid;
+                grid-template-areas: "productImages productShipping"
+                                     "productDetails productDetails";
+                grid-template-columns: 1fr 1fr;
+            }
+
             & > div{
                 min-height: 20rem;
             }
             .product_images--BLOCK{
+                grid-area: productImages;
                 flex: 0 0.1 clamp(30rem, 19rem + 16vw, 55rem);
 
                 .product_images_block_content--WRAPPER{
@@ -119,13 +127,18 @@
                         }
                     }
                 }
-    
             }
 
             .product_details--BLOCK{
+                grid-area: productDetails;
                 flex:1;
                 background-color: #fff;
                 padding:0 2rem;
+
+                @include for-size(phone-only){
+                    padding: 0;
+                    margin-top: 2.5rem;
+                }
 
                 .product_details_block_content--WRAPPER{
 
@@ -386,7 +399,8 @@
                 }
             }
 
-            .product_shopping--BLOCK{
+            .product_shipping--BLOCK{
+                grid-area: productShipping;
                 flex: 0 0.1 clamp(18rem, -3rem + 20vw, 33rem);
 
                 .product_shipping_details_content--WRAPPER{
@@ -536,6 +550,10 @@
                     @include flex_display(flex-start, space-between);
                     column-gap: 3rem;
 
+                    @include for-size(phone-only){
+                        flex-direction: column;
+                    }
+
                     &>div{
                         &.product_information_leftPart--WRAPPER {
                             flex: 0 1 50%;
@@ -543,6 +561,10 @@
 
                         &.product_information_rightPart--WRAPPER {
                             flex: 0 1 50%;
+
+                            @include for-size(phone-only) {
+                                margin-top: 2.5rem;
+                            }
                         }
                         
                         .product_information--HEADER{
