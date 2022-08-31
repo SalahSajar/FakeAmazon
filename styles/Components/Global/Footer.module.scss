@@ -353,6 +353,8 @@
                         @include for-size(phone-only){
                             display: grid;
                             grid-template-columns: 1fr 1fr;
+                            column-gap: 0;
+                            row-gap: 1rem;
                         }
                         
                         
