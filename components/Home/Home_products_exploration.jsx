@@ -35,7 +35,7 @@ const Home_products_exploration = () => {
   return (
     <Fragment>
       <Main_layout>
-        <section className={classes["products_exploration--BLOCK"]}>
+        <main className={classes["products_exploration--BLOCK"]}>
           <div className={classes["products_exploration_content--CONTAINER"]}>
             <div className={classes["products_carts--CONTAINER"]}>
               <Home_products_card
@@ -120,7 +120,7 @@ const Home_products_exploration = () => {
               keyword="jewelry"
             />
           </div>
-        </section>
+        </main>
       </Main_layout>
     </Fragment>
   );

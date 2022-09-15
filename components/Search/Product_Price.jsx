@@ -5,7 +5,7 @@ import classes from "../../styles/Components/Search/Product_Price.module.scss";
 const Product_Price = ({ price }) => {
   return price.indexOf("$") === price.lastIndexOf("$") ? (
     <div className={classes["product_price--BLOCK"]}>
-      <h3 className={classes["product_price--WRAPPER"]}>
+      <span className={classes["product_price--WRAPPER"]}>
         <span className={classes["product_price_currency--EL"]}>$</span>
         <span className={classes["main_price_detail--EL"]}>
           {price.replace("$", "").slice(0, price.replace("$", "").indexOf("."))}
@@ -15,11 +15,11 @@ const Product_Price = ({ price }) => {
             ? price.slice(price.indexOf(".") + 1, price.length)
             : "00"}
         </span>
-      </h3>
+      </span>
     </div>
   ) : (
     <div className={classes["product_price--BLOCK"]}>
-      <h3 className={classes["product_price--WRAPPER"]}>
+      <span className={classes["product_price--WRAPPER"]}>
         <span className={`${classes["product_price_currency--EL"]} sm_font`}>
           $
         </span>
@@ -34,7 +34,7 @@ const Product_Price = ({ price }) => {
         <span className={`${classes["product_price_currency--EL"]} sm_font`}>
           {price.split("$")[2].slice(price.split("$")[2].lastIndexOf(".") + 1)}
         </span>
-      </h3>
+      </span>
 
       <span className={`${classes["product_previous_price--EL"]} md_font`}>
         ${price.split("$")[1]}

@@ -128,11 +128,9 @@ const Products_Advertisement_Slider = ({ ads }) => {
   }, []);
 
   return (
-    <div className={classes["sponsored_products--BLOCK"]}>
+    <section className={classes["sponsored_products--BLOCK"]}>
       <div className={classes["sponsored_products_block_content--CONTAINER"]}>
-        <div
-          className={`${classes["sponsored_products_block--HEADER"]}`}
-        >
+        <div className={`${classes["sponsored_products_block--HEADER"]}`}>
           <h3 className="lg_font">highly rated</h3>
           <span className="md_font">
             Sponsored | Based on star rating and number of customer ratings
@@ -171,7 +169,7 @@ const Products_Advertisement_Slider = ({ ads }) => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

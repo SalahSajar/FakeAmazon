@@ -33,7 +33,7 @@ const Search_Result_Product_Card = ({ productDetails }) => {
   const productASIN = findProductAsin__HANDLER(productDetails.url);
 
   return (
-    <div className={classes["search_result_product--CARD"]}>
+    <article className={classes["search_result_product--CARD"]}>
       <div className={classes["search_result_product_content--WRAPPER"]}>
         <Link href={`/dp?asin=${productASIN}&k=${router.query.k}`}>
           <a className={classes["search_result_product--IMG"]}>
@@ -90,14 +90,16 @@ const Search_Result_Product_Card = ({ productDetails }) => {
           </a>
         </Link>
         <div className={classes["search_result_product_infos--CONTAINER"]}>
-          <Link href={`/dp?asin=${productASIN}&k=${router.query.k}`}>
-            <a
-              title={productDetails.name}
-              className={`${classes["search_result_product_title--EL"]} md_font`}
-            >
-              {productDetails.name}
-            </a>
-          </Link>
+          <h3>
+            <Link href={`/dp?asin=${productASIN}&k=${router.query.k}`}>
+              <a
+                title={productDetails.name}
+                className={`${classes["search_result_product_title--EL"]} md_font`}
+              >
+                {productDetails.name}
+              </a>
+            </Link>
+          </h3>
           {productDetails.stars && productDetails.total_reviews ? (
             <div
               className={`${classes["search_result_product_reviews--BLOCK"]} sm_font`}
@@ -149,7 +151,7 @@ const Search_Result_Product_Card = ({ productDetails }) => {
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

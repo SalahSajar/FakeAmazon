@@ -70,10 +70,10 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <nav
+      <header
         className={`${classes["navbar--El"]} ${classes["big_screens--NAVBAR"]}`}
       >
-        <div className={classes["navbar_main--BLOCK"]}>
+        <nav className={classes["navbar_main--BLOCK"]}>
           <Main_layout>
             <div className={classes["navbar_main_content--CONTAINER"]}>
               <Link href="/">
@@ -86,6 +86,7 @@ const Navbar = () => {
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
+                      role="logo"
                       alt="amazon"
                     />
                   </span>
@@ -200,7 +201,7 @@ const Navbar = () => {
                     <div
                       className={classes["nav_lang_dropdown_header--CONTAINER"]}
                     >
-                      <h4 className={`sm_font`}>
+                      <span className={`sm_font`}>
                         <span
                           className={`${classes["nav_lang_dropdown_title--EL"]}`}
                         >
@@ -213,7 +214,7 @@ const Navbar = () => {
                             Learn more
                           </a>
                         </Link>
-                      </h4>
+                      </span>
 
                       <ul className={classes["languages_list--EL"]}>
                         <li
@@ -302,7 +303,7 @@ const Navbar = () => {
                       </ul>
                       <hr />
                       <div className={classes["nav_dropdown_currency--BLOCK"]}>
-                        <h4 className="md_font">
+                        <div className="md_font">
                           <span
                             className={classes["nav_lang_dropdown_title--EL"]}
                           >
@@ -315,7 +316,7 @@ const Navbar = () => {
                               Learn more
                             </a>
                           </Link>
-                        </h4>
+                        </div>
                         <div className={classes["currency_change--EL"]}>
                           <span className={classes["currency--El"]}>
                             $ - USD - US Dollar
@@ -336,14 +337,19 @@ const Navbar = () => {
                             classes["nav_dropdown_footer_content--CONTAINER"]
                           }
                         >
-                          <h4>
+                          <span
+                            className={
+                              classes["nav_dropdown_footer_header--EL"]
+                            }
+                          >
                             <span
                               className={
                                 classes["nav_dropdown_footer_flag--WRAPPER"]
                               }
                             ></span>{" "}
                             You are shopping on Amazon.com
-                          </h4>
+                          </span>
+
                           <Link href="javascript:void(0)">
                             <a
                               className={`${classes["nav_lang_dropdown_secondary_link"]} xsm_font`}
@@ -441,11 +447,11 @@ const Navbar = () => {
                       <div
                         className={classes["nav_account_dropdown_list--BLOCK"]}
                       >
-                        <h5
+                        <span
                           className={`${classes["nav_account_dropdown_title--EL"]} md_lg_font`}
                         >
                           Your Lists
-                        </h5>
+                        </span>
                         <ul
                           className={`${classes["nav_account_dropdown_linksList--EL"]} md_font`}
                         >
@@ -469,11 +475,11 @@ const Navbar = () => {
                           classes["nav_account_dropdown_account--BLOCK"]
                         }
                       >
-                        <h5
+                        <span
                           className={`${classes["nav_account_dropdown_title--EL"]} md_lg_font`}
                         >
                           Your accounts
-                        </h5>
+                        </span>
                         <ul
                           className={`${classes["nav_account_dropdown_linksList--EL"]} md_font`}
                         >
@@ -594,9 +600,9 @@ const Navbar = () => {
               </Link>
             </div>
           </Main_layout>
-        </div>
+        </nav>
 
-        <div className={classes["navbar_belt--BLOCK"]}>
+        <nav className={classes["navbar_belt--BLOCK"]}>
           <Main_layout>
             <div className={classes["navbar_belt_content--CONTAINER"]}>
               <ul className={classes["nav_links_list--EL"]}>
@@ -665,7 +671,7 @@ const Navbar = () => {
                     </a>
                   </Link>
 
-                  <div className={classes["browsingHistory_dropdown--EL"]}>
+                  <article className={classes["browsingHistory_dropdown--EL"]}>
                     <div
                       className={
                         classes["browsingHistory_dropdown_content--EL"]
@@ -674,7 +680,11 @@ const Navbar = () => {
                       <span
                         className={`${classes["browsingHistory_dropdown_header--EL"]} md_font`}
                       >
-                        Your Browsing History{" "}
+                        <h4
+                          className={`${classes["browsingHistory_dropdown_title--EL"]}`}
+                        >
+                          Your Browsing History
+                        </h4>
                         <Link href="javascript:void(0)">
                           <a className="sm_font">View and Edit</a>
                         </Link>
@@ -682,11 +692,11 @@ const Navbar = () => {
                       <div
                         className={classes["browsingHistory_dropdown_main--EL"]}
                       >
-                        <h4
+                        <span
                           className={`${classes["empty_browsingHistory_title"]} lg_font`}
                         >
                           browsing history feature is currently unavailable
-                        </h4>
+                        </span>
 
                         {/* <h4
                           className={`${classes["empty_browsingHistory_title"]} lg_font`}
@@ -699,7 +709,7 @@ const Navbar = () => {
                         </span> */}
                       </div>
                     </div>
-                  </div>
+                  </article>
                 </li>
                 <li>
                   <Link href="javascript:void(0)">
@@ -728,8 +738,8 @@ const Navbar = () => {
               </Link>
             </div>
           </Main_layout>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       <nav
         className={`${classes["navbar--El"]} ${classes["mobile_screens--NAVBAR"]}`}

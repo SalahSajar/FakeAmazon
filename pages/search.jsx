@@ -171,14 +171,14 @@ const Search = ({ products, error }) => {
                 classes["keyword_search_results_eyebrow_content--CONTAINER"]
               }
             >
-              <h4
+              <span
                 className={`${classes["keyword_search_results_length--EL"]} md_lg_font`}
               >
                 {originalProductsArr?.length} results for{" "}
                 <span className={classes["search_results_keyword--EL"]}>
                   &quot;{router.query?.k}&quot;
                 </span>
-              </h4>
+              </span>
               <div className={classes["sortBy_search_results--CONTAINER"]}>
                 <button
                   onClick={toggleSortingResultsMethods__Handler}
@@ -288,7 +288,7 @@ const Search = ({ products, error }) => {
 
         <div className={classes["keyword_search_results--BLOCK"]}>
           <Main_layout>
-            <div className={classes["keyword_search_results_content--WRAPPER"]}>
+            <main className={classes["keyword_search_results_content--WRAPPER"]}>
               <Search_Results_Filter
                 filterProductsByStars__HANDLER={filterProductsByStars__HANDLER}
                 filterProductsByPrice__HANDLER={filterProductsByPrice__HANDLER}
@@ -304,7 +304,7 @@ const Search = ({ products, error }) => {
                 ads={products.ads}
                 error={error}
               />
-            </div>
+            </main>
           </Main_layout>
         </div>
 

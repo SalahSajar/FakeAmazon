@@ -32,7 +32,10 @@ const Search_Results_Filter = ({
     }
   };
   return (
-    <aside className={classes["search_results_filter--BLOCK"]}>
+    <aside
+      aria-label="Products Filter"
+      className={classes["search_results_filter--BLOCK"]}
+    >
       <div className={classes["search_results_filter_content--WRAPPER"]}>
         <div className={classes["filter_methods--CONTAINER"]}>
           <div

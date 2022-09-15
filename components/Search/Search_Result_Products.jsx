@@ -12,9 +12,11 @@ const Search_Result_Products = ({ ads, products, error }) => {
   const router = useRouter();
 
   return (
-    <div className={classes["search_result--BLOCK"]}>
-      <div className={`${classes["search_result_products--HEADER"]} lg_font`}>
-        <h4>results</h4>
+    <article className={classes["search_result--BLOCK"]}>
+      <div
+        className={`${classes["search_result_products--HEADER"]} md_lg_font`}
+      >
+        <h2>results</h2>
       </div>
 
       <div className={classes["search_result_products--BLOCK"]}>
@@ -28,9 +30,9 @@ const Search_Result_Products = ({ ads, products, error }) => {
                 <div
                   className={classes["search_result_error_content--WRAPPER"]}
                 >
-                  <h4 className={`md_lg_font`}>
+                  <span className={`md_lg_font`}>
                     Something Went Wrong!! Please try again Later.
-                  </h4>
+                  </span>
                   <button
                     onClick={() => router.reload()}
                     className={`${classes["page_reload--BTN"]} md_font`}
@@ -55,6 +57,7 @@ const Search_Result_Products = ({ ads, products, error }) => {
                   </Fragment>
                 );
               })}
+
               {!!ads && !!ads?.length ? (
                 <Products_Advertisement_Slider ads={ads} />
               ) : (
@@ -83,7 +86,7 @@ const Search_Result_Products = ({ ads, products, error }) => {
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

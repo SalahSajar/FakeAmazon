@@ -73,7 +73,7 @@ const Home_products_card = ({ title, purpose, categories, keyword, link }) => {
   }, [searchProduct__HANDLER, keyword]);
 
   return (
-    <div className={classes["products--CARD"]}>
+    <article className={classes["products--CARD"]}>
       <div className={`${classes["card--HEADER"]}`}>
         <h2 className="lg_font">{title}</h2>
       </div>
@@ -143,9 +143,9 @@ const Home_products_card = ({ title, purpose, categories, keyword, link }) => {
                                     objectFit="contain"
                                   />
                                 </span>
-                                <span className={classes["product_title--EL"]}>
+                                <h3 className={classes["product_title--EL"]}>
                                   {name}
-                                </span>
+                                </h3>
                               </div>
                             </a>
                           </Link>
@@ -191,12 +191,12 @@ const Home_products_card = ({ title, purpose, categories, keyword, link }) => {
                                       objectFit="contain"
                                     />
                                   </span>
-                                  <span
+                                  <h3
                                     title={randomProducts[product].name}
                                     className={`${classes["selected_product_title--EL"]} md_font`}
                                   >
                                     {randomProducts[product].name}
-                                  </span>
+                                  </h3>
                                   {!!randomProducts[product].price && (
                                     <span
                                       className={`${classes["selected_product_price--EL"]} lg_font`}
@@ -287,9 +287,9 @@ const Home_products_card = ({ title, purpose, categories, keyword, link }) => {
                             objectFit="contain"
                           />
                         </span>
-                        <span className={classes["category_title--CONTAINER"]}>
+                        <h3 className={classes["category_title--CONTAINER"]}>
                           {title}
-                        </span>
+                        </h3>
                       </div>
                     </a>
                   </Link>
@@ -331,7 +331,7 @@ const Home_products_card = ({ title, purpose, categories, keyword, link }) => {
           ""
         )}
       </Fragment>
-    </div>
+    </article>
   );
 };
 

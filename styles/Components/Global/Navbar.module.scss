@@ -279,6 +279,7 @@
                             .nav_lang_dropdown_secondary_link {
                                 color: #16a2bb;
                                 text-decoration: none;
+                                margin-left:.5rem;
                 
                                 &:visited {
                                     color: #007185;
@@ -350,6 +351,9 @@
                             }
                 
                             .nav_dropdown_currency--BLOCK {
+                                & > div{
+                                    white-space:nowrap;
+                                }
                                 .currency_change--EL {
                                     @include flex_display(center, space-between);
                 
@@ -362,7 +366,7 @@
                 
                             .nav_dropdown_footer_content--CONTAINER {
                 
-                                h4 {
+                                .nav_dropdown_footer_header--EL {
                                     padding-bottom: 1rem;
                 
                                     .nav_dropdown_footer_flag--WRAPPER {
@@ -472,7 +476,7 @@
                                         text-transform: capitalize;
                                         font-weight: 700;
                                         color: $main_text_dark_color;
-                                        white-space: nowrap;
+                                        // white-space: nowrap;
                                     }
                         
                                     .nav_account_dropdown_linksList--EL {
@@ -595,14 +599,13 @@
         
                         .browsingHistory_dropdown_content--EL{
                             .browsingHistory_dropdown_header--EL{
+                                @include flex_display(center, unset);
                                 line-height: 1;
-                                // font-size:1.6rem;
                                 font-weight:600;
                                 color:$main_text_dark_color;
         
                                 a{
                                     color:#16a2bb;
-                                    // font-size:1.4rem;
                                     font-weight:400;
         
                                     &:hover{
@@ -618,8 +621,8 @@
                                 padding: 2rem;
         
                                 .empty_browsingHistory_title{
+                                    white-space: normal;
                                     text-transform:capitalize;
-                                    // font-size:2.3rem;
                                     font-weight:600;
                                     letter-spacing: .1rem;
                                     color:#444444;
@@ -627,7 +630,6 @@
         
                                 span{
                                     color:#767676;
-                                    // font-size:1.3rem;
                                     white-space: nowrap;
                                 }
                             }

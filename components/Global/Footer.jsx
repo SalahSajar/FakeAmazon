@@ -9,18 +9,28 @@ const Footer = () => {
   return (
     <footer className={classes["page_footer--EL"]}>
       <div className={classes["footer_content--CONTAINER"]}>
+        <h3
+          style={{
+            position: "absolute",
+            opacity: 0,
+            pointerEvent: "none",
+          }}
+        >
+          Footer
+        </h3>
+
         <Link href="#">
           <a className={`${classes["footer_btt--BTN"]} md_font`}>back to top</a>
         </Link>
 
         <div role="presentation" className={classes["footer_nav--EL"]}>
-          <div className={classes["footer_nav_content--CONTAINER"]}>
+          <section className={classes["footer_nav_content--CONTAINER"]}>
             <div className={classes["footer_nav_link_column--BLOCK"]}>
-              <h3
+              <h4
                 className={`${classes["footer_nav_link_column_title--EL"]} md_lg_font`}
               >
                 Get to Know Us
-              </h3>
+              </h4>
               <ol className={classes["footer_nav_link--CONTAINER"]}>
                 <li>
                   <Link href="/">
@@ -67,11 +77,11 @@ const Footer = () => {
               </ol>
             </div>
             <div className={classes["footer_nav_link_column--BLOCK"]}>
-              <h3
+              <h4
                 className={`${classes["footer_nav_link_column_title--EL"]} md_lg_font`}
               >
                 Make Money with Us
-              </h3>
+              </h4>
               <ol className={classes["footer_nav_link--CONTAINER"]}>
                 <li>
                   <Link href="/">
@@ -132,11 +142,11 @@ const Footer = () => {
               </ol>
             </div>
             <div className={classes["footer_nav_link_column--BLOCK"]}>
-              <h3
+              <h4
                 className={`${classes["footer_nav_link_column_title--EL"]} md_lg_font`}
               >
                 Amazon Payment Products
-              </h3>
+              </h4>
               <ol className={classes["footer_nav_link--CONTAINER"]}>
                 <li>
                   <Link href="/">
@@ -169,11 +179,11 @@ const Footer = () => {
               </ol>
             </div>
             <div className={classes["footer_nav_link_column--BLOCK"]}>
-              <h3
+              <h4
                 className={`${classes["footer_nav_link_column_title--EL"]} md_lg_font`}
               >
                 Let Us Help You
-              </h3>
+              </h4>
               <ol className={classes["footer_nav_link--CONTAINER"]}>
                 <li>
                   <Link href="/">
@@ -240,7 +250,7 @@ const Footer = () => {
                 </li>
               </ol>
             </div>
-          </div>
+          </section>
 
           <hr />
 
@@ -303,7 +313,7 @@ const Footer = () => {
                         <div
                           className={classes["lang_dropdown_header--CONTAINER"]}
                         >
-                          <h4 className="md_font">
+                          <span className="md_font">
                             <span
                               className={classes["lang_dropdown_title--EL"]}
                             >
@@ -316,7 +326,7 @@ const Footer = () => {
                                 Learn more
                               </a>
                             </Link>
-                          </h4>
+                          </span>
 
                           <ul className={classes["languages_list--EL"]}>
                             <li
@@ -454,7 +464,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className={classes["footer_amazon_coppyright_line--EL"]}>
+          <nav className={classes["footer_amazon_coppyright_line--EL"]}>
             <div
               className={
                 classes["footer_amazon_coppyright_line_content--CONTAINER"]
@@ -496,7 +506,7 @@ const Footer = () => {
                 </li>
               </ol>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>

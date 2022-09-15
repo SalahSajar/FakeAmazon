@@ -86,7 +86,7 @@ const Home_products_slider = ({ title, keyword }) => {
 
   return (
     <Fragment>
-      <div className={classes["products--SLIDER"]}>
+      <article className={classes["products--SLIDER"]}>
         <div className={classes["products_content--CONTAINER"]}>
           <h2 className={`${classes["proucts_slider_title--EL"]} lg_font`}>
             {title}
@@ -154,7 +154,7 @@ const Home_products_slider = ({ title, keyword }) => {
             </ul>
           </div>
         </div>
-      </div>
+      </article>
     </Fragment>
   );
 };

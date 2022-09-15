@@ -86,6 +86,7 @@
                 @include flex_display(initial, initial);
                 row-gap: .3rem;
                 text-decoration: none;
+                font-weight:600;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;

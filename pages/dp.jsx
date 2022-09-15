@@ -158,7 +158,7 @@ const Dp = ({ product, error }) => {
             <Head>
               <title>Amazon | {product.name}</title>
             </Head>
-            <div className={classes["product_infos--BLOCK"]}>
+            <main className={classes["product_infos--BLOCK"]}>
               <Main_layout>
                 {!!router.query.k && (
                   <Link href={`/search?k=${router.query.k}`}>
@@ -172,7 +172,7 @@ const Dp = ({ product, error }) => {
                     </a>
                   </Link>
                 )}
-                <div
+                <section
                   className={`${classes["product_details--HEADER"]} ${classes["product_details--DESKTOP"]}`}
                 >
                   <div
@@ -429,11 +429,11 @@ const Dp = ({ product, error }) => {
                                 classes["aboutThisProduct_content--WRAPPER"]
                               }
                             >
-                              <h4
+                              <span
                                 className={`${classes["aboutThisProduct_block--HEADER"]} md_font`}
                               >
                                 about this product
-                              </h4>
+                              </span>
                               <p
                                 className={`${classes["aboutThisProduct_infos--PARAGRAPH"]} md_font`}
                               >
@@ -509,11 +509,11 @@ const Dp = ({ product, error }) => {
                                 .split("   ")
                                 .map((availability_status_property, idx) => {
                                   return idx === 0 ? (
-                                    <h6
+                                    <span
                                       className={`${classes["product_limited_stock--TITLE"]} lg_font`}
                                     >
                                       {availability_status_property}
-                                    </h6>
+                                    </span>
                                   ) : (
                                     !!availability_status_property.trim() && (
                                       <span
@@ -529,11 +529,11 @@ const Dp = ({ product, error }) => {
                             <div
                               className={classes["product_availability--BLOCK"]}
                             >
-                              <h6
+                              <span
                                 className={`${classes["product_limited_stock--TITLE"]} lg_font`}
                               >
                                 {product.availability_status}
-                              </h6>
+                              </span>
                             </div>
                           ))}
 
@@ -602,7 +602,7 @@ const Dp = ({ product, error }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
 
                 <div
                   className={classes["product_details_sections_separater--EL"]}
@@ -944,7 +944,7 @@ const Dp = ({ product, error }) => {
                   className={classes["product_details_sections_separater--EL"]}
                 />
               </Main_layout>
-            </div>
+            </main>
           </Fragment>
         )}
 
