@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
-import { UserCartContext } from "../../customContexts/CartCtx";
+import { UserCartContext } from "@CustomContext/CartCtx";
 
 import UserCartProductCard from "./UserCartProductCard";
 
-import classes from "../../styles/Components/Global/UserCartComp.module.scss";
+import classes from "@GlobalCompsStyles/UserCartComp.module.scss";
 
 const UserCartComp = () => {
   const { userCart } = useContext(UserCartContext);
@@ -13,30 +13,19 @@ const UserCartComp = () => {
     <div className={classes["userCart--BLOCK"]}>
       <div className={classes["userCart_blockContent--WRAPPER"]}>
         <div className={classes["userCart_totalPrice--BLOCK"]}>
-          <span className={`${classes["userCart_totalPrice--TITLE"]} xsm_font`}>
-            subtotal
-          </span>
+          <span className={`${classes["userCart_totalPrice--TITLE"]} xsm_font`}>subtotal</span>
           <span className={`${classes["userCart_totalPrice--EL"]} md_font`}>
-            $
-            {userCart
-              .reduce((acc, userCartItem) => {
+            ${userCart.reduce((acc, userCartItem) => {
                 acc += userCartItem.price * userCartItem.amount;
+
                 return acc;
-              }, 0)
-              .toFixed(2)}
+              }, 0).toFixed(2)}
           </span>
         </div>
 
         <div className={classes["userCart_products--BLOCK"]}>
           <div className={classes["userCart_products_blockContent--WRAPPER"]}>
-            {userCart.map((userCartItem) => {
-              return (
-                <UserCartProductCard
-                  key={userCartItem.asin}
-                  productInfo={userCartItem}
-                />
-              );
-            })}
+            {userCart.map((userCartItem) => <UserCartProductCard key={userCartItem.asin} productInfo={userCartItem} />)}
           </div>
         </div>
       </div>

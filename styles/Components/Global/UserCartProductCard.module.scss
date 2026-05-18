@@ -1,5 +1,4 @@
-@import "/styles/Partials";
-@import "/styles/Partials/mixins";
+@use "../../Partials/index" as *;
 
 .userCart_product--CARD {
     padding: 1.5rem 0;

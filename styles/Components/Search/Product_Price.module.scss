@@ -1,5 +1,4 @@
-@import "/styles/Partials";
-@import "/styles/Partials/mixins";
+@use "../../Partials/index" as *;
 
 .product_price--BLOCK {
     @include flex_display(flex-end, initial);

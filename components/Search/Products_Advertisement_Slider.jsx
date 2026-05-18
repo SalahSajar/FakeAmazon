@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import Search_Result_Product_Card from "./Search_Result_Product_Card";
 
-import classes from "../../styles/Components/Search/Products_Advertisement_Slider.module.scss";
+import classes from "@SearchCompsStyles/Products_Advertisement_Slider.module.scss";
 
 const Products_Advertisement_Slider = ({ ads }) => {
   const sponsored_products_navigation__HANDLER = (direction) => {

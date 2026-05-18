@@ -1,25 +1,25 @@
-import { Fragment, useState} from "react";
+import { Fragment, useState, useEffect} from "react";
 import Link from "next/link";
 import Head from "next/head";
 
 import Image from "next/image";
 
 // Navbar Component
-import Navbar from "../components/Global/Navbar";
+import Navbar from "@GlobalComps/Navbar";
 
 // Home Products Exploration Component
-import Home_products_exploration from "../components/Home/Home_products_exploration";
+import Home_products_exploration from "@HomeComps/Home_products_exploration";
 
 // Browsing History Component
-import Browsing_history from "../components/Global/Browsing_history";
+import Browsing_history from "@GlobalComps/Browsing_history";
 
 // Page Layout Component
-import Page_layout from "../components/Layout/Page_layout";
+import Page_layout from "@LayoutComps/Page_layout";
 
 // Page Footer Component
-import Footer from "../components/Global/Footer";
+import Footer from "@GlobalComps/Footer";
 
-import classes from "../styles/Pages/Home.module.scss";
+import classes from "@PagesStyles/Home.module.scss";
 
 const slider_links = [
   "beauty_selections",
@@ -43,6 +43,15 @@ export default function Home() {
     }
   }
 
+  // useEffect(() => {
+  //   return async ()=>{
+  //     const req = await fetch("/api/amazonProducts/search");
+  //     const dataset = await req.json();
+
+  //     console.log(dataset);
+  //   }
+  // }, []);
+
   return (
     <Fragment>
 
@@ -60,7 +69,7 @@ export default function Home() {
                 <i className={`${classes["homePage_slider--ICON"]} ${classes["left_arrow--ICON"]}`}></i>
               </button>
               <Link href="javascript:void(0)">
-                <a className={classes["slider_item_link"]}></a>
+                <span className={classes["slider_item_link"]}></span>
               </Link>
               <button onClick={() => changeSliderIndex("+")} className={classes["homePage_slider_btn"]} type="button">
                 <i className={`${classes["homePage_slider--ICON"]} ${classes["right_arrow--ICON"]}`}></i>
@@ -73,14 +82,13 @@ export default function Home() {
                   slider_links.map(sliderLink => {
                     return (
                       <li key={sliderLink}>
-                        <Image src={`/home_links_slider/${sliderLink}.jpg`} priority={true} layout="fill" objectFit="cover" alt={sliderLink} />
+                        <Image src={`/home_links_slider/${sliderLink}.jpg`} fill={true} style={{objectFit:"cover"}} alt={sliderLink} />
                       </li>
                     )
                   })
                 }
               </ol>
             </div>
-
           </div>
 
           <Home_products_exploration />

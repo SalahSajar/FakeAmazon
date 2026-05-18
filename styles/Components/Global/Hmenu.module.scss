@@ -1,5 +1,4 @@
-@import "/styles/Partials";
-@import "/styles/Partials/mixins";
+@use "../../Partials/index" as *;
 
 .hmenu--BLOCK{
     position:fixed;

@@ -1,5 +1,4 @@
-@import "/styles/Partials";
-@import "/styles/Partials/mixins";
+@use "../../Partials/index" as *;
 
 .products_browsingHistory--EL{
     position:relative;

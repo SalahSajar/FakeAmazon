@@ -20,6 +20,8 @@ export const useProductSearchFetch = () => {
         keyword
       )}?api_Key=${process.env.NEXT_PUBLIC_HOME_SCAPPERAPI_KEY || process.env.NEXT_PUBLIC_VERCEL_HOME_SCAPPERAPI_KEY}`, options);
 
+      // const req = await fetch("/api/amazonProducts//bestOfCategory?categoryId: ")
+
       if (!req.ok) {
         throw Error("Something is not right ");
       }
@@ -30,7 +32,7 @@ export const useProductSearchFetch = () => {
         throw Error("Something is not right");
       }
 
-      productSearchResult = results.results;
+      productsSearchResult = results.results;
       error = false;
       loading = false;
     } catch (err) {
@@ -41,7 +43,7 @@ export const useProductSearchFetch = () => {
     return {
       error,
       loading,
-      productSearchResult,
+      productsSearchResult,
     };
   };
 

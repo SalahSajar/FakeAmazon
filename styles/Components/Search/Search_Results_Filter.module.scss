@@ -1,5 +1,4 @@
-@import "/styles/Partials";
-@import "/styles/Partials/mixins";
+@use "../../Partials/index" as *;
 
 .search_results_filter--BLOCK{
     flex:0 0 clamp(20rem, 20rem + 2vw , 30rem);

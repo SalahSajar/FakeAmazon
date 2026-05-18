@@ -1,13 +1,8 @@
-@import "/styles/Partials";
-@import "/styles/Partials/mixins";
+@use "../../Partials/index" as *;
 
 .navbar--El{
     position:relative;
     z-index: 6;
-
-    // @include for-size(phone-only){
-        
-    // }
 
     &.big_screens--NAVBAR{
         @include for-size(phone-only) {
@@ -193,6 +188,10 @@
                                 border: none;
                                 outline: none;
                                 z-index:2;
+
+                                &::placeholder{
+                                    text-transform: "capitalize"
+                                }
                             }
                             
                             .nav_search_btn{

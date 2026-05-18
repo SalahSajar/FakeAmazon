@@ -1,5 +1,4 @@
-@import "/styles/Partials";
-@import "/styles/Partials/mixins";
+@use "../../Partials/index" as *;
 
 .page_footer--EL{
     position: relative;
@@ -236,7 +235,7 @@
                                     }
                             
                                     hr {
-                                        margin: .75rem auto;
+                                        margin: .50rem auto;
                                         border: 0;
                                         border-top: 1px solid rgb(235, 226, 226);
                                     }
@@ -245,7 +244,7 @@
                                         list-style: none;
                             
                                         hr {
-                                            width: 70%;
+                                            width: 90%;
                                         }
                             
                                         .lang_item--EL {

@@ -1,5 +1,4 @@
-@import "/styles/Partials";
-@import "/styles/Partials/mixins";
+@use "../../Partials/index" as *;
 
 .userCart--BLOCK{
     flex:0 0 clamp(10rem, 5.5rem + 5vw, 17rem);

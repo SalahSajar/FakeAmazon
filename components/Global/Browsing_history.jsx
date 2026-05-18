@@ -1,26 +1,18 @@
 import { Fragment } from "react";
 
-import classes from "../../styles/Components/Global/Browsing_history.module.scss";
+import classes from "@GlobalCompsStyles/Browsing_history.module.scss";
 
 const Browsing_history = () => {
   return (
     <Fragment>
       <div className={classes["products_browsingHistory--EL"]}>
         <div className={classes["products_browsingHistory_content--CONTAINER"]}>
-          <div
-            className={classes["products_browsingHistory_header--CONTAINER"]}
-          >
+          <div className={classes["products_browsingHistory_header--CONTAINER"]}>
             <h4>Your Browsing History</h4>
             {/* <span className={classes["products_page--EL"]}>Page 1 of 8</span> */}
           </div>
-          <div
-            className={classes["browsing_histosy_feature_IsUnavailable--BLOCK"]}
-          >
-            <span
-              className={`${classes["browsing_histosy_feature_IsUnavailable--TYPO"]} lg_font`}
-            >
-              browsing history feature is currently unavailable.
-            </span>
+          <div className={classes["browsing_histosy_feature_IsUnavailable--BLOCK"]}>
+            <span className={`${classes["browsing_histosy_feature_IsUnavailable--TYPO"]} lg_font`} >browsing history feature is currently unavailable.</span>
           </div>
           {/* <div className={classes["products_carousel--CONTAINER"]}>
             <span

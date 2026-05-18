@@ -2,14 +2,14 @@ import React, { useEffect, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { auth } from "../../lib/FirebaseConfig";
+import { auth } from "@Lib/FirebaseConfig";
 import { signOut } from "firebase/auth";
 
-import { UserCartContext } from "../../customContexts/CartCtx";
+import { UserCartContext } from "@CustomContext/CartCtx";
 
-import { secondary_hmenu_lists_data } from "../../lib/HmenuListsData";
+import { secondary_hmenu_lists_data } from "@Lib/HmenuListsData";
 
-import classes from "../../styles/Components/Global/Hmenu.module.scss";
+import classes from "@GlobalCompsStyles/Hmenu.module.scss";
 
 let first_time_escape = true;
 
@@ -213,106 +213,63 @@ const Hmenu = () => {
       <div className={classes["hmenu_navigation--BLOCK"]}>
         <div className={classes["hmenu_header--BLOCK"]}>
           {currentUser ? (
-            <Link href="javascript:void(0)">
-              <a className={classes["hmenu_customer_profile--LINK"]}>
-                <div
-                  className={
-                    classes["hmenu_customer_profile_content--CONTAINER"]
-                  }
-                >
+            <Link className={classes["hmenu_customer_profile--LINK"]} href="javascript:void(0)">
+                <div className={ classes["hmenu_customer_profile_content--CONTAINER"] } >
                   <i className={classes["customer_profile--ICON"]}></i>
-                  <span
-                    className={`${classes["customer_profile_name--EL"]} lg_font`}
-                  >
-                    Hello, {currentUser.displayName}
-                  </span>
+                  <span className={`${classes["customer_profile_name--EL"]} lg_font`} > Hello, {currentUser.displayName} </span>
                 </div>
-              </a>
             </Link>
           ) : (
-            <Link href="/signin">
-              <a className={classes["hmenu_customer_profile--LINK"]}>
-                <div
-                  className={
-                    classes["hmenu_customer_profile_content--CONTAINER"]
-                  }
-                >
+            <Link className={classes["hmenu_customer_profile--LINK"]} href="/signin">
+                <div className={ classes["hmenu_customer_profile_content--CONTAINER"] } >
                   <i className={classes["customer_profile--ICON"]}></i>
-                  <span
-                    className={`${classes["customer_profile_name--EL"]} lg_font`}
-                  >
-                    Hello, sign in
-                  </span>
+                  <span className={`${classes["customer_profile_name--EL"]} lg_font`} > Hello, sign in </span>
                 </div>
-              </a>
             </Link>
           )}
 
-          <i
-            onClick={close_hmenu__FUNC}
-            className={classes["close_hmenu--BTN"]}
-          ></i>
+          <i onClick={close_hmenu__FUNC} className={classes["close_hmenu--BTN"]} ></i>
         </div>
         <div className={classes["hmenu_content--CONTAINER"]}>
-          <ul
-            data-menu-id="1"
-            className={`${classes["hmenu_links_list--EL"]} ${classes["hmenu_list_centered"]}`}
-          >
-            <li className={`${classes["hmenu_list_title--EL"]} lg_font`}>
-              Digital Content & Devices
-            </li>
+          <ul data-menu-id="1" className={`${classes["hmenu_links_list--EL"]} ${classes["hmenu_list_centered"]}`} >
+            <li className={`${classes["hmenu_list_title--EL"]} lg_font`}> Digital Content & Devices </li>
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="2"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
+              <Link
+                data-menu-id="2"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/"
+              >
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      amazon music
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > amazon music </span>
                     <i className={classes["hmenu_item--ICON"]}></i>
                   </div>
-                </a>
+                </Link>
+            </li>
+            <li>
+              <Link
+                data-menu-id="3"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/"
+              >
+                  <div className={classes["hmenu_item_content--CONTAINER"]}>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Kindle E-readers & Books</span>
+                    <i className={classes["hmenu_item--ICON"]}></i>
+                  </div>
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="3"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
+              <Link
+                data-menu-id="4"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/"
+              >
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      Kindle E-readers & Books
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Appstore for Android</span>
                     <i className={classes["hmenu_item--ICON"]}></i>
                   </div>
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a
-                  data-menu-id="4"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
-                  <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      Appstore for Android
-                    </span>
-                    <i className={classes["hmenu_item--ICON"]}></i>
-                  </div>
-                </a>
               </Link>
             </li>
 
@@ -320,80 +277,56 @@ const Hmenu = () => {
             <li className={classes["hmenu_break_line--EL"]}></li>
             {/* ------------------------------------- */}
 
-            <li className={`${classes["hmenu_list_title--EL"]} lg_font`}>
-              Shop By Department
-            </li>
+            <li className={`${classes["hmenu_list_title--EL"]} lg_font`}> Shop By Department </li>
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="5"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
+              <Link
+                data-menu-id="5"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/"
+              >
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      Electronics
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Electronics</span>
                     <i className={classes["hmenu_item--ICON"]}></i>
                   </div>
-                </a>
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="6"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
+              <Link
+                data-menu-id="6"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/"
+              >
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      Computers
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Computers</span>
                     <i className={classes["hmenu_item--ICON"]}></i>
                   </div>
-                </a>
               </Link>
             </li>
 
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="7"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
+              <Link
+                data-menu-id="7"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/">
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      Smart Home
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Smart Home</span>
                     <i className={classes["hmenu_item--ICON"]}></i>
                   </div>
-                </a>
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="8"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
+              <Link
+                data-menu-id="8"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/">
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      Arts & Crafts
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Arts & Crafts</span>
                     <i className={classes["hmenu_item--ICON"]}></i>
                   </div>
-                </a>
               </Link>
             </li>
 
@@ -406,347 +339,223 @@ const Hmenu = () => {
               {/* ------------------------------------- */}
 
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="9"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="9"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Automotive
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Automotive</span>
                       <i className={classes["hmenu_item--ICON"]}></i>
                     </div>
-                  </a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="10"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="10"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Baby
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Baby</span>
                       <i className={classes["hmenu_item--ICON"]}></i>
                     </div>
-                  </a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="11"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="11"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Beauty and personal care
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Beauty and personal care</span>
                       <i className={classes["hmenu_item--ICON"]}></i>
                     </div>
-                  </a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="12"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="12"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Women&#39;s Fashion
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Women&#39;s Fashion</span>
                       <i className={classes["hmenu_item--ICON"]}></i>
                     </div>
-                  </a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="13"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="13"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        men&#39;s Fashion
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > men&#39;s Fashion</span>
                       <i className={classes["hmenu_item--ICON"]}></i>
                     </div>
-                  </a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="14"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="14"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        girl&#39;s Fashion
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > girl&#39;s Fashion</span>
                       <i className={classes["hmenu_item--ICON"]}></i>
                     </div>
-                  </a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="15"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="15"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        boy&#39;s Fashion
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > boy&#39;s Fashion</span>
                       <i className={classes["hmenu_item--ICON"]}></i>
                     </div>
-                  </a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="16"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="16"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Health and Household
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`} > Health and Household</span>
                       <i className={classes["hmenu_item--ICON"]}></i>
                     </div>
-                  </a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="17"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="17"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Home and Kitchen
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Home and Kitchen</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="18"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="18"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Industrial and Scientific
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Industrial and Scientific</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="19"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="19"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Luggage
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Luggage</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="20"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="20"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Movies & Television
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Movies & Television</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="21"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="21"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Pet supplies
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Pet supplies</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="22"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="22"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Software
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Software</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="23"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="23"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Sports and Outdoors
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Sports and Outdoors</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="24"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="24"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Tools & Home Improvement
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Tools & Home Improvement</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="25"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="25"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Toys and Games
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Toys and Games</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a
-                    data-menu-id="26"
-                    className={classes["hmenu_item--EL"]}
-                    onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                  >
+                <Link
+                  data-menu-id="26"
+                  className={classes["hmenu_item--EL"]}
+                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                  href="/">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Video Games
-                      </span>
-                      <i className={classes["hmenu_item--ICON"]}></i>
-                    </div>
-                  </a>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Video Games</span>                     
+                      <i className={classes["hmenu_item--ICON"]}></i></div>
                 </Link>
               </li>
             </ul>
 
             <li>
-              <Link href="/">
-                <a
-                  onClick={reveal_compressed_list__FUNC}
-                  data-compressed-list-id="shopByDepartement_compressed_list"
-                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_compressed_list--BTN"]}`}
-                >
+              <Link
+                onClick={reveal_compressed_list__FUNC}
+                data-compressed-list-id="shopByDepartement_compressed_list"
+                className={`${classes["hmenu_item--EL"]} ${classes["hmenu_compressed_list--BTN"]}`}
+                href="/">
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      See More
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>See More</span>
                     <i className={classes["hmenu_item--ICON"]}></i>
                   </div>
-                </a>
               </Link>
             </li>
 
@@ -754,77 +563,52 @@ const Hmenu = () => {
             <li className={classes["hmenu_break_line--EL"]}></li>
             {/* ------------------------------------- */}
 
-            <li className={`${classes["hmenu_list_title--EL"]} lg_font`}>
-              Programs & Features
-            </li>
+            <li className={`${classes["hmenu_list_title--EL"]} lg_font`}>Programs & Features</li>
 
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="27"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
+              <Link
+                data-menu-id="27"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/"
+              >
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      Gift Cards
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Gift Cards</span>
                     <i className={classes["hmenu_item--ICON"]}></i>
                   </div>
-                </a>
               </Link>
             </li>
             <li>
-              <Link href="javascript:void(0)">
-                <a
-                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
-                >
+              <Link className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`} href="javascript:void(0)">
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      #FoundItOnAmazon
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>#FoundItOnAmazon</span>
                   </div>
-                </a>
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="28"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
-                  <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      Amazon Live
-                    </span>
-                    <i className={classes["hmenu_item--ICON"]}></i>
-                  </div>
-                </a>
+              <Link
+                data-menu-id="28"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/"
+              >
+                <div className={classes["hmenu_item_content--CONTAINER"]}>
+                  <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Amazon Live</span>
+                  <i className={classes["hmenu_item--ICON"]}></i>
+                </div>
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <a
-                  data-menu-id="29"
-                  className={classes["hmenu_item--EL"]}
-                  onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
-                >
-                  <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      International Shopping
-                    </span>
-                    <i className={classes["hmenu_item--ICON"]}></i>
-                  </div>
-                </a>
+              <Link
+                data-menu-id="29"
+                className={classes["hmenu_item--EL"]}
+                onClick={(evt) => change_hmenu_list__FUNC(evt, "forwards")}
+                href="/"
+              >
+                <div className={classes["hmenu_item_content--CONTAINER"]}>
+                  <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>International Shopping</span>
+                  <i className={classes["hmenu_item--ICON"]}></i>
+                </div>
               </Link>
             </li>
 
@@ -837,38 +621,25 @@ const Hmenu = () => {
               {/* ------------------------------------- */}
 
               <li>
-                <Link href="javascript:void(0)">
-                  <a
-                    className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
-                  >
-                    <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        Amazon Second Chance
-                      </span>
-                    </div>
-                  </a>
+                <Link className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`} href="javascript:void(0)">
+                  <div className={classes["hmenu_item_content--CONTAINER"]}>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>Amazon Second Chance</span>
+                  </div>
                 </Link>
               </li>
             </ul>
 
             <li>
-              <Link href="javascript:void(0)">
-                <a
-                  onClick={reveal_compressed_list__FUNC}
-                  data-compressed-list-id="programs&features_compressed_list"
-                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_compressed_list--BTN"]}`}
-                >
-                  <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      See More
-                    </span>
-                    <i className={classes["hmenu_item--ICON"]}></i>
-                  </div>
-                </a>
+              <Link 
+                onClick={reveal_compressed_list__FUNC}
+                data-compressed-list-id="programs&features_compressed_list"
+                className={`${classes["hmenu_item--EL"]} ${classes["hmenu_compressed_list--BTN"]}`}
+                href="javascript:void(0)"
+              >
+                <div className={classes["hmenu_item_content--CONTAINER"]}>
+                  <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>See More</span>
+                  <i className={classes["hmenu_item--ICON"]}></i>
+                </div>
               </Link>
             </li>
 
@@ -881,98 +652,62 @@ const Hmenu = () => {
             </li>
 
             <li>
-              <Link href="javascript:void(0)">
-                <a
-                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
-                >
+              <Link 
+                className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
+                href="javascript:void(0)">
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      your account
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>your account</span>
                   </div>
-                </a>
               </Link>
             </li>
             <li>
-              <Link href="javascript:void(0)">
-                <a
-                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_customer_config_item--LINK"]}`}
-                >
+              <Link 
+                className={`${classes["hmenu_item--EL"]} ${classes["hmenu_customer_config_item--LINK"]}`}
+                href="javascript:void(0)">
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
                     <i className={classes["hmenu_lang_config--ICON"]}></i>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      english
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>english</span>
                   </div>
-                </a>
               </Link>
             </li>
             <li>
-              <Link href="javascript:void(0)">
-                <a
-                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_customer_config_item--LINK"]}`}
-                >
+              <Link 
+                className={`${classes["hmenu_item--EL"]} ${classes["hmenu_customer_config_item--LINK"]}`}
+                href="javascript:void(0)">
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
                     <i className={classes["hmenu_country_config--ICON"]}></i>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      united states
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>united states</span>
                   </div>
-                </a>
               </Link>
             </li>
             <li>
-              <Link href="javascript:void(0)">
-                <a
-                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
-                >
+              <Link 
+                className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
+                href="javascript:void(0)">
                   <div className={classes["hmenu_item_content--CONTAINER"]}>
-                    <span
-                      className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                    >
-                      customer service
-                    </span>
+                    <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>customer service</span>
                   </div>
-                </a>
               </Link>
             </li>
             {!currentUser ? (
               <li>
-                <Link href="/signin">
-                  <a
-                    className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
-                  >
+                <Link 
+                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
+                  href="/signin">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        sign in
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>sign in</span>
                     </div>
-                  </a>
                 </Link>
               </li>
             ) : (
               <li>
-                <Link href="javascript:void(0)">
-                  <a
-                    onClick={navbarSignOutClick__EventHandler}
-                    className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
-                  >
+                <Link
+                  onClick={navbarSignOutClick__EventHandler}
+                  className={`${classes["hmenu_item--EL"]} ${classes["hmenu_item--LINK"]}`}
+                  href="javascript:void(0)">
                     <div className={classes["hmenu_item_content--CONTAINER"]}>
-                      <span
-                        className={`${classes["hmenu_item_title--EL"]} md_lg_font`}
-                      >
-                        sign out
-                      </span>
+                      <span className={`${classes["hmenu_item_title--EL"]} md_lg_font`}>sign out</span>
                     </div>
-                  </a>
                 </Link>
               </li>
             )}

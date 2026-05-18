@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"baseurl": ".",
+		"paths": {
+			"@HomeCompsStyles/*": ["styles/Components/Home/*"],
+			"@GlobalCompsStyles/*": ["styles/Components/Global/*"],
+			"@SearchCompsStyles/*": ["styles/Components/Search/*"],
+			"@PagesStyles/*": ["styles/Pages/*"],
+			"@Lib/*": ["lib/*"],
+			"@CustomContext/*": ["customContexts/*"],
+			"@CustomHooks/*": ["customHooks/*"],
+
+			"@GlobalComps/*": ["components/Global/*"],
+			"@HomeComps/*": ["components/Home/*"],
+			"@LayoutComps/*": ["components/Layout/*"],
+			"@SearchComps/*": ["components/Search/*"],
+			// "@HomeStyles/*": ["styles/Components/Home/*"],
+			// "@HomeStyles/*": ["styles/Components/Home/*"],
+			// "@HomeStyles/*": ["styles/Components/Home/*"],
+		}
+	}
+}

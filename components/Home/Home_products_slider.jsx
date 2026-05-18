@@ -1,85 +1,49 @@
-import React, {
-  Fragment,
-  useEffect,
-  useState,
-  useCallback,
-  useRef,
-} from "react";
+import React, {Fragment, useEffect, useState, useCallback, useRef} from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { useProductSearchFetch } from "../../customHooks/useProductSearchFetch";
-import { useProductAsinFinder } from "../../customHooks/useProductAsinFinder";
+import { useFetchProductsByCategory } from "@CustomHooks/useFetchProductsByCategory";
 
-import classes from "../../styles/Components/Home/Home_products_slider.module.scss";
+import { useProductSearchFetch } from "@CustomHooks/useProductSearchFetch";
+import { useProductAsinFinder } from "@CustomHooks/useProductAsinFinder";
 
-const Home_products_slider = ({ title, keyword }) => {
+import {ShufflingAlgo} from "@Lib/Scripts/ShufflingAlgo";
+
+import classes from "@HomeCompsStyles/Home_products_slider.module.scss";
+
+const Home_products_slider = ({ title, keyword, categoryId }) => {
   let fetchHandlerBlocker = useRef(false);
 
-  const [randomProducts, setRandomProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const { productSearchFetch__HANDLER } = useProductSearchFetch();
-  const { findProductAsin__HANDLER } = useProductAsinFinder();
-
-  const selectRandomTenItems__FUNC = (items) => {
-    const randomTenItemsData = [];
-    let randomItemsIndex = [];
-
-    if (!items.length) {
-      return;
-    }
-
-    if (items.length > 10) {
-      while (randomItemsIndex.length !== 10) {
-        const randomIndex = Math.floor(Math.random() * items.length);
-        if (!randomItemsIndex.includes(randomIndex)) {
-          randomItemsIndex.push(randomIndex);
-          randomTenItemsData.push(items[randomIndex]);
-        }
-      }
-
-      setRandomProducts(randomTenItemsData);
-
-      return;
-    }
-
-    if (items.length <= 10) {
-      setRandomProducts(items);
-
-      return;
-    }
-  };
+  const {FetchProductsByCategory} = useFetchProductsByCategory();
 
   const reloadProductsCard__FUNC = () => {
     setLoading(true);
     setError(false);
+
     searchProduct__HANDLER();
   };
 
   const searchProduct__HANDLER = useCallback(async () => {
     const {
-      error: productSearchError,
-      loading: productSearchLoading,
-      productSearchResult,
-    } = await productSearchFetch__HANDLER(keyword);
+      error: PPC_is_error,
+      loading: PPC_is_loading,
+      PPC_List
+    } = await FetchProductsByCategory(categoryId);
 
-    if (
-      !productSearchError &&
-      !!productSearchResult?.length &&
-      !productSearchLoading
-    ) {
-      selectRandomTenItems__FUNC(productSearchResult);
-    }
+    if (!PPC_is_error && !!PPC_List?.length && !PPC_is_loading) setProducts(ShufflingAlgo(PPC_List));
 
-    setLoading(productSearchLoading);
-    setError(productSearchError);
-  }, [keyword, productSearchFetch__HANDLER]);
+    setLoading(PPC_is_loading);
+    setError(PPC_is_error);
+  }, [keyword, FetchProductsByCategory]);
 
   useEffect(() => {
     if (!fetchHandlerBlocker.current && !!keyword) {
       searchProduct__HANDLER();
+
       fetchHandlerBlocker.current = true;
     }
   }, [searchProduct__HANDLER, keyword]);
@@ -88,9 +52,7 @@ const Home_products_slider = ({ title, keyword }) => {
     <Fragment>
       <article className={classes["products--SLIDER"]}>
         <div className={classes["products_content--CONTAINER"]}>
-          <h2 className={`${classes["proucts_slider_title--EL"]} lg_font`}>
-            {title}
-          </h2>
+          <h2 className={`${classes["proucts_slider_title--EL"]} lg_font`}>{title}</h2>
 
           <div className={classes["products_slider--EL"]}>
             <ul className={classes["products_slider_list--CONTAINER"]}>
@@ -109,42 +71,33 @@ const Home_products_slider = ({ title, keyword }) => {
                   <div className={classes["error_icon--CONTAINER"]}>
                     <Image
                       src="/icons/error-48.png"
-                      width="50"
-                      height="50"
+                      width={50}
+                      height={50}
                       alt="error fetching products"
                     />
                   </div>
-                  <span className={`md_lg_font`}>
-                    something went wrong, please try again later
-                  </span>
-                  <button
-                    onClick={reloadProductsCard__FUNC}
-                    type="button"
-                    className={`${classes["card_reload--BTN"]} md_font`}
-                  >
-                    reload
-                  </button>
+                  <span className={`md_lg_font`}>something went wrong, please try again later</span>
+
+                  <button onClick={reloadProductsCard__FUNC} type="button" className={`${classes["card_reload--BTN"]} md_font`}>reload</button>
                 </div>
               ) : (
                 <Fragment>
-                  {randomProducts.length &&
-                    randomProducts.map(({ name, image, url }) => {
+                  {!!products?.length && products?.map(({ _id, asin, title, imgUrl }) => {
                       return (
-                        <li key={findProductAsin__HANDLER(url)}>
+                        <li key={_id}>
                           <Link
-                            href={`/dp?asin=${findProductAsin__HANDLER(url)}`}
+                            title={title}
+                            className={classes["product_item--EL"]}
+                            href={`/dp?asin=${asin}`}
                           >
-                            <a
-                              title={name}
-                              className={classes["product_item--EL"]}
-                            >
-                              <Image
-                                src={image}
-                                alt={name}
-                                layout="fill"
-                                objectFit="contain"
-                              />
-                            </a>
+                            <Image
+                              src={imgUrl}
+                              alt={title}
+                              width={10}
+                              height={10}
+                              sizes="100vw"
+                              style={{width: "fit-content", height: "100%", objectFit:"contain"}}
+                            />
                           </Link>
                         </li>
                       );

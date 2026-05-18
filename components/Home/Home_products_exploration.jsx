@@ -1,11 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 
 import Main_layout from "../Layout/Main_layout";
 
 import Home_products_card from "./Home_products_card";
 import Home_products_slider from "./Home_products_slider";
 
-import classes from "../../styles/Components/Home/Home_products_exploration.module.scss";
+import classes from "@HomeCompsStyles/Home_products_exploration.module.scss";
 
 const categories_card_links_infos = [
   {
@@ -31,6 +31,8 @@ const categories_card_links_infos = [
   },
 ];
 
+
+
 const Home_products_exploration = () => {
   return (
     <Fragment>
@@ -41,6 +43,7 @@ const Home_products_exploration = () => {
               <Home_products_card
                 title="best sellers in electronics"
                 keyword="electronics"
+                categoryId={57}
                 purpose="products recommendation"
               />
               <Home_products_card
@@ -82,11 +85,12 @@ const Home_products_exploration = () => {
             </div>
 
             <Home_products_slider
-              title=" most wished for car cares"
+              title="most wished for car cares"
               keyword="car care"
+              categoryId={19}
             />
 
-            <div className={classes["products_carts--CONTAINER"]}>
+           <div className={classes["products_carts--CONTAINER"]}>
               <Home_products_card
                 title="Shop Pet supplies"
                 purpose="redirection card"
@@ -97,11 +101,13 @@ const Home_products_exploration = () => {
                 title="best sellers in toys & games"
                 purpose="top products recommendation card"
                 keyword="toys and games"
+                categoryId={270}
               />
               <Home_products_card
                 title="best sellers in beauty & personal care"
                 purpose="top products recommendation card"
                 keyword="personal care"
+                categoryId={45}
               />
               <Home_products_card
                 title="Shop backpacks"
@@ -113,11 +119,13 @@ const Home_products_exploration = () => {
             <Home_products_slider
               title="most wished for cell phones"
               keyword="cell phones"
+              categoryId={75}
             />
 
             <Home_products_slider
               title="most wished for jewelries"
               keyword="jewelry"
+              categoryId={123}
             />
           </div>
         </main>

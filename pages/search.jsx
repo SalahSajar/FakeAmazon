@@ -2,26 +2,23 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import { auth } from "../lib/FirebaseConfig";
+import { auth } from "@Lib/FirebaseConfig";
 
-import Main_layout from "../components/Layout/Main_layout";
+import Main_layout from "@LayoutComps//Main_layout";
 
-import Navbar from "../components/Global/Navbar";
-import Footer from "../components/Global/Footer";
+import Navbar from "@GlobalComps/Navbar";
+import Footer from "@GlobalComps/Footer";
 
-import Search_Results_Filter from "../components/Search/Search_Results_Filter";
-import Search_Result_Products from "../components/Search/Search_Result_Products";
+import Search_Results_Filter from "@SearchComps/Search_Results_Filter";
+import Search_Result_Products from "@SearchComps/Search_Result_Products";
 
-import classes from "../styles/Pages/Search.module.scss";
+import classes from "@PagesStyles/Search.module.scss";
 
 const Search = ({ products, error }) => {
   const { currentUser } = auth;
 
-  const originalProductsArr = products.results;
   const [showSortingMethods, setShowSortingMethods] = useState(false);
-  const [filteredProductsArr, setFilteredProductsArr] = useState(
-    products.results
-  );
+  const [filteredProductsArr, setFilteredProductsArr] = useState(products.results);
 
   const [filterByStars, setFilterByStars] = useState(null);
   const [filterByPrice, setFilterByPrice] = useState(null);
@@ -59,14 +56,11 @@ const Search = ({ products, error }) => {
   }, [router]);
 
   useEffect(() => {
-    const sortingBlock__EL = document.querySelector(
-      `.${classes["sortBy_search_results--CONTAINER"]}`
-    );
+    const sortingBlock__EL = document.querySelector(`.${classes["sortBy_search_results--CONTAINER"]}`);
     const body__EL = document.body;
 
     const documentClickEvent__Handler = (evt) => {
-      !sortingBlock__EL.contains(evt.target) &&
-        setShowSortingMethods(() => false);
+      !sortingBlock__EL.contains(evt.target) && setShowSortingMethods(() => false);
     };
 
     body__EL.addEventListener("click", documentClickEvent__Handler);
@@ -79,14 +73,12 @@ const Search = ({ products, error }) => {
     // filter products by Price and Stars Range
     if (!!filterByStars && !!filterByPrice) {
       setFilteredProductsArr(() => {
-        return originalProductsArr
-          .filter((item) => {
+        return products.filter((item) => {
             if (filterByStars === "1-up") return item.stars >= 1;
             if (filterByStars === "2-up") return item.stars >= 2;
             if (filterByStars === "3-up") return item.stars >= 3;
             if (filterByStars === "4-up") return item.stars >= 4;
-          })
-          .filter((item) => {
+          }).filter((item) => {
             if (filterByPrice === "under-25") return item.price < 25;
             if (filterByPrice === "50->100")
               return item.price >= 25 && item.price <= 50;
@@ -111,91 +103,82 @@ const Search = ({ products, error }) => {
     // filter products by Stars Range
     if (!!filterByStars && !filterByPrice) {
       setFilteredProductsArr((prev) => {
-        if (filterByStars === "1-up")
-          return originalProductsArr.filter((item) => item.stars >= 1);
-        if (filterByStars === "2-up")
-          return originalProductsArr.filter((item) => item.stars >= 2);
-        if (filterByStars === "3-up")
-          return originalProductsArr.filter((item) => item.stars >= 3);
-        if (filterByStars === "4-up")
-          return originalProductsArr.filter((item) => item.stars >= 4);
+        switch(filterByStars){
+          case "1-up":
+            return products.filter((item) => item.stars >= 1);
+            break;
+          case "2-up":
+            return products.filter((item) => item.stars >= 2);
+            break;
+          case "3-up":
+            return products.filter((item) => item.stars >= 3);
+            break;
+          case "4-up":
+            return products.filter((item) => item.stars >= 4);
+            break;
+        }
       });
     }
 
     // filter products by Price Range
     if (!filterByStars && !!filterByPrice) {
       setFilteredProductsArr(() => {
-        if (filterByPrice === "under-25")
-          return originalProductsArr.filter((item) => item.price < 25);
-        if (filterByPrice === "25->50")
-          return originalProductsArr.filter(
-            (item) => item.price >= 25 && item.price <= 50
-          );
-        if (filterByPrice === "50->100")
-          return originalProductsArr.filter(
-            (item) => item.price >= 50 && item.price <= 100
-          );
-        if (filterByPrice === "100->200")
-          return originalProductsArr.filter(
-            (item) => item.price >= 100 && item.price <= 200
-          );
-        if (filterByPrice === "over-200")
-          return originalProductsArr.filter((item) => item.price > 200);
+
+        switch (filterByPrice){
+          case "under-25":
+            return products.filter((item) => item.price < 25);
+            break;
+          case "25->50":
+            return products.filter((item) => item.price >= 25 && item.price <= 50);
+            break;
+          case "50->100":
+            return products.filter((item) => item.price >= 50 && item.price <= 100);
+            break;
+          case "100->200":
+            return products.filter((item) => item.price >= 100 && item.price <= 200);
+            break;
+          case "over-200":
+            return products.filter((item) => item.price > 200);
+            break;
+        }
 
         if (filterByPrice === "custom") {
           if (!!min && !max)
-            return originalProductsArr.filter((item) => item.price > min);
+            return products.filter((item) => item.price > min);
           if (!min && !!max)
-            return originalProductsArr.filter((item) => item.price < max);
+            return products.filter((item) => item.price < max);
           if (!!min && !!max)
-            return originalProductsArr.filter(
-              (item) => item.price > min && item.price < max
-            );
+            return products.filter((item) => item.price > min && item.price < max);
         }
       });
     }
 
-    if (!filterByStars && !filterByPrice) {
-      setFilteredProductsArr(originalProductsArr);
-    }
-  }, [filterByPrice, filterByStars, originalProductsArr, priceRange]);
+    if (!filterByStars && !filterByPrice) setFilteredProductsArr(products);
+
+  }, [filterByPrice, filterByStars, products, priceRange]);
 
   return (
     <Fragment>
       <Navbar />
+
       <div className={classes["keyword_search--BLOCK"]}>
         <div className={classes["keyword_search_results_eyebrow--BLOCK"]}>
           <Main_layout>
-            <div
-              className={
-                classes["keyword_search_results_eyebrow_content--CONTAINER"]
-              }
-            >
-              <span
-                className={`${classes["keyword_search_results_length--EL"]} md_lg_font`}
-              >
-                {originalProductsArr?.length} results for{" "}
-                <span className={classes["search_results_keyword--EL"]}>
-                  &quot;{router.query?.k}&quot;
-                </span>
+            <div className={classes["keyword_search_results_eyebrow_content--CONTAINER"]}>
+              <span className={`${classes["keyword_search_results_length--EL"]} md_lg_font`}>
+                {products?.length} results for{" "}
+                <span className={classes["search_results_keyword--EL"]}>"{router.query?.k}"</span>
               </span>
               <div className={classes["sortBy_search_results--CONTAINER"]}>
                 <button
                   onClick={toggleSortingResultsMethods__Handler}
                   className={classes["sortBy_search_results--BTN"]}
                 >
-                  <div
-                    className={`${classes["sortBy_btn_content--CONTAINER"]} md_font`}
-                  >
+                  <div className={`${classes["sortBy_btn_content--CONTAINER"]} md_font`}>
                     <span>sort by:</span>
                     <span className={classes["selected_sortBy_method"]}>
-                      {router.query.s !== "review-rank" &&
-                      router.query.s !== "price-asc" &&
-                      router.query.s !== "price-desc"
-                        ? "features"
-                        : ""}
-                      {router.query.s === "review-rank" &&
-                        "avg. customer review"}
+                      {router.query.s !== "review-rank" && router.query.s !== "price-asc" && router.query.s !== "price-desc" ? "features" : ""}
+                      {router.query.s === "review-rank" && "avg. customer review"}
                       {router.query.s === "price-asc" && "price: low to high"}
                       {router.query.s === "price-desc" && "price: high to low"}
                     </span>
@@ -206,77 +189,34 @@ const Search = ({ products, error }) => {
                   <div className={classes["sortBy_methods--BLOCK"]}>
                     <ul>
                       <li>
-                        <Link href={`${router.route}?k=${router.query.k}`}>
-                          <a
-                            className={`${
-                              classes["sortBy_method--EL"]
-                            } md_font ${
-                              router.query.s !== "review-rank" &&
-                              router.query.s !== "price-asc" &&
-                              router.query.s !== "price-desc" &&
-                              classes["selected_sorting_method"]
-                            }`}
-                            onClick={() =>
-                              setShowSortingMethods((prev) => false)
-                            }
-                          >
-                            features
-                          </a>
-                        </Link>
+                        <Link 
+                          className={`${classes["sortBy_method--EL"]} md_font ${
+                            router.query.s !== "review-rank" &&
+                            router.query.s !== "price-asc" &&
+                            router.query.s !== "price-desc" &&
+                            classes["selected_sorting_method"]
+                          }`}
+                          onClick={() =>setShowSortingMethods((prev) => false)}
+                          href={`${router.route}?k=${router.query.k}`}>features</Link>
                       </li>
                       <li>
                         <Link
+                          className={`${classes["sortBy_method--EL"]} md_font ${router.query.s === "price-asc" && classes["selected_sorting_method"]}`}
+                          onClick={() =>setShowSortingMethods((prev) => false)}
                           href={`${router.route}?k=${router.query.k}&s=price-asc`}
-                        >
-                          <a
-                            className={`${
-                              classes["sortBy_method--EL"]
-                            } md_font ${
-                              router.query.s === "price-asc" &&
-                              classes["selected_sorting_method"]
-                            }`}
-                            onClick={() =>
-                              setShowSortingMethods((prev) => false)
-                            }
-                          >
-                            price: low to high
-                          </a>
-                        </Link>
+                        >price: low to high</Link>
                       </li>
                       <li>
-                        <Link
+                        <Link 
+                          className={`${classes["sortBy_method--EL"]} md_font ${router.query.s === "price-desc" && classes["selected_sorting_method"]}`}onClick={() =>setShowSortingMethods((prev) => false)}
                           href={`${router.route}?k=${router.query.k}&s=price-desc`}
-                        >
-                          <a
-                            className={`${
-                              classes["sortBy_method--EL"]
-                            } md_font ${
-                              router.query.s === "price-desc" &&
-                              classes["selected_sorting_method"]
-                            }`}
-                            onClick={() =>
-                              setShowSortingMethods((prev) => false)
-                            }
-                          >
-                            price: high to low
-                          </a>
-                        </Link>
+                        >price: high to low</Link>
                       </li>
                       <li>
-                        <Link
+                        <Link 
+                          className={`${classes["sortBy_method--EL"]} md_font ${router.query.s === "review-rank" && classes["selected_sorting_method"]}`}
                           href={`${router.route}?k=${router.query.k}&s=review-rank`}
-                        >
-                          <a
-                            className={`${
-                              classes["sortBy_method--EL"]
-                            } md_font ${
-                              router.query.s === "review-rank" &&
-                              classes["selected_sorting_method"]
-                            }`}
-                          >
-                            avg. customer review
-                          </a>
-                        </Link>
+                        >avg. customer review</Link>
                       </li>
                     </ul>
                   </div>
@@ -292,15 +232,13 @@ const Search = ({ products, error }) => {
               <Search_Results_Filter
                 filterProductsByStars__HANDLER={filterProductsByStars__HANDLER}
                 filterProductsByPrice__HANDLER={filterProductsByPrice__HANDLER}
-                filterProductsByPriceRange__HANDLER={
-                  filterProductsByPriceRange__HANDLER
-                }
+                filterProductsByPriceRange__HANDLER={filterProductsByPriceRange__HANDLER}
                 clearFilter__HANDLER={clearFilter__HANDLER}
                 filterByStars={filterByStars}
                 filterByPrice={filterByPrice}
               />
-              <Search_Result_Products
-                products={filteredProductsArr}
+             <Search_Result_Products
+                products={products}
                 ads={products.ads}
                 error={error}
               />
@@ -311,16 +249,12 @@ const Search = ({ products, error }) => {
         {!currentUser ? (
           <div className={classes["signin--BLOCK"]}>
             <div className={classes["signin_content--WRAPPER"]}>
-              <span className={`${classes["signin--HEADER"]} md_font`}>
-                see personalized history
-              </span>
+              <span className={`${classes["signin--HEADER"]} md_font`}>see personalized history</span>
               <button
                 type="button"
                 className={`${classes["signin--BTN"]} md_font`}
                 onClick={() => router.push("/signin")}
-              >
-                Sign in
-              </button>
+              >Sign in</button>
               <span className={`${classes["signin--FOOTER"]} sm_font`}>
                 new customer? <Link href="/register">Start here.</Link>
               </span>
@@ -346,73 +280,53 @@ export async function getServerSideProps(req, res) {
     try {
       let results = [];
 
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key":
-            process.env.RAPIDAPI_KEY || process.env.VERCEL_RAPIDAPI_KEY,
-          "X-RapidAPI-Host": "amazon-ecommerce-data-scrapper.p.rapidapi.com",
-        },
-      };
-      const req = await fetch(
-        `https://amazon-ecommerce-data-scrapper.p.rapidapi.com/search/${encodeURI(
-          keyword
-        )}?api_key=${
-          process.env.SCAPPERAPI_KEY || process.env.VERCEL_SCAPPERAPI_KEY
-        }`,
-        options
-      );
+      const req = await fetch(`${process.env.SERPAPI_API_URI}&k=${encodeURI(keyword)}&api_key=${process.env.SERPAPI_API__KEY}`);
 
       if (req.status !== 200) {
         throw Error("Something Went Wrong!!");
       }
 
-      const search_results = await req.json();
+      const searchResults = await req.json();
 
-      if (!!search_results.results.length) {
-        results = search_results.results.reduce((acc, productObj) => {
-          if (!acc.some((item) => item.name === productObj.name)) {
-            acc.push(productObj);
-          }
-          return acc;
-        }, []);
+      const productsList = searchResults.organic_results;
 
+      if (productsList?.length) {
         if (!!sorting_method) {
           let sorted_results;
 
           // Low to High __ Price
           if (sorting_method === "price-asc")
-            sorted_results = results.sort((a, b) => a.price - b.price);
+            sorted_results = results.sort((a, b) => a.extracted_price - b.extracted_price);
 
           // High to Low __ Price
           if (sorting_method === "price-desc")
-            sorted_results = results.sort((a, b) => b.price - a.price);
+            sorted_results = results.sort((a, b) => b.extracted_price - a.extracted_price);
 
           // review rank
           if (sorting_method === "review-rank")
-            sorted_results = results.sort((a, b) => b.stars - a.stars);
+            sorted_results = results.sort((a, b) => b.rating - a.rating);
 
-          if (
-            sorting_method === "price-asc" ||
-            sorting_method === "price-desc" ||
-            sorting_method === "review-rank"
-          )
-            results = sorted_results;
+          if (sorting_method === "price-asc" || sorting_method === "price-desc" || sorting_method === "review-rank"){
+            return {
+              props: {
+                products: sorted_results,
+                error: false,
+              }
+            }
+          };
+        }
+
+        return {
+          props: {
+            products: productsList,
+            error: false,
+          }
         }
       } else {
         throw Error("Something Went Wrong!!");
       }
-
-      return {
-        props: {
-          products: {
-            ads: search_results.ads,
-            results,
-          },
-          error: false,
-        },
-      };
     } catch (err) {
+
       return {
         props: {
           products: {
@@ -422,16 +336,7 @@ export async function getServerSideProps(req, res) {
           error: true,
         },
       };
+
     }
-  } else {
-    return {
-      props: {
-        products: {
-          ads: [],
-          results: [],
-        },
-        error: true,
-      },
-    };
   }
 }

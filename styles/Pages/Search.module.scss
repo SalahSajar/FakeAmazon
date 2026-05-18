@@ -1,5 +1,4 @@
-@import "/styles/Partials";
-@import '/styles/Partials/mixins';
+@use "../Partials/index" as *;
 
 .keyword_search_results_eyebrow--BLOCK{
     border-top: 1px solid #ccc;
@@ -13,9 +12,11 @@
         .keyword_search_results_length--EL{
             font-weight: 400;
             color:#000;
+            text-transform: capitalize;
 
             .search_results_keyword--EL{
                 color:$mid_orange_color;
+                text-transform: capitalize;
             }
         }
 

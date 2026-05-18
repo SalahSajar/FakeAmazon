@@ -15,7 +15,7 @@ import UserSignup_layout from "../components/Layout/UserSignup_layout";
 
 import md5 from "md5";
 
-import classes from "../styles/Components/Global/UserSignup_layout.module.scss";
+import classes from "@GlobalCompsStyles/UserSignup_layout.module.scss";
 
 const Signin = () => {
   const { userCartFromDB__HANDLER } = useContext(UserCartContext);
@@ -221,13 +221,7 @@ const Signin = () => {
                 </span>
               </div>
 
-              <Link href="/register">
-                <a
-                  className={`${classes["another_signup_method--LINK"]} md_font`}
-                >
-                  create your amazon account
-                </a>
-              </Link>
+              <Link className={`${classes["another_signup_method--LINK"]} md_font`} href="/register">create your amazon account</Link>
             </div>
           </div>
         </form>

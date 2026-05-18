@@ -285,13 +285,7 @@ const Register = () => {
                 </span>
               </div>
 
-              <Link href="/signin">
-                <a
-                  className={`${classes["another_signup_method--LINK"]} md_font`}
-                >
-                  Sign-In
-                </a>
-              </Link>
+              <Link className={`${classes["another_signup_method--LINK"]} md_font`} href="/signin">Sign-In</Link>
             </div>
           </div>
         </form>

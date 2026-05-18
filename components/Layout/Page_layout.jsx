@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { UserCartContext } from "../../customContexts/CartCtx";
+import { UserCartContext } from "@CustomContext/CartCtx";
 import UserCartComp from "../Global/UserCartComp";
 
 const Page_layout = ({ children }) => {

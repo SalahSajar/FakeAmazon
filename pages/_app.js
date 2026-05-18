@@ -23,7 +23,6 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=0.7"></meta>
       </Head>
-      
       <UserCartContextProvider>
         <Component {...pageProps} />
       </UserCartContextProvider>

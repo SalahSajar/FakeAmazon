@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "../../styles/Components/Search/Product_Price.module.scss";
+import classes from "@SearchCompsStyles/Product_Price.module.scss";
 
 const Product_Price = ({ price }) => {
   return price.indexOf("$") === price.lastIndexOf("$") ? (

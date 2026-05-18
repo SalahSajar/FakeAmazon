@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^0.27.2",
-    "firebase": "^9.8.1",
+    "amazon-buddy": "^2.2.45",
+    "axios": "^1.15.0",
+    "firebase": "^12.12.0",
     "md5": "^2.3.0",
-    "next": "12.1.6",
+    "mongodb": "^7.1.1",
+    "next": "^16.2.4",
     "next-seo": "^5.4.0",
     "nookies": "^2.5.2",
     "nprogress": "^0.2.0",
