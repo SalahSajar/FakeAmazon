@@ -11,11 +11,6 @@ import classes from "@SearchCompsStyles/Search_Result_Products.module.scss";
 const Search_Result_Products = ({ ads, products, error }) => {
   const router = useRouter();
 
-
-  useEffect(() => {
-    console.log("*** Products Arr *** From Within Search Result Produts Comp");
-    console.log(products);
-  }, [])
   return (
     <article className={classes["search_result--BLOCK"]}>
       <div className={`${classes["search_result_products--HEADER"]} md_lg_font`}>

@@ -508,15 +508,8 @@ export const getServerSideProps = async (req, res) => {
 
   if (!!asin) {
     try {
-      // const options = {
-      //   method: "GET",
-      //   headers: {
-      //     "X-RapidAPI-Key":process.env.RAPIDAPI_KEY || process.env.VERCEL_RAPIDAPI_KEY,
-      //     "X-RapidAPI-Host": "amazon-product-search2.p.rapidapi.com",
-      //   },
-      // };
 
-      const req = await fetch(`${process.env.SCRAPER_API__URI}?api_key=${process.env.SCRAPER_API__KEY}&ASIN=${asin}&country_code=us&tld=com`);
+      const req = await fetch(`${process.env.NEXT_PUBLIC_VERCEL__SCRAPER__API_URI}?api_key=${process.env.NEXT_PUBLIC_VERCEL__SCRAPER__API_KEY}&ASIN=${asin}&country_code=us&tld=com`);
 
       if (req.status !== 200) {
         throw Error("something is wrong!!");

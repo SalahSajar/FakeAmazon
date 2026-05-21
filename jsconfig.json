@@ -14,9 +14,6 @@
 			"@HomeComps/*": ["components/Home/*"],
 			"@LayoutComps/*": ["components/Layout/*"],
 			"@SearchComps/*": ["components/Search/*"],
-			// "@HomeStyles/*": ["styles/Components/Home/*"],
-			// "@HomeStyles/*": ["styles/Components/Home/*"],
-			// "@HomeStyles/*": ["styles/Components/Home/*"],
 		}
 	}
 }

@@ -15,6 +15,7 @@ import Search_Result_Products from "@SearchComps/Search_Result_Products";
 import classes from "@PagesStyles/Search.module.scss";
 
 const Search = ({ products, error }) => {
+  const router = useRouter();
   const { currentUser } = auth;
 
   const [showSortingMethods, setShowSortingMethods] = useState(false);
@@ -24,7 +25,6 @@ const Search = ({ products, error }) => {
   const [filterByPrice, setFilterByPrice] = useState(null);
   const [priceRange, setPriceRange] = useState({});
 
-  const router = useRouter();
 
   const toggleSortingResultsMethods__Handler = () =>
     setShowSortingMethods((prev) => !prev);
@@ -39,9 +39,7 @@ const Search = ({ products, error }) => {
       if (filterBy === "price") {
         setFilterByPrice(null);
 
-        const price_range__FORM = document.getElementById(
-          "price_filter_method--FORM"
-        );
+        const price_range__FORM = document.getElementById("price_filter_method--FORM");
 
         price_range__FORM.min_price.value = "";
         price_range__FORM.max_price.value = "";
@@ -280,7 +278,7 @@ export async function getServerSideProps(req, res) {
     try {
       let results = [];
 
-      const req = await fetch(`${process.env.SERPAPI_API_URI}&k=${encodeURI(keyword)}&api_key=${process.env.SERPAPI_API__KEY}`);
+      const req = await fetch(`${process.env.NEXT_PUBLIC_VERCEL__SERPAPI__API_URI}&k=${encodeURI(keyword)}&api_key=${process.env.NEXT_PUBLIC_VERCEL__SERPAPI__API_KEY}`);
 
       if (req.status !== 200) {
         throw Error("Something Went Wrong!!");

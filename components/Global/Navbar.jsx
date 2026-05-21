@@ -30,7 +30,6 @@ const Navbar = () => {
     userCartLength,
   } = useContext(UserCartContext);
 
-
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
 
   const languageQuery = !languagesObj.availableLanguages.includes(router.query.language?.toLowerCase()) ? "en" : router.query.language?.toLowerCase();

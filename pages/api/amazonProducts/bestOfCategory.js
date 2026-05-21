@@ -1,6 +1,6 @@
 import clientPromise from "@Lib/MongoDBConfig";
 
-const mongodb_auth__uri = process.env.MONGODB_AUTH_URI;
+const mongodb_auth__uri = process.env.NEXT_PUBLIC_VERCEL__MONGODB__AUTH_URI;
 
 export default async function handler(req, res){
 	const {categoryId} = req.query;

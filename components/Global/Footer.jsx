@@ -15,7 +15,6 @@ const Footer = () => {
   const languageQuery = !languagesObj.availableLanguages.includes(router.query.language?.toLowerCase()) ? "en" : router.query.language?.toLowerCase();
   const activeLangObj = languagesObj.languages.find(lang => lang.langCode === languageQuery);
 
-  console.log(activeLangObj)
 
   const currentYear = new Date().getFullYear();
 
@@ -153,10 +152,7 @@ const Footer = () => {
 
               <div className={classes["amazon_config_links--WRAPPER"]}>
                 <div className={classes["footer_language_link--WRAPPER"]}>
-                  <Link
-                    href="javascript:void(0)"
-                    className={`${classes["amazon_config_link--EL"]} ${classes["amazon_language_link--EL"]}`}
-                  >
+                  <Link href="javascript:void(0)" className={`${classes["amazon_config_link--EL"]} ${classes["amazon_language_link--EL"]}`}>
                     <div className={ classes["amazon_config_link_content--CONTAINER"] } >
                       <span className={`${classes["amazon_config_link_icon--WRAPPER"]} ${classes["amazon_config_language_icon"]}`} ></span>
                       <span className={`${classes["amazon_config_link_text--EL"]} sm_font`} > English </span>
@@ -169,22 +165,14 @@ const Footer = () => {
                         <div className={classes["lang_dropdown_header--CONTAINER"]} >
                           <span className="md_font">
                             <span className={classes["lang_dropdown_title--EL"]} > Change language </span>
-                            <Link
-                              href="/learnMore?ref=lang"
-                              className={`${classes["lang_dropdown_secondary_link"]} xsm_font`}
-                            > Learn more </Link>
+                            <Link href="/learnMore?ref=lang" className={`${classes["lang_dropdown_secondary_link"]} xsm_font`}> Learn more </Link>
                           </span>
-
-                          
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <Link
-                  href="javascript:void(0)"
-                  className={`${classes["amazon_config_link--EL"]} ${classes["amazon_language_link--EL"]}`}
-                >
+                <Link href="javascript:void(0)" className={`${classes["amazon_config_link--EL"]} ${classes["amazon_language_link--EL"]}`}>
                   <div className={classes["amazon_config_link_content--CONTAINER"]} >
                     <span className={`${classes["amazon_config_link_icon--WRAPPER"]} ${classes["amazon_config_currency_icon"]} md_font`}>$</span>
                     <span className={`${classes["amazon_config_link_text--EL"]} sm_font`}>USD - U.S. Dollar</span>

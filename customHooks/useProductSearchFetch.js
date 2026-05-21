@@ -18,7 +18,7 @@ export const useProductSearchFetch = () => {
       
       const req = await fetch(`https://bth-amazon-data-scraper.p.rapidapi.com/search/${encodeURI(
         keyword
-      )}?api_Key=${process.env.NEXT_PUBLIC_HOME_SCAPPERAPI_KEY || process.env.NEXT_PUBLIC_VERCEL_HOME_SCAPPERAPI_KEY}`, options);
+      )}?api_Key=${process.env.NEXT_PUBLIC_VERCEL__SCRAPER__API_KEY}`, options);
 
       // const req = await fetch("/api/amazonProducts//bestOfCategory?categoryId: ")
 

@@ -17,10 +17,6 @@ const Home_products_card = ({ title, purpose, categories, keyword, categoryId, l
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  // const topProductsRecommendation__LIST = !!products?.length && products.splice(0, 5);
-  // console.log("---------- Top Products Recommendation List");
-  // console.log(topProductsRecommendation__LIST);
-
   const {FetchProductsByCategory} = useFetchProductsByCategory();
 
   const reloadProductsCard__FUNC = () => {
