@@ -4,8 +4,6 @@ import { useRouter, useEffect } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-import { useProductAsinFinder } from "@CustomHooks/useProductAsinFinder";
-
 import classes from "@SearchCompsStyles/Search_Results_Card.module.scss";
 
 const product_review_stars__FUNC = (product_review) => {
@@ -30,12 +28,6 @@ const product_review_stars__FUNC = (product_review) => {
 
 const Search_Result_Product_Card = ({ productDetails }) => {
   const router = useRouter();
-
-  // const { findProductAsin__HANDLER } = useProductAsinFinder();
-  // const productASIN = findProductAsin__HANDLER(productDetails.url);
-
-  console.log("*** product Details Object")
-  console.log(productDetails)
 
   return (
     <article className={classes["search_result_product--CARD"]}>

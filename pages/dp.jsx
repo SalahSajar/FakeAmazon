@@ -7,8 +7,6 @@ import Image from "next/image";
 
 import { UserCartContext } from "@CustomContext/CartCtx";
 
-import { useProductAsinFinder } from "@CustomHooks/useProductAsinFinder";
-
 import Page_layout from "@LayoutComps/Page_layout";
 
 import Navbar from "@GlobalComps/Navbar";
@@ -47,19 +45,17 @@ const Dp = ({ product, error }) => {
 
   const {updateUserCart__HANDLER} = useContext(UserCartContext);
 
-  const {findProductAsin__HANDLER} = useProductAsinFinder();
-
   const router = useRouter();
 
   const addProductToCart__HANDLER = () => {
-    const productASIN = router.query.asin;
+    const {asin} = router.query;
     const ProductName = product.name;
     const productPrice = parseFloat(product.pricing.replace(/[$,]/g, ""));
     const ProductImg = product.images[0];
 
     updateUserCart__HANDLER(
       {
-        asin: productASIN,
+        asin,
         name: ProductName,
         price: +productPrice.toFixed(2),
         img: ProductImg,
@@ -68,25 +64,6 @@ const Dp = ({ product, error }) => {
       "add"
     );
   };
-
-  const extractProductOptionASIN__HANDLER = (url) => {
-    let productOptionLinkUrl;
-
-    if (!!url) {
-      const productASIN = findProductAsin__HANDLER(url);
-
-      productOptionLinkUrl = `/dp?asin=${productASIN}`;
-    } else {
-      productOptionLinkUrl = "javascript:void(0)";
-    }
-
-    return productOptionLinkUrl;
-  };
-
-  useEffect(() => {
-    console.log("***Products Details Object");
-    console.log(product)
-  })
 
   return (
     <Fragment>
